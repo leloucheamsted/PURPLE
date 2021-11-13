@@ -4,6 +4,8 @@ using Plugin.CurrentActivity;
 using PURPLE.Interface;
 using Xamarin.Forms;
 using PURPLE.Droid.Services;
+using Xamarin.Essentials;
+using Xamarin.Forms.Platform.Android;
 [assembly:Dependency(typeof(StatusBarStyleManager))]
 namespace PURPLE.Droid.Services
 {
@@ -19,6 +21,7 @@ namespace PURPLE.Droid.Services
                     var currentWindow = GetCurrentWindow();
                     currentWindow.DecorView.SystemUiVisibility = 0;
                     currentWindow.SetStatusBarColor(Android.Graphics.Color.DarkCyan);
+                   
                 });
             }
         }
@@ -33,6 +36,7 @@ namespace PURPLE.Droid.Services
                     var currentWindow = GetCurrentWindow();
                     currentWindow.DecorView.SystemUiVisibility = (StatusBarVisibility)SystemUiFlags.LightStatusBar;
                     currentWindow.SetStatusBarColor(Android.Graphics.Color.LightGreen);
+                    
                 });
             }
         }
@@ -49,5 +53,22 @@ namespace PURPLE.Droid.Services
 
             return window;
         }
+        public void SetNavigationBarColor(string hexColor)
+        {
+            if (Build.VERSION.SdkInt < BuildVersionCodes.M)
+            {
+                return;
+            }
+
+            Color color = Color.FromHex(hexColor);
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                var currentWindow = GetCurrentWindow();
+                currentWindow.SetNavigationBarColor(color.ToAndroid());
+            });
+        }
+
+      
+       
     }
 }

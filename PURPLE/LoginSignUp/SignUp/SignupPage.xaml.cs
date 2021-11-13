@@ -15,14 +15,14 @@ namespace PURPLE.LoginSignUp.SignUp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignupPage : ContentPage
     {
-
+        
         public SignupPage()
         {
             InitializeComponent();
             var currentNavPage = (Application.Current.MainPage as NavigationPage);
             var statusBarStyleManager = DependencyService.Get<IStatusBarStyleManager>();
            
-            
+           
         }
          protected override void OnAppearing()
         { 
@@ -31,6 +31,7 @@ namespace PURPLE.LoginSignUp.SignUp
             var statusBarStyleManager = DependencyService.Get<IStatusBarStyleManager>();
             currentNavPage.BarBackgroundColor = Color.DarkCyan;
             statusBarStyleManager.SetDarkTheme();
+            statusBarStyleManager.SetNavigationBarColor("#FF008B8B");
            
         }
 

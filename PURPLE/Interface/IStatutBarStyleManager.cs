@@ -5,5 +5,6 @@ namespace PURPLE.Interface
     {
         void SetLightTheme();
         void SetDarkTheme();
+        void SetNavigationBarColor(string hexColor);
     }
 }

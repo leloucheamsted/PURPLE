@@ -26,6 +26,11 @@ namespace PURPLE.iOS.Services
             });
         }
 
+        public void SetNavigationBarColor(string hexColor)
+        {
+            throw new System.NotImplementedException();
+        }
+
         UIViewController GetCurrentViewController()
         {
             var window = UIApplication.SharedApplication.KeyWindow;
