@@ -8,7 +8,7 @@ namespace PURPLE.iOS.Services
 {
     public class StatusBarStyleManager : IStatusBarStyleManager
     {
-        public void SetDarkTheme()
+        public void SetDarkTheme(string textcolor)
         {
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -17,7 +17,7 @@ namespace PURPLE.iOS.Services
             });
         }
 
-        public void SetLightTheme()
+        public void SetLightTheme(string textcolor)
         {
             Device.BeginInvokeOnMainThread(() =>
             {

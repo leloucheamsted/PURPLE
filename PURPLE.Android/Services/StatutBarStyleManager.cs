@@ -12,30 +12,32 @@ namespace PURPLE.Droid.Services
     public class StatusBarStyleManager : IStatusBarStyleManager
     {
         
-        public void SetDarkTheme()
+        public void SetDarkTheme(string textcolor)
         {
             if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
             {
                 Device.BeginInvokeOnMainThread(() =>
                 {
+                    Color color = Color.FromHex(textcolor);
                     var currentWindow = GetCurrentWindow();
                     currentWindow.DecorView.SystemUiVisibility = 0;
-                    currentWindow.SetStatusBarColor(Android.Graphics.Color.DarkCyan);
+                    currentWindow.SetStatusBarColor(color.ToAndroid());
                    
                 });
             }
         }
 
        
-        public void SetLightTheme()
+        public void SetLightTheme(string textcolor)
         {
             if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
             {
                 Device.BeginInvokeOnMainThread(() =>
                 {
+                    Color color = Color.FromHex(textcolor);
                     var currentWindow = GetCurrentWindow();
                     currentWindow.DecorView.SystemUiVisibility = (StatusBarVisibility)SystemUiFlags.LightStatusBar;
-                    currentWindow.SetStatusBarColor(Android.Graphics.Color.LightGreen);
+                    currentWindow.SetStatusBarColor(color.ToAndroid());
                     
                 });
             }
@@ -65,6 +67,7 @@ namespace PURPLE.Droid.Services
             {
                 var currentWindow = GetCurrentWindow();
                 currentWindow.SetNavigationBarColor(color.ToAndroid());
+                currentWindow.DecorView.SystemUiVisibility = (StatusBarVisibility)SystemUiFlags.LightStatusBar;
             });
         }
 

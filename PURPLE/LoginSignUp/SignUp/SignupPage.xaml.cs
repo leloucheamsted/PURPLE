@@ -30,8 +30,8 @@ namespace PURPLE.LoginSignUp.SignUp
             var currentNavPage = (Application.Current.MainPage as NavigationPage);
             var statusBarStyleManager = DependencyService.Get<IStatusBarStyleManager>();
             currentNavPage.BarBackgroundColor = Color.DarkCyan;
-            statusBarStyleManager.SetDarkTheme();
-            statusBarStyleManager.SetNavigationBarColor("#FF008B8B");
+            statusBarStyleManager.SetLightTheme("#DCE8F6");
+            statusBarStyleManager.SetNavigationBarColor("#DCE8F6");
            
         }
 

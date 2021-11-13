@@ -3,8 +3,8 @@ namespace PURPLE.Interface
 {
     public interface IStatusBarStyleManager
     {
-        void SetLightTheme();
-        void SetDarkTheme();
+        void SetLightTheme(string textcolor);
+        void SetDarkTheme(string textcolor);
         void SetNavigationBarColor(string hexColor);
     }
 }
