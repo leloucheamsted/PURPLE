@@ -3,7 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasNavigationBar="False"
              x:Class="PURPLE.LoginSignUp.SignUp.SignupPage">
-    <Grid BackgroundColor="{StaticResource backgroundColorPrimary}">
-        <Label>leouche</Label>
+    <Grid Padding="30,20" BackgroundColor="{StaticResource backgroundColorPrimary}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120" />
+            <RowDefinition  Height="*" />
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Image Margin="10,10,0,30" WidthRequest="200" Source="Icones/icon_profile.png"/>
+        <StackLayout Grid.Row="1" Margin="0,0,0,30">
+            <Label Text="REJOINDRE LA TEAM" FontSize="15" TextColor="#0F2D52" 
+                   FontFamily="MetroRegular" ></Label>
+            <Label Text="Créer un Compte" FontFamily="MetroBold" FontSize="28" TextColor="#0F2D52"></Label>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Frame BackgroundColor="#8BB9FF"  Opacity=".5"  CornerRadius="15"  >
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" 
+                                 VerticalOptions="FillAndExpand">
+                        <Label Text="&#xf1a0;" FontFamily="fas" TextColor="White"></Label>
+                    </StackLayout>
+                </Frame>
+                <Frame  Grid.Column="1" BackgroundColor="#8BB9FF" Opacity=".5" CornerRadius="15" >
+
+                </Frame>
+            </Grid>
+        </StackLayout>
+        <StackLayout Grid.Row="2" 
+                     Orientation="Horizontal"
+                     >
+            <Label Text="Vous êtes déjà membre de l'équipe ?" FontAttributes="Bold" FontFamily="RobotoBold"></Label>
+            <Label Text="S'IDENTIFIER ?" FontFamily="RobotoLight"></Label>
+            <Label Text="&#xf1a0;" FontFamily="fa" TextColor="Black"></Label>
+        </StackLayout>
     </Grid>
-</ContentPage>
+</ContentPage>              

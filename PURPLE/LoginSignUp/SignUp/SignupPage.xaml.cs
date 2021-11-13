@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System;
-using System.Timers;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using PURPLE.Interface;
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace PURPLE.LoginSignUp.SignUp
@@ -19,9 +11,6 @@ namespace PURPLE.LoginSignUp.SignUp
         public SignupPage()
         {
             InitializeComponent();
-            var currentNavPage = (Application.Current.MainPage as NavigationPage);
-            var statusBarStyleManager = DependencyService.Get<IStatusBarStyleManager>();
-           
            
         }
          protected override void OnAppearing()

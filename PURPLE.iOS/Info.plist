@@ -24,6 +24,14 @@
         <string>UIInterfaceOrientationLandscapeLeft</string>
         <string>UIInterfaceOrientationLandscapeRight</string>
     </array>
+    <key>UIAppFonts</key>
+<array>
+  <string>fa-light-300.ttf</string>
+  <string>fa-solid-900.ttf</string>
+  <string>fa-regular-400.ttf</string>
+<string>fa-duotone-900.ttf</string>
+<string>fa-brands-400 (1).ttf</string>
+</array>
     <key>MinimumOSVersion</key>
     <string>8.0</string>
     <key>CFBundleDisplayName</key>
