@@ -14,6 +14,7 @@ namespace PURPLE.Views.Home
     public partial class AcceuilPage : ContentPage
     {
         int indexPosition = 0;
+        private uint animationLength = 250;
         public AcceuilPage()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace PURPLE.Views.Home
             currentNavPage.BarBackgroundColor = Color.DarkCyan;
             statusBarStyleManager.SetLightTheme("#DCE8F6");
             statusBarStyleManager.SetNavigationBarColor("#DCE8F6");
-            await NavEvent();
+            await NavEvent(); 
 
         }
 
@@ -38,10 +39,10 @@ namespace PURPLE.Views.Home
             {
                 Device.InvokeOnMainThreadAsync(async () => {
                     await Task.WhenAll(
-                            Group_view.TranslateTo(600, 0, 400),
-                            Purple_view.TranslateTo(0, 0, 400),
-                            Acceuill_view.TranslateTo(600, 0, 400),
-                            Chat_view.TranslateTo(600, 0, 400)
+                            Group_view.TranslateTo(600, 0, animationLength),
+                            Purple_view.TranslateTo(0, 0, animationLength),
+                            Acceuill_view.TranslateTo(600, 0, animationLength),
+                            Chat_view.TranslateTo(600, 0, animationLength)
                         );
                 });
             }
@@ -49,10 +50,10 @@ namespace PURPLE.Views.Home
             {
                 Device.InvokeOnMainThreadAsync(async () => {
                     await Task.WhenAll(
-                            Group_view.TranslateTo(600, 0, 400),
-                            Purple_view.TranslateTo(600, 0, 400),
-                            Acceuill_view.TranslateTo(0, 0, 400),
-                            Chat_view.TranslateTo(600, 0, 400)
+                            Group_view.TranslateTo(600, 0, animationLength),
+                            Purple_view.TranslateTo(600, 0, animationLength),
+                            Acceuill_view.TranslateTo(0, 0, animationLength),
+                            Chat_view.TranslateTo(600, 0, animationLength)
                         );
                 });
             }
@@ -61,10 +62,10 @@ namespace PURPLE.Views.Home
             {
                 Device.InvokeOnMainThreadAsync(async () => {
                     await Task.WhenAll(
-                            Group_view.TranslateTo(600, 0, 400),
-                            Purple_view.TranslateTo(600, 0, 400),
-                            Acceuill_view.TranslateTo(600, 0, 400),
-                            Chat_view.TranslateTo(0, 0, 400)
+                            Group_view.TranslateTo(600, 0, animationLength),
+                            Purple_view.TranslateTo(600, 0, animationLength),
+                            Acceuill_view.TranslateTo(600, 0, animationLength),
+                            Chat_view.TranslateTo(0, 0, animationLength)
                         );
                 });
             }
@@ -73,10 +74,10 @@ namespace PURPLE.Views.Home
             {
                 Device.InvokeOnMainThreadAsync(async () => {
                     await Task.WhenAll(
-                            Group_view.TranslateTo(0, 0, 400),
-                            Purple_view.TranslateTo(600, 0, 400),
-                            Acceuill_view.TranslateTo(600, 0, 400),
-                            Chat_view.TranslateTo(600, 0, 400)
+                            Group_view.TranslateTo(0, 0, animationLength),
+                            Purple_view.TranslateTo(600, 0, animationLength),
+                            Acceuill_view.TranslateTo(600, 0, animationLength),
+                            Chat_view.TranslateTo(600, 0, animationLength)
                         );
                 });
             }
@@ -114,10 +115,10 @@ namespace PURPLE.Views.Home
                 Device.InvokeOnMainThreadAsync(async () =>
                 {
                     await Task.WhenAll(
-                        Group_view.TranslateTo(600, 0, 400),
-                        Purple_view.TranslateTo(0, 0, 400),
-                        Acceuill_view.TranslateTo(600, 0, 400),
-                        Chat_view.TranslateTo(600, 0, 400)
+                        Group_view.TranslateTo(600, 0, animationLength),
+                        Purple_view.TranslateTo(0, 0, animationLength),
+                        Acceuill_view.TranslateTo(600, 0, animationLength),
+                        Chat_view.TranslateTo(600, 0, animationLength)
 
                         );
                 });
@@ -155,10 +156,10 @@ namespace PURPLE.Views.Home
                 Device.InvokeOnMainThreadAsync(async () =>
                 {
                     await Task.WhenAll(
-                        Group_view.TranslateTo(600, 0, 400),
-                        Purple_view.TranslateTo(600, 0, 400),
-                        Acceuill_view.TranslateTo(0, 0, 400),
-                        Chat_view.TranslateTo(600, 0, 400)
+                        Group_view.TranslateTo(600, 0, animationLength),
+                        Purple_view.TranslateTo(600, 0, animationLength),
+                        Acceuill_view.TranslateTo(0, 0, animationLength),
+                        Chat_view.TranslateTo(600, 0, animationLength)
 
                         );
                 });
@@ -197,10 +198,10 @@ namespace PURPLE.Views.Home
                 Device.InvokeOnMainThreadAsync(async () =>
                 {
                     await Task.WhenAll(
-                        Group_view.TranslateTo(600, 0, 400),
-                        Purple_view.TranslateTo(600, 0, 400),
-                        Acceuill_view.TranslateTo(600, 0, 400),
-                        Chat_view.TranslateTo(0, 0, 400)
+                        Group_view.TranslateTo(600, 0, animationLength),
+                        Purple_view.TranslateTo(600, 0, animationLength),
+                        Acceuill_view.TranslateTo(600, 0, animationLength),
+                        Chat_view.TranslateTo(0, 0, animationLength)
 
                         );
                 });
@@ -236,10 +237,10 @@ namespace PURPLE.Views.Home
                 Device.InvokeOnMainThreadAsync(async () =>
                 {
                     await Task.WhenAll(
-                        Group_view.TranslateTo(0,0,400),
-                        Purple_view.TranslateTo(600, 0, 400),
-                        Acceuill_view.TranslateTo(600, 0, 400),
-                        Chat_view.TranslateTo(600, 0, 400)
+                        Group_view.TranslateTo(0,0, animationLength),
+                        Purple_view.TranslateTo(600, 0, animationLength),
+                        Acceuill_view.TranslateTo(600, 0, animationLength),
+                        Chat_view.TranslateTo(600, 0, animationLength)
                        
                         );
                 });

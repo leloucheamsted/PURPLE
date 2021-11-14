@@ -6,6 +6,8 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms"
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:viewtwst="clr-namespace:PURPLE.Views.PURPLEVIEW"
              x:Class="PURPLE.Views.Home.AcceuilPage">
     <Grid BackgroundColor="White">
         <Grid.RowDefinitions>
@@ -18,10 +20,69 @@
 
         <!--#region  PURPLE-->
         <Grid x:Name="Purple_view">
-            <Label Text="Purple"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <!--#region Barre de profil et de recherche-->
+            <Grid Grid.Row="0" Padding="8,5,8,5" BackgroundColor="{StaticResource backgroundColorPrimary}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                
+                <!--Avatar-->
+                <syncEffectsView:SfEffectsView x:Name="profil_btn" 
+                                               RippleColor="{StaticResource SecondColor}"
+                                               BackgroundColor="White" CornerRadius="25">
+                    <sfavatar:SfAvatarView 
+                              ContentType="Initials"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               InitialsType="SingleCharacter"
+                               AvatarName="Alex"
+                               InitialsColor="White" 
+                               WidthRequest="50"
+                               FontAttributes="Bold"
+                               HeightRequest="50"
+                               CornerRadius="25"   
+                        BorderColor="White"
+                               BackgroundColor="{StaticResource ThirdColor}">
+                    </sfavatar:SfAvatarView>
+                </syncEffectsView:SfEffectsView>
+
+                <!--Search Bar // barre de recherche-->
+                <syncEffectsView:SfEffectsView x:Name="search_Btn" Grid.Column="1" TouchDownEffects="Highlight"
+    HighlightColor="{StaticResource SecondColor}" BackgroundColor="White"  CornerRadius="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="&#xf002;" FontFamily="fas" Margin="10,0,0,0" FontSize="Body" TextColor="{StaticResource btnColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                        <Label Text="Search" FontFamily="MetroBold" TextColor="{StaticResource btnColor}" FontSize="Body" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    </Grid>
+                   
+                </syncEffectsView:SfEffectsView>
+
+                <!--Emploi Bouton-->
+                <syncEffectsView:SfEffectsView x:Name="Btn_emploi" Grid.Column="2" RippleColor="{StaticResource SecondColor}"  BackgroundColor="Transparent" CornerRadius="25">
+                    <Label Text="&#xf0b1;"
+                           FontFamily="fas" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" TextColor="{StaticResource btnColor}" ></Label>
+                </syncEffectsView:SfEffectsView>
+
+                <!--Bouton de notifiaction-->
+                <syncEffectsView:SfEffectsView x:Name="Notification_Btn" Grid.Column="3" BackgroundColor="Transparent" CornerRadius="25" RippleColor="{StaticResource SecondColor}">
+                    <Label Text="&#xf0f3;" FontSize="25" FontFamily="fas" VerticalOptions="Center" HorizontalOptions="Center" TextColor="{StaticResource btnColor}" />
+                </syncEffectsView:SfEffectsView>
+            </Grid>
+            <!--#endregion-->
         </Grid>
         <!--#endregion-->
-        
+       
         <!--#region  Acceuil-->
         <Grid x:Name="Acceuill_view" >
             <Label Text="Acceuill"/>
