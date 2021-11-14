@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PURPLE.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,17 @@ namespace PURPLE.LoginSignUp.Login
         public LoginPage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            var currentNavPage = (Application.Current.MainPage as NavigationPage);
+            var statusBarStyleManager = DependencyService.Get<IStatusBarStyleManager>();
+            currentNavPage.BarBackgroundColor = Color.DarkCyan;
+            statusBarStyleManager.SetLightTheme("#DCE8F6");
+            statusBarStyleManager.SetNavigationBarColor("#DCE8F6");
+
         }
     }
 }
