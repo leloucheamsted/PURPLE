@@ -58,8 +58,10 @@
   <ItemGroup>
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="19.3.0.53" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="19.3.0.53" />
+    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="19.3.0.43" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="5.0.0.2196" />
   </ItemGroup>
 
   <ItemGroup>
@@ -69,11 +71,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="LoginSignUp\Login\LoginPage.xaml">
+    <EmbeddedResource Update="Views\Home\AcceuilPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="LoginSignUp\SignUp\SignupPage.xaml">
+    <EmbeddedResource Update="Views\LoginSignUp\Login\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\LoginSignUp\SignUp\SignupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 </Project>

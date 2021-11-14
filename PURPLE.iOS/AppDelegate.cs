@@ -24,6 +24,9 @@ namespace PURPLE.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             Syncfusion.XForms.iOS.EffectsView.SfEffectsViewRenderer.Init();
+            Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
+            Syncfusion.XForms.iOS.Core.SfAvatarViewRenderer.Init();
+            global::Xamarin.Forms.FormsMaterial.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

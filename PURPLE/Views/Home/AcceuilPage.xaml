@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           NavigationPage.HasNavigationBar="False"
+             xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms"
+             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+             x:Class="PURPLE.Views.Home.AcceuilPage">
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+ 
+        
+        <!--#region Views-->
+
+        <!--#region  PURPLE-->
+        <Grid x:Name="Purple_view">
+            <Label Text="Purple"/>
+        </Grid>
+        <!--#endregion-->
+        
+        <!--#region  Acceuil-->
+        <Grid x:Name="Acceuill_view" >
+            <Label Text="Acceuill"/>
+        </Grid>
+        <!--#endregion-->
+        <!--#region  Chat-->
+        <Grid x:Name="Chat_view">
+            <Label Text="Chat"/>
+        </Grid>
+        <!--#endregion-->
+        <!--#region  Group-->
+        <Grid x:Name="Group_view" >
+            <Label Text="Group"/>
+        </Grid>
+        <!--#endregion-->
+        
+        
+        <!--#endregion-->
+      
+        <!--#region Tabbar Navigation-->
+        <Grid Grid.Row="1" Margin="0" BackgroundColor="{StaticResource backgroundColorPrimary}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+                        
+            
+        
+            <!--#region PURPLETab-->
+            <syncEffectsView:SfEffectsView Margin="2.5,10,2.5,10" Padding="0"
+                                           x:Name="PurpleOnglet" 
+                                           BackgroundColor="#2673D1"
+                                           TouchDownEffects="Ripple" 
+                                           AnimationCompleted="PurpleOnglet_AnimationCompleted"
+                                           CornerRadius="15" 
+                                           RippleColor="{StaticResource SecondColor}">
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label x:Name="PurpleIcone" VerticalOptions="Center" FontSize="Default" Text="&#xe068;" FontFamily="fa" TextColor="White"/>
+                    <Label x:Name="PurpleText" VerticalOptions="Center" Text="PURPLE" FontSize="Default"  FontFamily="MetroBold" TextColor="White" />
+                </StackLayout>
+            </syncEffectsView:SfEffectsView>
+            <!--#endregion-->
+            
+            <!--#region Acceuill-->
+            <syncEffectsView:SfEffectsView Grid.Column="1" Margin="2.5,10,2.5,10" Padding="0"
+                                           x:Name="AcceuilOnglet" 
+                                           BackgroundColor="Transparent"
+                                           AnimationCompleted="AcceuilOnglet_AnimationCompleted"
+                                           TouchDownEffects="Ripple" 
+                                           CornerRadius="15" 
+                                           RippleColor="{StaticResource SecondColor}">
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label x:Name="AcceuilIcone" VerticalOptions="Center" FontSize="Default" Text="&#xf80c;" FontFamily="far" TextColor="{StaticResource btnColor}"/>
+                    <Label x:Name="AcceuilText" VerticalOptions="Center" Text="Acceuil" FontSize="Default" FontFamily="MetroBold" TextColor="{StaticResource btnColor}" />
+                </StackLayout>
+            </syncEffectsView:SfEffectsView>
+            <!--#endregion-->
+                  
+            
+           <!--#region du boutotn de plus -->
+            <syncEffectsView:SfEffectsView TranslationY="0"  Grid.Column="2"  Padding="0"
+                                           x:Name="BtnPlusOnglet" 
+                                           BackgroundColor="Transparent"
+                                           TouchDownEffects="Ripple" 
+                                           CornerRadius="20" 
+                                           RippleColor="{StaticResource ThirdColor}">
+                <Label Text="&#xf055;" 
+                       HorizontalOptions="Center"
+                       TextColor="{StaticResource SecondColor}"
+                       VerticalOptions="CenterAndExpand"
+                       FontSize="40"
+                       FontFamily="fas"></Label>
+            </syncEffectsView:SfEffectsView>
+            <!--#endregion-->
+            
+            <!--#region Chat-->
+            <syncEffectsView:SfEffectsView  Grid.Column="3" Margin="2.5,10,2.5,10" Padding="0"
+                                           x:Name="ChatOnglet" 
+                                           BackgroundColor="Transparent"
+                                            AnimationCompleted="ChatOnglet_AnimationCompleted"
+                                           TouchDownEffects="Ripple" 
+                                           CornerRadius="15" 
+                                           RippleColor="{StaticResource SecondColor}">
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label x:Name="ChatIcone" VerticalOptions="Center" FontSize="Default" Text="&#xf1d8;" FontFamily="far" TextColor="{StaticResource btnColor}"/>
+                    <Label x:Name="ChatText" VerticalOptions="Center" Text="Chat" FontSize="Default" FontFamily="MetroBold" TextColor="{StaticResource btnColor}" />
+                </StackLayout>
+            </syncEffectsView:SfEffectsView>
+            <!--#endregion-->
+
+            <!--#region Group-->
+            <syncEffectsView:SfEffectsView Grid.Column="4" Margin="2.5,10,2.5,10" Padding="0"
+                                           x:Name="GroupOnglet" 
+                                           BackgroundColor="Transparent"
+                                           AnimationCompleted="GroupOnglet_AnimationCompleted"
+                                           TouchDownEffects="Ripple" 
+                                           CornerRadius="15" 
+                                           RippleColor="{StaticResource SecondColor}">
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label x:Name="GroupIcone" VerticalOptions="Center" FontSize="Default" Text="&#xf63d;" FontFamily="far" TextColor="{StaticResource btnColor}"/>
+                    <Label x:Name="GroupText" VerticalOptions="Center" Text="Groupe" TextColor="{StaticResource btnColor}" FontSize="Default" FontFamily="MetroBold" />
+                </StackLayout>
+            </syncEffectsView:SfEffectsView>
+            <!--#endregion-->
+           
+        </Grid>
+        
+        <!--#endregion-->
+    </Grid>
+</ContentPage>

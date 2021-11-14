@@ -5,6 +5,7 @@
              xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:local="clr-namespace:PURPLE.LoginSignUp.Login"
              x:Class="PURPLE.LoginSignUp.Login.LoginPage">
     <Grid Padding="30,20" BackgroundColor="{StaticResource backgroundColorPrimary}">
         <Grid.RowDefinitions>
@@ -171,13 +172,19 @@
                      >
             <Label Text="Vous n'avez pas de compte ?"
                    FontSize="Small"
+                   VerticalOptions="Center"
                    TextColor="#0F2D52"
                    FontFamily="MetroRegular"></Label>
-            <Label x:Name="creation_duCompte" Text="S'ENREGISTRER ?"
+            <syncEffectsView:SfEffectsView x:Name="creation_duCompte" TouchDownEffects="Ripple" CornerRadius="15" RippleColor="#2196F3">
+
+                <Label  Text="S'ENREGISTRER ?"
                    FontFamily="MetroBold"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
                    FontSize="Default"
                    TextColor="#2673D1"
                    ></Label>
+            </syncEffectsView:SfEffectsView>
         </StackLayout>
         <!--#endregion-->
     </Grid>

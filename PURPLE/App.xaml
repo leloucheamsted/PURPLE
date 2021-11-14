@@ -6,5 +6,9 @@
 
         <!--Color file-->
         <Color x:Key="backgroundColorPrimary">#DCE8F6</Color>
+        <Color x:Key="btnColor">#0F2D52</Color>
+        <Color x:Key="effectColor">#90BCF2</Color>
+        <Color x:Key="SecondColor">#2673D1</Color>
+        <Color x:Key="ThirdColor">#43A3DB</Color>
     </Application.Resources>
 </Application>

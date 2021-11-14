@@ -1,5 +1,6 @@
 ﻿using PURPLE.LoginSignUp.Login;
 using PURPLE.LoginSignUp.SignUp;
+using PURPLE.Views.Home;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,7 +15,7 @@ namespace PURPLE
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTMzOTc2QDMxMzkyZTMzMmUzMERnNDlEWFZOZlV4aytHVmVFUytPMDBKeEtYRHJWYmVLSDNIVGJiZzVsVTg9");
             InitializeComponent();
-            MainPage = new NavigationPage(new LoginPage());
+            MainPage = new NavigationPage(new AcceuilPage());
         }
 
         protected override void OnStart()
