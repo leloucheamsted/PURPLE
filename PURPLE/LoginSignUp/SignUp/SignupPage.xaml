@@ -2,40 +2,208 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasNavigationBar="False"
+           xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              x:Class="PURPLE.LoginSignUp.SignUp.SignupPage">
+    
     <Grid Padding="30,20" BackgroundColor="{StaticResource backgroundColorPrimary}">
         <Grid.RowDefinitions>
             <RowDefinition Height="120" />
             <RowDefinition  Height="*" />
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <Image Margin="10,10,0,30" WidthRequest="200" Source="Icones/icon_profile.png"/>
+        <Image Margin="10,10,0,30" WidthRequest="200" Source="icon_profile.png"/>
         <StackLayout Grid.Row="1" Margin="0,0,0,30">
             <Label Text="REJOINDRE LA TEAM" FontSize="15" TextColor="#0F2D52" 
                    FontFamily="MetroRegular" ></Label>
             <Label Text="Créer un Compte" FontFamily="MetroBold" FontSize="28" TextColor="#0F2D52"></Label>
+             
+            <!--#region Inscription par google ou apple-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Frame BackgroundColor="#8BB9FF"  Opacity=".5"  CornerRadius="15"  >
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" 
+                <!--google-->
+                <syncEffectsView:SfEffectsView x:Name="google_auth" TouchDownEffects="Ripple" CornerRadius="15" RippleColor="#2196F3">
+                    <Frame BackgroundColor="#90BCF2"  Opacity=".5"  CornerRadius="15"  >
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" 
                                  VerticalOptions="FillAndExpand">
-                        <Label Text="&#xf1a0;" FontFamily="fas" TextColor="White"></Label>
-                    </StackLayout>
-                </Frame>
-                <Frame  Grid.Column="1" BackgroundColor="#8BB9FF" Opacity=".5" CornerRadius="15" >
-
-                </Frame>
+                            <Image WidthRequest="10" HeightRequest="10" 
+                               Source="google.png"></Image>
+                            <Label Text="Créer avec Google"
+                               FontSize="Default"
+                               TextColor="#0F2D52"
+                               FontFamily="MetroLight"></Label>
+                        </StackLayout>
+                    </Frame>
+                </syncEffectsView:SfEffectsView>
+             
+                <!--Apple-->
+                <syncEffectsView:SfEffectsView x:Name="apple_auth" Grid.Column="1" TouchDownEffects="Ripple" CornerRadius="15" RippleColor="#2196F3">
+                    <Frame   BackgroundColor="#90BCF2" Opacity=".5" CornerRadius="15" >
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" 
+                                 VerticalOptions="FillAndExpand">
+                            <Image WidthRequest="10" HeightRequest="10" 
+                               Source="apple.png"></Image>
+                            <Label Text="Créer avec Apple"
+                               FontSize="Default"
+                               TextColor="#0F2D52"
+                               FontFamily="MetroLight"></Label>
+                        </StackLayout>
+                    </Frame>
+                </syncEffectsView:SfEffectsView>
             </Grid>
+            <!--#endregion-->
+            
+            <Label Text="Ou créer à l'aide de l'e-mail"
+                   Margin="0,10,0,10" HorizontalOptions="Center"
+                   FontSize="15" FontFamily="MetroRegular" 
+                   TextColor="#0F2D52"
+                   ></Label>
+            
+            <!--#region Formulaire d'inscription-->
+            <!--#region Nom d'utilisateur-->
+            <inputLayout:SfTextInputLayout Hint="Name" 
+                                           ContainerType="Outlined"
+                                           UnfocusedColor="White"
+                                           HelperText="Entrer votre nom d'utilisateur"
+                                           ContainerBackgroundColor="White"
+                                            TrailingViewPosition="Inside"
+                                           OutlineCornerRadius="8" >
+                <Entry x:Name="name_entry"/>
+                <inputLayout:SfTextInputLayout.TrailingView>
+                    <Label Text="&#xf007;" FontFamily="fas"
+                          FontSize="15"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                          ></Label>
+                </inputLayout:SfTextInputLayout.TrailingView>
+                <inputLayout:SfTextInputLayout.HintLabelStyle>
+                    <inputLayout:LabelStyle FontSize="10" FontFamily="MetroBold">
+                    </inputLayout:LabelStyle>
+                </inputLayout:SfTextInputLayout.HintLabelStyle>
+                <inputLayout:SfTextInputLayout.HelperLabelStyle>
+                    <inputLayout:LabelStyle FontSize="12" FontFamily="MetroRegular">
+                    </inputLayout:LabelStyle>
+                </inputLayout:SfTextInputLayout.HelperLabelStyle>
+            </inputLayout:SfTextInputLayout>
+            <!--#endregion-->
+        
+            <!--#region Addresse mail-->
+            <inputLayout:SfTextInputLayout Hint="Email" 
+                                           ContainerType="Outlined"
+                                           UnfocusedColor="White"
+                                           ErrorText="Addresse mail invalide"
+                                           
+                                           HelperText="Entrer votre addresse mail"
+                                           ContainerBackgroundColor="White"
+                                            TrailingViewPosition="Inside"
+                                           OutlineCornerRadius="8" >
+                <Entry Keyboard="Text" x:Name="mail_entry"/>
+                <inputLayout:SfTextInputLayout.TrailingView>
+                    <Label Text="&#xf0e0;" FontFamily="far"
+                          FontSize="20"
+                           VerticalOptions="Center"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                          ></Label>
+                </inputLayout:SfTextInputLayout.TrailingView>
+                <inputLayout:SfTextInputLayout.HintLabelStyle>
+                    <inputLayout:LabelStyle FontSize="10" FontFamily="MetroBold">
+                    </inputLayout:LabelStyle>
+                </inputLayout:SfTextInputLayout.HintLabelStyle>
+                <inputLayout:SfTextInputLayout.HelperLabelStyle>
+                    <inputLayout:LabelStyle FontSize="12" FontFamily="MetroRegular">
+                    </inputLayout:LabelStyle>
+                </inputLayout:SfTextInputLayout.HelperLabelStyle>
+                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                    <inputLayout:LabelStyle FontSize="12" FontFamily="MetroRegular">
+                    </inputLayout:LabelStyle>
+                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+            </inputLayout:SfTextInputLayout>
+            <!--#endregion-->
+            
+            <!--#region Mot de passe-->
+            <inputLayout:SfTextInputLayout Hint="Password" 
+                                           ContainerType="Outlined"
+                                           UnfocusedColor="White"
+                                           ErrorText="Mot de passe incorrect"
+                                           HelperText="Mot de passe "
+                                           ContainerBackgroundColor="White"
+                                            TrailingViewPosition="Inside"
+                                           OutlineCornerRadius="8" >
+                <Entry Keyboard="Text" IsPassword="True" x:Name="password_entry"/>
+                <inputLayout:SfTextInputLayout.TrailingView>
+                    <Label Text="&#xf06e;" FontFamily="fas"
+                          FontSize="20"
+                           VerticalOptions="Center"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                          ></Label>
+                </inputLayout:SfTextInputLayout.TrailingView>
+                <inputLayout:SfTextInputLayout.HintLabelStyle>
+                    <inputLayout:LabelStyle FontSize="10" FontFamily="MetroBold">
+                    </inputLayout:LabelStyle>
+                </inputLayout:SfTextInputLayout.HintLabelStyle>
+                <inputLayout:SfTextInputLayout.HelperLabelStyle>
+                    <inputLayout:LabelStyle FontSize="12" FontFamily="MetroRegular">
+                    </inputLayout:LabelStyle>
+                </inputLayout:SfTextInputLayout.HelperLabelStyle>
+                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                    <inputLayout:LabelStyle FontSize="12" FontFamily="MetroRegular">
+                    </inputLayout:LabelStyle>
+                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+            </inputLayout:SfTextInputLayout>
+            <!--#endregion-->
+            
+            <!--#Region Validation de creation-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--#region Bouton d''inscription-->
+                <buttons:SfButton x:Name="Btn_Register" Text="S'enregistrer"
+                                  FontFamily="MetroBold"
+                                  FontSize="16"
+                                  HeightRequest="70"
+                                  CornerRadius="12"
+                                  ></buttons:SfButton>
+                <!--#endregion-->
+                
+                <!--#region bouton d'identification par emprunte-->
+                <buttons:SfButton x:Name="Btn_fingerPrint" Grid.Column="1"
+                                  CornerRadius="12"
+                                  BackgroundColor="#BED8F6"
+                                  Text="&#xf577;" 
+                                  TextColor="#2673D1"
+                                  FontSize="40"
+                                  FontFamily="far"
+                                  ></buttons:SfButton>
+                <!--#endregion-->
+           
+            </Grid>
+             
+            <!--#endregion-->
+            <!--#endregion formulaire d'inscription-->
+            
         </StackLayout>
+        
+        <!--#region Option de connexion direct-->
         <StackLayout Grid.Row="2" 
+                     HorizontalOptions="Center"
                      Orientation="Horizontal"
                      >
-            <Label Text="Vous êtes déjà membre de l'équipe ?" FontAttributes="Bold" FontFamily="RobotoBold"></Label>
-            <Label Text="S'IDENTIFIER ?" FontFamily="RobotoLight"></Label>
-            <Label Text="&#xf1a0;" FontFamily="fa" TextColor="Black"></Label>
+            <Label Text="Vous êtes déjà membre de PURPLE ?"
+                   FontSize="Small"
+                   TextColor="#0F2D52"
+                   FontFamily="MetroRegular"></Label>
+            <Label x:Name="identification" Text="S'IDENTIFIER ?"
+                   FontFamily="MetroBold"
+                   FontSize="Default"
+                   TextColor="#2673D1"
+                   ></Label>
         </StackLayout>
+        <!--#endregion-->
     </Grid>
 </ContentPage>              
