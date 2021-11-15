@@ -139,8 +139,14 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>2.0.0.14</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Buttons">
       <Version>19.3.0.53</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.Cards">
+      <Version>19.3.0.43</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Core">
       <Version>19.3.0.53</Version>
