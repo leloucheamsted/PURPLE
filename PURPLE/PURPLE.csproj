@@ -60,6 +60,7 @@
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="19.3.0.53" />
     <PackageReference Include="Syncfusion.Xamarin.Cards" Version="19.3.0.43" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="19.3.0.53" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="19.3.0.43" />
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="19.3.0.43" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
@@ -91,8 +92,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="Views\ACCEUILVIEW\" />
     <Folder Include="Views\CHATVIEW\" />
     <Folder Include="Views\GROUPVIEW\" />

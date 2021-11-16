@@ -20,6 +20,8 @@ namespace PURPLE.Views.Home
         public AcceuilPage()
         {
             InitializeComponent();
+            
+
         }
         protected async override void OnAppearing()
         {

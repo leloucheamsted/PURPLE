@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Syncfusion.ListView.XForms.iOS;
+using Syncfusion.XForms.iOS.EffectsView;
 using UIKit;
 
 namespace PURPLE.iOS
@@ -26,6 +28,8 @@ namespace PURPLE.iOS
             Syncfusion.XForms.iOS.EffectsView.SfEffectsViewRenderer.Init();
             Rg.Plugins.Popup.Popup.Init();
             Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
+            SfListViewRenderer.Init();
+            SfEffectsViewRenderer.Init();
             Syncfusion.XForms.iOS.Cards.SfCardViewRenderer.Init();
             Syncfusion.XForms.iOS.Core.SfAvatarViewRenderer.Init();
             global::Xamarin.Forms.FormsMaterial.Init();
