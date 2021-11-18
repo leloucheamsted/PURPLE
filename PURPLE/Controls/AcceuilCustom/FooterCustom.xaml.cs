@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace PURPLE.Controls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CustomLabel : ContentView
+    public partial class FooterCustom : ContentView
     {
-        public CustomLabel()
+        public FooterCustom()
         {
             InitializeComponent();
         }

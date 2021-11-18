@@ -5,14 +5,12 @@
              xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms"
-             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" 
              xmlns:pulltoRefresh="clr-namespace:Syncfusion.SfPullToRefresh.XForms;assembly=Syncfusion.SfPullToRefresh.XForms"
-             xmlns:viewtwst="clr-namespace:PURPLE.Views.PURPLEVIEW"
              xmlns:local="clr-namespace:PURPLE.ViewModels"
-             xmlns:l="clr-namespace:PURPLE.Repository"
+             xmlns:customAcceuil="clr-namespace:PURPLE.Controls"
              x:Class="PURPLE.Views.Home.AcceuilPage">
     <Grid BackgroundColor="Transparent">
         <!--#region Home Page nommer hom_page-->
@@ -194,32 +192,36 @@
 
                                 <!--#region Vue Publication et Post-->
 
-                                <syncfusion:SfListView x:Name="listview"  AutoFitMode="Height"  ItemSpacing="5,0,0,0" SelectionMode="None" IsScrollBarVisible="False" SelectionGesture="Tap" ItemsSource="{Binding Posts}">
+                                <syncfusion:SfListView x:Name="listview"  ItemSize="500" ItemSpacing="5,0,0,0" SelectionMode="None" IsScrollBarVisible="False" SelectionGesture="Tap" ItemsSource="{Binding Posts}">
                                   
                                     <syncfusion:SfListView.ItemTemplate>
                                         <DataTemplate>
                                             <cards:SfCardView  HasShadow="True" CornerRadius="5" Margin="5,5,10,5">
-                                                <Grid   Padding="0" >
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="40"/>
-                                                        <RowDefinition Height="350"/>
-                                                        <RowDefinition Height="*"/>
-                                                    </Grid.RowDefinitions>
+                                                
+                                                    <Grid   Padding="0" >
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="40"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                        </Grid.RowDefinitions>
 
-                                                    <!--#region TopBar-->
-                                                    <Grid  TranslationY="5" Margin="0"  VerticalOptions="Center" >
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition  Width="40"/>
-                                                            <ColumnDefinition Width="*"/>
-                                                            <ColumnDefinition Width="40"/>
-                                                            <ColumnDefinition Width="40"/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <!--#region  Avatar de l'utilisateur qui publie-->
-                                                        <syncEffectsView:SfEffectsView Margin="10,3,-10,-3"  x:Name="avatar_profil"    VerticalOptions="Center" HorizontalOptions="Center"
+                                                        <!--#region TopBar-->
+                                                        <Grid  TranslationY="5" Margin="0"  VerticalOptions="Center" >
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition  Width="40"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="40"/>
+                                                                <ColumnDefinition Width="40"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <!--#region  Avatar de l'utilisateur qui publie-->
+                                                            <syncEffectsView:SfEffectsView Margin="10,3,-10,-3"  x:Name="avatar_profil"    VerticalOptions="Center" HorizontalOptions="Center"
                                                                  RippleColor="{StaticResource SecondColor}"
                                                                  HeightRequest="55"
                                                                  BackgroundColor="{StaticResource SecondColor}" CornerRadius="30" >
-                                                            <sfavatar:SfAvatarView 
+                                                                <sfavatar:SfAvatarView 
                                                                ContentType="Initials"
                                                                HorizontalOptions="Center"
                                                                VerticalOptions="Center"
@@ -234,30 +236,53 @@
                                                                CornerRadius="20"   
                                                                BorderColor="White"
                                                                BackgroundColor="{StaticResource ThirdColor}">
-                                                            </sfavatar:SfAvatarView>
-                                                        </syncEffectsView:SfEffectsView>
+                                                                </sfavatar:SfAvatarView>
+                                                            </syncEffectsView:SfEffectsView>
+                                                            <!--#endregion-->
+
+                                                            <!--#region  Nom et Ville-->
+                                                            <StackLayout Margin="5,0,0,0" Grid.Column="1" >
+                                                                <Label x:Name="nom_publicateur" HorizontalOptions="StartAndExpand" Margin="10,0,-10,0" VerticalOptions="Center" Text="{Binding Nom}"  FontSize="Large" LineBreakMode="TailTruncation" FontFamily="MetroBold" TextColor="Black"/>
+                                                                <Label x:Name="lier_publicateur" Margin="10,0,-10,0"   Text="{Binding Ville}" TextColor="Black"/>
+                                                            </StackLayout>
+                                                            <!--#endregion-->
+
+                                                            <!--#region Option Btn-->
+
+                                                            <Button Grid.Column="2" Margin="-3,3,0,-3" CornerRadius="20" BackgroundColor="White" x:Name="BtnAddMenber" FontSize="16" Text="&#xf234;" TextColor="Black" FontFamily="fal" HorizontalOptions="End" VerticalOptions="Center"></Button>
+                                                            <Button Grid.Column="3" Margin="0,3,0,-1" CornerRadius="20" BackgroundColor="White"  x:Name="BtnPlus" FontSize="18" Text="&#xf39b;" TextColor="Black" FontFamily="fal" HorizontalOptions="End" VerticalOptions="Center"></Button>
+
+                                                            <!--#endregion-->
+                                                        </Grid>
                                                         <!--#endregion-->
-                                                        
-                                                        <!--#region  Nom et Ville-->
-                                                        <StackLayout Margin="5,0,0,0" Grid.Column="1" >
-                                                            <Label x:Name="nom_publicateur" HorizontalOptions="StartAndExpand" Margin="10,0,-10,0" VerticalOptions="Center" Text="{Binding Nom}"  FontSize="Large" LineBreakMode="TailTruncation" FontFamily="MetroBold" TextColor="Black"/>
-                                                            <Label x:Name="lier_publicateur" Margin="10,0,-10,0"   Text="{Binding Ville}" TextColor="Black"/>
+                                                        <!--#region  Contenu du Post-->
+                                                        <Image x:Name="ContenuPost" Grid.Row="1" Margin="0,8,0,0" Source="{Binding Image}" Visual="Material" Aspect="AspectFit"/>
+                                                            <!--#region  zone de reaction-->
+                                                    <StackLayout Grid.Row="2">
+                                                        <StackLayout Margin="05,0,0,0" Orientation="Horizontal">
+                                                            <syncEffectsView:SfEffectsView WidthRequest="33" x:Name="Like_content" HeightRequest="33"  CornerRadius="20" RippleColor="Red">
+                                                                <Label x:Name="like_icone" Text="&#xf004;" HorizontalOptions="Center" HorizontalTextAlignment="Center" WidthRequest="33" VerticalOptions="Center" TextColor="Red"  FontFamily="fas" FontSize="Title" />
+                                                            </syncEffectsView:SfEffectsView>
+                                                            <syncEffectsView:SfEffectsView WidthRequest="33" x:Name="Chat_content" HeightRequest="33"  CornerRadius="20" RippleColor="{StaticResource ThirdColor}">
+                                                                <Label x:Name="chat_icone" Text="&#xf1d8;" HorizontalOptions="Center" VerticalOptions="Center" TextColor="{StaticResource ThirdColor}" FontFamily="fas" FontSize="Title" />
+                                                            </syncEffectsView:SfEffectsView>
                                                         </StackLayout>
-                                                        <!--#endregion-->
-
-                                                        <!--#region Option Btn-->
-
-                                                        <Button Grid.Column="2" Margin="-3,3,0,-3" CornerRadius="20" BackgroundColor="White" x:Name="BtnAddMenber" FontSize="16" Text="&#xf234;" TextColor="Black" FontFamily="fal" HorizontalOptions="End" VerticalOptions="Center"></Button>
-                                                        <Button Grid.Column="3" Margin="0,3,0,-1" CornerRadius="20" BackgroundColor="White" x:Name="BtnPlus" FontSize="20" Text="&#xf39b;" TextColor="Black" FontFamily="fal" HorizontalOptions="End" VerticalOptions="Center"></Button>
-                                                         
-                                                        <!--#endregion-->
-                                                    </Grid>
+                                                        <StackLayout Margin="5,0,0,0" Spacing="1.5" Grid.Row="4" Orientation="Horizontal">
+                                                            <Label FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" Text="{Binding NbreLike}"/>
+                                                            <Label FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" Text="J'aime(s)"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
                                                     <!--#endregion-->
-                                                    <!--#region  Contenu du Post-->
-                                                    <Image x:Name="ContenuPost" Grid.Row="1" Margin="0,8,0,0" Source="{Binding Image}" Visual="Material" Aspect="AspectFill"/>
-                                                     <!--#endregion-->
-                                                    <!--#region  Zone de texte de publication--> 
-                                                </Grid>
+                                                        <customAcceuil:CustomLabel Grid.Row="3" Text="{Binding VoirPlus}"/>
+                                                        <StackLayout Margin="5,0,0,0" Spacing="1.5" Grid.Row="4" Orientation="Horizontal">
+                                                            <Label FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" Text="{Binding NbreComment}"/>
+                                                            <Label FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" Text="Commentaire"/>
+                                                        </StackLayout>
+                                                        <customAcceuil:FooterCustom x:Name="AddcommentBtn" Grid.Row="5"/>
+                                                        <!--#endregion-->
+                                                        <!--#region  Zone de texte de publication-->
+                                                    </Grid>
+                                                
                                             </cards:SfCardView>
                                         </DataTemplate>
                                     </syncfusion:SfListView.ItemTemplate>
@@ -270,7 +295,8 @@
                 </ScrollView>
             </Grid>
             <!--#endregion-->
-
+            <!--#endregion-->
+                <!--#endregion-->
 
             <!--#region  Chat-->
             <Grid x:Name="Chat_view">
@@ -287,6 +313,7 @@
 
 
             <!--#endregion-->
+          
 
             <!--#region Tabbar Navigation-->
             <cards:SfCardView Grid.Row="1"   Margin="0,0,0,-5" HorizontalOptions="FillAndExpand"
@@ -390,7 +417,7 @@
             </cards:SfCardView>
             <!--#endregion-->
         </Grid>
-           <!--#endregion-->
+         
         
         <!--#region  Popup Post Menu nommer PopupPost et de bouton de control closeBtnPost-->
         <Grid x:Name="PopupPost"  TranslationY="350"

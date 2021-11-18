@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PURPLE.Controls.CustomLabel">
+    
+        <StackLayout  Padding="5" >
+            <Label x:Name="customLabel" FontFamily="AvenirNextRegular"
+                   TextColor="{StaticResource iconeColor}" 
+                   LineHeight="1" 
+                   CharacterSpacing="2"
+                   InputTransparent="False"
+                   HorizontalTextAlignment="Start" 
+                   VerticalTextAlignment="Center" 
+                   FontSize="15"
+                   MaxLines="4" LineBreakMode="TailTruncation">
+        </Label>
+            <Label x:Name="lblReadMore" Text="...voirplus" FontSize="15" FontFamily="AvenirNextDemiBold" TextColor="{StaticResource iconeColor}" >
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+            </Label.GestureRecognizers>
+        </Label>
+        </StackLayout>
+  
+
+</ContentView>

@@ -84,6 +84,9 @@
     <BundleResource Include="Resources\fa-solid-900.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
+    <BundleResource Include="Resources\AvenirNext-Regular.ttf" />
+    <BundleResource Include="Resources\AvenirNext-DemiBold.ttf" />
+    <BundleResource Include="Resources\Avenir Medium.ttf" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

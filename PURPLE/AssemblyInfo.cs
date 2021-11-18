@@ -16,6 +16,12 @@ using Xamarin.Forms.Xaml;
 [assembly: ExportFont("Metropolis-Regular.otf", Alias = "MetroRegular")]
 [assembly: ExportFont("Metropolis-SemiBold.otf", Alias = "MetroSemiBold")]
 [assembly: ExportFont("Metropolis-Thin.otf", Alias = "MetroThin")]
+[assembly: ExportFont("Avenir Medium.ttf", Alias = "AvenirMedium")]
+[assembly: ExportFont("AvenirNext-DemiBold.ttf", Alias = "AvenirNextDemiBold")]
+[assembly: ExportFont("AvenirNext-Regular.ttf", Alias = "AvenirNextRegular")]
+
+
+
 
 
 

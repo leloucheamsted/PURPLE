@@ -97,6 +97,9 @@
     <AndroidAsset Include="Assets\fa-light-300.ttf" />
     <AndroidAsset Include="Assets\fa-solid-900.ttf" />
     <AndroidAsset Include="Assets\Font Awesome 6 Free-Solid-900.otf" />
+    <AndroidAsset Include="Assets\AvenirNext-DemiBold.ttf" />
+    <AndroidAsset Include="Assets\Avenir Medium.ttf" />
+    <AndroidAsset Include="Assets\AvenirNext-Regular.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
