@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using Syncfusion.ListView.XForms.iOS;
+using Syncfusion.SfPullToRefresh.XForms.iOS;
 using Syncfusion.XForms.iOS.EffectsView;
 using UIKit;
 
@@ -32,6 +33,7 @@ namespace PURPLE.iOS
             SfEffectsViewRenderer.Init();
             Syncfusion.XForms.iOS.Cards.SfCardViewRenderer.Init();
             Syncfusion.XForms.iOS.Core.SfAvatarViewRenderer.Init();
+            SfPullToRefreshRenderer.Init();
             global::Xamarin.Forms.FormsMaterial.Init();
             LoadApplication(new App());
 

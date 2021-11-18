@@ -10,5 +10,6 @@
         <Color x:Key="effectColor">#90BCF2</Color>
         <Color x:Key="SecondColor">#2673D1</Color>
         <Color x:Key="ThirdColor">#43A3DB</Color>
+        <Color x:Key="iconeColor">#000000</Color>
     </Application.Resources>
 </Application>

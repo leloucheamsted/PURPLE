@@ -9,13 +9,12 @@
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" 
+             xmlns:pulltoRefresh="clr-namespace:Syncfusion.SfPullToRefresh.XForms;assembly=Syncfusion.SfPullToRefresh.XForms"
              xmlns:viewtwst="clr-namespace:PURPLE.Views.PURPLEVIEW"
              xmlns:local="clr-namespace:PURPLE.ViewModels"
+             xmlns:l="clr-namespace:PURPLE.Repository"
              x:Class="PURPLE.Views.Home.AcceuilPage">
     <Grid BackgroundColor="Transparent">
-        <Grid.BindingContext>
-            <local:MainViewModel/>
-        </Grid.BindingContext>
         <!--#region Home Page nommer hom_page-->
         <Grid  x:Name="home_page" BackgroundColor="White">
             <Grid.RowDefinitions>
@@ -100,7 +99,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!--#region Top Barre  -->
+                <!--#region  Top BARRE DE LA PAGE ACCEUILL-->
                 <cards:SfCardView Grid.Row="0" HasShadow="True" CornerRadius="0" Margin="0,-2,0,0" BorderColor="{StaticResource backgroundColorPrimary}"> 
                     <Grid  Margin="0" Padding="8,5,8,5" BackgroundColor="{StaticResource backgroundColorPrimary}">
                         <Grid.ColumnDefinitions>
@@ -110,7 +109,7 @@
                             <ColumnDefinition Width="35"/>
                             <ColumnDefinition Width="35"/>
                         </Grid.ColumnDefinitions>
-
+                   
                         <!--Avatar-->
                         <syncEffectsView:SfEffectsView x:Name="profil_btn1" 
                                                RippleColor="{StaticResource SecondColor}"
@@ -134,55 +133,140 @@
                         <!--AddMember Bouton-->
                         <syncEffectsView:SfEffectsView x:Name="BtAdd_member" Grid.Column="1" RippleColor="{StaticResource SecondColor}"  BackgroundColor="Transparent" CornerRadius="25">
                             <Label Text="&#xf830;"
-                           FontFamily="fas" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" TextColor="{StaticResource btnColor}" ></Label>
+                           FontFamily="fal" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" TextColor="Black" ></Label>
                         </syncEffectsView:SfEffectsView>
 
                         <!--Emploi Bouton-->
                         <syncEffectsView:SfEffectsView x:Name="Btn_emploi1" Grid.Column="3" RippleColor="{StaticResource SecondColor}"  BackgroundColor="Transparent" CornerRadius="25">
                             <Label Text="&#xf0b1;"
-                           FontFamily="fas" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" TextColor="{StaticResource btnColor}" ></Label>
+                           FontFamily="fal" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" TextColor="Black" ></Label>
                         </syncEffectsView:SfEffectsView>
 
 
                         <!--Bouton de notifiaction-->
                         <syncEffectsView:SfEffectsView x:Name="Notification_Btn1" Grid.Column="4" BackgroundColor="Transparent" CornerRadius="25" RippleColor="{StaticResource SecondColor}">
-                            <Label Text="&#xf0f3;" FontSize="25" FontFamily="fas" VerticalOptions="Center" HorizontalOptions="Center" TextColor="{StaticResource btnColor}" />
+                            <Label Text="&#xf0f3;" FontSize="25" FontFamily="fal" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" />
                         </syncEffectsView:SfEffectsView>
                     </Grid>
                 </cards:SfCardView>
                 
                 <!--#endregion-->
+                
                 <!--#region  Zone d'actualite de publication-->
-                <ScrollView HorizontalOptions="FillAndExpand"  Margin="0,0,0,-6" Grid.Row="1">
-                    <StackLayout>
-                        
-                       <!--#region  Zone de Hashtags-->
-                        <Grid HeightRequest="40" Padding="10,0,10,0" >
-                            <Label  Text="Mes #hashtags" FontSize="Large" FontFamily="MetroRegular" TextColor="{StaticResource btnColor}" VerticalOptions="Center"/>
-                            <syncEffectsView:SfEffectsView HeightRequest="40" x:Name="Btn_hashtag" WidthRequest="40" CornerRadius="20" TouchDownEffects="Highlight" HighlightColor="{StaticResource SecondColor}" HorizontalOptions="End" VerticalOptions="Center"  >
-                                <Label  Text="&#xf640;" TextColor="{StaticResource btnColor}" FontFamily="fal" HorizontalOptions="Center" VerticalOptions="Center"  FontSize="20"  />
-                            </syncEffectsView:SfEffectsView>
-                           
-                        </Grid>
-                        <!--#endregion-->
-                        
-                        <!--#region CollectionView hastagsList-->
-                        <CollectionView  x:Name="Collection_Hastag" HeightRequest="30"  ItemsSource="{Binding Hastags}" ItemsLayout="HorizontalList" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-                            <CollectionView.ItemTemplate >
-                                <DataTemplate>
-                                    <syncEffectsView:SfEffectsView x:Name="hashtagBtn" MinimumWidthRequest="50"  Margin="15" CornerRadius="15" BackgroundColor="{StaticResource ThirdColor}">
-                                        <Label TextColor="White" FontFamily="MetroRegular" HorizontalOptions="Center"  VerticalOptions="Center" Text="{Binding hashtag_name}"/>
+                <ScrollView  HorizontalOptions="FillAndExpand" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never"  Margin="0,0,0,-6" Grid.Row="1">
+                    <ScrollView.BindingContext>
+                        <local:PostInfoViewModel/>
+                    </ScrollView.BindingContext>
+                    <pulltoRefresh:SfPullToRefresh x:Name="pullToRefresh"
+                                           ProgressBackgroundColor="{StaticResource ThirdColor}"
+                                           RefreshContentHeight="50"
+                                           PullingThreshold="150"
+                                           RefreshContentWidth="50"
+                                           ProgressStrokeColor="White"
+                                           TransitionMode="Push"
+                                           RefreshCommand="{Binding RefreshCommand}"
+                                           IsRefreshing="{Binding IsRefreshing}">
+                        <pulltoRefresh:SfPullToRefresh.PullableContent>
+                            <StackLayout>
+
+                                <!--#region  Zone de Hashtags-->
+                                <Grid HeightRequest="40" Padding="10,0,10,0" >
+                                    <Label  Text="Mes #hashtags" FontSize="Large" FontFamily="MetroRegular" TextColor="{StaticResource iconeColor}" VerticalOptions="Center"/>
+                                    <syncEffectsView:SfEffectsView HeightRequest="40" x:Name="Btn_hashtag" WidthRequest="40" CornerRadius="20" TouchDownEffects="Highlight" HighlightColor="{StaticResource SecondColor}" HorizontalOptions="End" VerticalOptions="Center"  >
+                                        <Label  Text="&#xf640;" TextColor="{StaticResource btnColor}" FontFamily="fal" HorizontalOptions="Center" VerticalOptions="Center"  FontSize="20"  />
                                     </syncEffectsView:SfEffectsView>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                       
-                        <!--#endregion-->
-                        
-                        <!--#region Vue Publication et Post-->
-                        
-                        <!--#endregion-->
-                    </StackLayout>
+
+                                </Grid>
+                                <!--#endregion-->
+
+                                <!--#region CollectionView hastagsList-->
+                                <CollectionView  x:Name="Collection_Hastag" HeightRequest="30"  ItemsSource="{Binding HastagsList}" ItemsLayout="HorizontalList" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+                                    <CollectionView.ItemTemplate >
+                                        <DataTemplate>
+                                            <syncEffectsView:SfEffectsView x:Name="hashtagBtn" MinimumWidthRequest="50"  Margin="15" CornerRadius="15" BackgroundColor="{StaticResource ThirdColor}">
+                                                <Label TextColor="White" FontFamily="MetroRegular" HorizontalOptions="Center"  VerticalOptions="Center" Text="{Binding Hashtag_name}"/>
+                                            </syncEffectsView:SfEffectsView>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+
+                                <!--#endregion-->
+
+                                <!--#region Vue Publication et Post-->
+
+                                <syncfusion:SfListView x:Name="listview"  AutoFitMode="Height"  ItemSpacing="5,0,0,0" SelectionMode="None" IsScrollBarVisible="False" SelectionGesture="Tap" ItemsSource="{Binding Posts}">
+                                  
+                                    <syncfusion:SfListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <cards:SfCardView  HasShadow="True" CornerRadius="5" Margin="5,5,10,5">
+                                                <Grid   Padding="0" >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="40"/>
+                                                        <RowDefinition Height="350"/>
+                                                        <RowDefinition Height="*"/>
+                                                    </Grid.RowDefinitions>
+
+                                                    <!--#region TopBar-->
+                                                    <Grid  TranslationY="5" Margin="0"  VerticalOptions="Center" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition  Width="40"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="40"/>
+                                                            <ColumnDefinition Width="40"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <!--#region  Avatar de l'utilisateur qui publie-->
+                                                        <syncEffectsView:SfEffectsView Margin="10,3,-10,-3"  x:Name="avatar_profil"    VerticalOptions="Center" HorizontalOptions="Center"
+                                                                 RippleColor="{StaticResource SecondColor}"
+                                                                 HeightRequest="55"
+                                                                 BackgroundColor="{StaticResource SecondColor}" CornerRadius="30" >
+                                                            <sfavatar:SfAvatarView 
+                                                               ContentType="Initials"
+                                                               HorizontalOptions="Center"
+                                                               VerticalOptions="Center"
+                                                                ImageSource="{Binding Avatar}"
+                                                               InitialsType="SingleCharacter"
+                                                               AvatarName="Alex"
+                                                                
+                                                               InitialsColor="White" 
+                                                               WidthRequest="50"
+                                                               FontAttributes="Bold"
+                                                               HeightRequest="50"
+                                                               CornerRadius="20"   
+                                                               BorderColor="White"
+                                                               BackgroundColor="{StaticResource ThirdColor}">
+                                                            </sfavatar:SfAvatarView>
+                                                        </syncEffectsView:SfEffectsView>
+                                                        <!--#endregion-->
+                                                        
+                                                        <!--#region  Nom et Ville-->
+                                                        <StackLayout Margin="5,0,0,0" Grid.Column="1" >
+                                                            <Label x:Name="nom_publicateur" HorizontalOptions="StartAndExpand" Margin="10,0,-10,0" VerticalOptions="Center" Text="{Binding Nom}"  FontSize="Large" LineBreakMode="TailTruncation" FontFamily="MetroBold" TextColor="Black"/>
+                                                            <Label x:Name="lier_publicateur" Margin="10,0,-10,0"   Text="{Binding Ville}" TextColor="Black"/>
+                                                        </StackLayout>
+                                                        <!--#endregion-->
+
+                                                        <!--#region Option Btn-->
+
+                                                        <Button Grid.Column="2" Margin="-3,3,0,-3" CornerRadius="20" BackgroundColor="White" x:Name="BtnAddMenber" FontSize="16" Text="&#xf234;" TextColor="Black" FontFamily="fal" HorizontalOptions="End" VerticalOptions="Center"></Button>
+                                                        <Button Grid.Column="3" Margin="0,3,0,-1" CornerRadius="20" BackgroundColor="White" x:Name="BtnPlus" FontSize="20" Text="&#xf39b;" TextColor="Black" FontFamily="fal" HorizontalOptions="End" VerticalOptions="Center"></Button>
+                                                         
+                                                        <!--#endregion-->
+                                                    </Grid>
+                                                    <!--#endregion-->
+                                                    <!--#region  Contenu du Post-->
+                                                    <Image x:Name="ContenuPost" Grid.Row="1" Margin="0,8,0,0" Source="{Binding Image}" Visual="Material" Aspect="AspectFill"/>
+                                                     <!--#endregion-->
+                                                    <!--#region  Zone de texte de publication--> 
+                                                </Grid>
+                                            </cards:SfCardView>
+                                        </DataTemplate>
+                                    </syncfusion:SfListView.ItemTemplate>
+                                </syncfusion:SfListView>
+
+                                <!--#endregion-->
+                            </StackLayout>
+                        </pulltoRefresh:SfPullToRefresh.PullableContent>
+                    </pulltoRefresh:SfPullToRefresh>
                 </ScrollView>
             </Grid>
             <!--#endregion-->
@@ -223,7 +307,7 @@
                     <!--#region PURPLETab-->
                     <syncEffectsView:SfEffectsView Margin="2.5,10,2.5,10" Padding="0"
                                            x:Name="PurpleOnglet" 
-                                           BackgroundColor="#2673D1"
+                                           BackgroundColor="{StaticResource ThirdColor}"
                                            TouchDownEffects="Ripple" 
                                            AnimationCompleted="PurpleOnglet_AnimationCompleted"
                                            CornerRadius="15" 
@@ -231,7 +315,7 @@
 
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                             <Label x:Name="PurpleIcone" VerticalOptions="Center" FontSize="Default" Text="&#xe068;" FontFamily="fa" TextColor="White"/>
-                            <Label x:Name="PurpleText" VerticalOptions="Center" Text="PURPLE" FontSize="Default"  FontFamily="MetroBold" TextColor="White" />
+                            <Label x:Name="PurpleText" VerticalOptions="Center" Text="Purple" FontSize="Default"  FontFamily="MetroBold" TextColor="White" />
                         </StackLayout>
                     </syncEffectsView:SfEffectsView>
                     <!--#endregion-->
@@ -246,8 +330,8 @@
                                            RippleColor="{StaticResource SecondColor}">
 
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                            <Label x:Name="AcceuilIcone" VerticalOptions="Center" FontSize="Default" Text="&#xf80c;" FontFamily="far" TextColor="{StaticResource btnColor}"/>
-                            <Label x:Name="AcceuilText" VerticalOptions="Center" Text="Acceuil" FontSize="Default" FontFamily="MetroBold" TextColor="{StaticResource btnColor}" />
+                            <Label x:Name="AcceuilIcone" VerticalOptions="Center" FontSize="Default" Text="&#xf80c;" FontFamily="far" TextColor="{StaticResource iconeColor}"/>
+                            <Label x:Name="AcceuilText" VerticalOptions="Center" Text="Acceuil" FontSize="Default" FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" />
                         </StackLayout>
                     </syncEffectsView:SfEffectsView>
                     <!--#endregion-->
@@ -263,7 +347,7 @@
                                            RippleColor="{StaticResource ThirdColor}">
                         <Label Text="&#xf055;" 
                        HorizontalOptions="Center"
-                       TextColor="{StaticResource SecondColor}"
+                       TextColor="{StaticResource ThirdColor}"
                        VerticalOptions="CenterAndExpand"
                        FontSize="40"
                        FontFamily="fas"></Label>
@@ -280,8 +364,8 @@
                                            RippleColor="{StaticResource SecondColor}">
 
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                            <Label x:Name="ChatIcone" VerticalOptions="Center" FontSize="Default" Text="&#xf1d8;" FontFamily="far" TextColor="{StaticResource btnColor}"/>
-                            <Label x:Name="ChatText" VerticalOptions="Center" Text="Chat" FontSize="Default" FontFamily="MetroBold" TextColor="{StaticResource btnColor}" />
+                            <Label x:Name="ChatIcone" VerticalOptions="Center" FontSize="Default" Text="&#xf1d8;" FontFamily="far" TextColor="{StaticResource iconeColor}"/>
+                            <Label x:Name="ChatText" VerticalOptions="Center" Text="Chat" FontSize="Default" FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" />
                         </StackLayout>
                     </syncEffectsView:SfEffectsView>
                     <!--#endregion-->
@@ -296,8 +380,8 @@
                                            RippleColor="{StaticResource SecondColor}">
 
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                            <Label x:Name="GroupIcone" VerticalOptions="Center" FontSize="Default" Text="&#xf63d;" FontFamily="far" TextColor="{StaticResource btnColor}"/>
-                            <Label x:Name="GroupText" VerticalOptions="Center" Text="Groupe" TextColor="{StaticResource btnColor}" FontSize="Default" FontFamily="MetroBold" />
+                            <Label x:Name="GroupIcone" VerticalOptions="Center" FontSize="Default" Text="&#xf63d;" FontFamily="far" TextColor="{StaticResource iconeColor}"/>
+                            <Label x:Name="GroupText" VerticalOptions="Center" Text="Groupe" TextColor="{StaticResource iconeColor}" FontSize="Default" FontFamily="MetroBold" />
                         </StackLayout>
                     </syncEffectsView:SfEffectsView>
                     <!--#endregion-->

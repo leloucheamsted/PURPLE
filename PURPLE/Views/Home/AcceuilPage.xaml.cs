@@ -1,4 +1,5 @@
 ﻿using PURPLE.Interface;
+using PURPLE.Views.Home.AnimationListView;
 using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,9 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Syncfusion.ListView.XForms;
+using Syncfusion.GridCommon.ScrollAxis;
+using Syncfusion.ListView.XForms.Control.Helpers;
 
 namespace PURPLE.Views.Home
 {
@@ -17,10 +21,19 @@ namespace PURPLE.Views.Home
         int indexPosition = 0;
         private uint animationLength = 250;
         bool ispop = false;
+        VisualContainer visualContainer;
+        bool isAlertShown = false;
         public AcceuilPage()
         {
             InitializeComponent();
+
+            #region ListView event
+            this.listview.ItemGenerator = new ItemGeneratorExt(this.listview);
+          //  visualContainer = listview.GetVisualContainer();
+           // visualContainer.ScrollRows.Changed += ScrollRows_Changed;
             
+            //listview.ScrollStateChanged += ListView_ScrollStateChanged;
+            #endregion
 
         }
         protected async override void OnAppearing()
@@ -35,6 +48,7 @@ namespace PURPLE.Views.Home
 
         }
 
+        #region Vue
         //Fonction de pagination entre les vue
         private async Task NavEvent()
         {
@@ -93,29 +107,29 @@ namespace PURPLE.Views.Home
         private void PurpleOnglet_AnimationCompleted(object sender, EventArgs e)
         {
             // si l'onglet n'etait pas selctionner
-            if(PurpleOnglet.BackgroundColor != Color.FromHex("#2673D1"))
+            if(PurpleOnglet.BackgroundColor != Color.FromHex("#43A3DB"))
             {
                 indexPosition=0;
                 // Selectionner purple
-                PurpleOnglet.BackgroundColor = Color.FromHex("#2673D1");
+                PurpleOnglet.BackgroundColor = Color.FromHex("#43A3DB");
                 PurpleIcone.TextColor = Color.White;
                 PurpleText.TextColor=Color.White;
 
                 // deselectionner tout les autres
                 //Acceuill
                 AcceuilOnglet.BackgroundColor = Color.Transparent;
-                AcceuilText.TextColor = Color.FromHex("#0F2D52");
-                AcceuilIcone.TextColor = Color.FromHex("#0F2D52");
+                AcceuilText.TextColor = Color.FromHex("#000000");
+                AcceuilIcone.TextColor = Color.FromHex("#000000");
 
                 //Chat
                 ChatOnglet.BackgroundColor = Color.Transparent;
-                ChatText.TextColor = Color.FromHex("#0F2D52");
-                ChatIcone.TextColor = Color.FromHex("#0F2D52");
+                ChatText.TextColor = Color.FromHex("#000000");
+                ChatIcone.TextColor = Color.FromHex("#000000");
 
                 //group
                 GroupOnglet.BackgroundColor = Color.Transparent;
-                GroupIcone.TextColor = Color.FromHex("#0F2D52");
-                GroupText.TextColor = Color.FromHex("#0F2D52");
+                GroupIcone.TextColor = Color.FromHex("#000000");
+                GroupText.TextColor = Color.FromHex("#000000");
                 Device.InvokeOnMainThreadAsync(async () =>
                 {
                     await Task.WhenAll(
@@ -134,28 +148,28 @@ namespace PURPLE.Views.Home
         {
             indexPosition = 1;
             // si l'onglet n'etait pas selctionner
-            if (AcceuilOnglet.BackgroundColor != Color.FromHex("#2673D1"))
+            if (AcceuilOnglet.BackgroundColor != Color.FromHex("#43A3DB"))
             {
                 // Selectionner acceuill
-                AcceuilOnglet.BackgroundColor = Color.FromHex("#2673D1");
+                AcceuilOnglet.BackgroundColor = Color.FromHex("#43A3DB");
                 AcceuilIcone.TextColor = Color.White;
                 AcceuilText.TextColor = Color.White;
 
                 // deselectionner tout les autres
                 //purple
                 PurpleOnglet.BackgroundColor = Color.Transparent;
-                PurpleIcone.TextColor = Color.FromHex("#0F2D52");
-                PurpleText.TextColor = Color.FromHex("#0F2D52");
+                PurpleIcone.TextColor = Color.FromHex("#000000");
+                PurpleText.TextColor = Color.FromHex("#000000");
 
                 //Chat
                 ChatOnglet.BackgroundColor = Color.Transparent;
-                ChatText.TextColor = Color.FromHex("#0F2D52");
-                ChatIcone.TextColor = Color.FromHex("#0F2D52");
+                ChatText.TextColor = Color.FromHex("#000000");
+                ChatIcone.TextColor = Color.FromHex("#000000");
 
                 //group
                 GroupOnglet.BackgroundColor = Color.Transparent;
-                GroupIcone.TextColor = Color.FromHex("#0F2D52");
-                GroupText.TextColor = Color.FromHex("#0F2D52");
+                GroupIcone.TextColor = Color.FromHex("#000000");
+                GroupText.TextColor = Color.FromHex("#000000");
 
                 Device.InvokeOnMainThreadAsync(async () =>
                 {
@@ -176,28 +190,28 @@ namespace PURPLE.Views.Home
         {
             indexPosition = 2;
             // si l'onglet n'etait pas selctionner
-            if (ChatOnglet.BackgroundColor != Color.FromHex("#2673D1"))
+            if (ChatOnglet.BackgroundColor != Color.FromHex("#43A3DB"))
             {
                 // Selectionner chat
-                ChatOnglet.BackgroundColor = Color.FromHex("#2673D1");
+                ChatOnglet.BackgroundColor = Color.FromHex("#43A3DB");
                 ChatIcone.TextColor = Color.White;
                 ChatText.TextColor = Color.White;
 
                 // deselectionner tout les autres
                 //purple
                 PurpleOnglet.BackgroundColor = Color.Transparent;
-                PurpleIcone.TextColor = Color.FromHex("#0F2D52");
-                PurpleText.TextColor = Color.FromHex("#0F2D52");
+                PurpleIcone.TextColor = Color.FromHex("#000000");
+                PurpleText.TextColor = Color.FromHex("#000000");
 
                 //acceuill
                 AcceuilOnglet.BackgroundColor = Color.Transparent;
-                AcceuilText.TextColor = Color.FromHex("#0F2D52");
-                AcceuilIcone.TextColor = Color.FromHex("#0F2D52");
+                AcceuilText.TextColor = Color.FromHex("#000000");
+                AcceuilIcone.TextColor = Color.FromHex("#000000");
 
                 //group
                 GroupOnglet.BackgroundColor = Color.Transparent;
-                GroupIcone.TextColor = Color.FromHex("#0F2D52");
-                GroupText.TextColor = Color.FromHex("#0F2D52");
+                GroupIcone.TextColor = Color.FromHex("#000000");
+                GroupText.TextColor = Color.FromHex("#000000");
 
                 Device.InvokeOnMainThreadAsync(async () =>
                 {
@@ -216,28 +230,28 @@ namespace PURPLE.Views.Home
         {
             indexPosition = 3;
             // si l'onglet n'etait pas selctionner
-            if (GroupOnglet.BackgroundColor != Color.FromHex("#2673D1"))
+            if (GroupOnglet.BackgroundColor != Color.FromHex("#43A3DB"))
             {
                 // Selectionner group
-                GroupOnglet.BackgroundColor = Color.FromHex("#2673D1");
+                GroupOnglet.BackgroundColor = Color.FromHex("#43A3DB");
                 GroupIcone.TextColor = Color.White;
                 GroupText.TextColor = Color.White;
 
                 // deselectionner tout les autres
                 //purple
                 PurpleOnglet.BackgroundColor = Color.Transparent;
-                PurpleIcone.TextColor = Color.FromHex("#0F2D52");
-                PurpleText.TextColor = Color.FromHex("#0F2D52");
+                PurpleIcone.TextColor = Color.FromHex("#000000");
+                PurpleText.TextColor = Color.FromHex("#000000");
 
                 //Chat
                 ChatOnglet.BackgroundColor = Color.Transparent;
-                ChatText.TextColor = Color.FromHex("#0F2D52");
-                ChatIcone.TextColor = Color.FromHex("#0F2D52");
+                ChatText.TextColor = Color.FromHex("#000000");
+                ChatIcone.TextColor = Color.FromHex("#000000");
 
                 //acceuil
                 AcceuilOnglet.BackgroundColor = Color.Transparent;
-                AcceuilIcone.TextColor = Color.FromHex("#0F2D52");
-                AcceuilText.TextColor = Color.FromHex("#0F2D52");
+                AcceuilIcone.TextColor = Color.FromHex("#000000");
+                AcceuilText.TextColor = Color.FromHex("#000000");
                 Device.InvokeOnMainThreadAsync(async () =>
                 {
                     await Task.WhenAll(
@@ -288,16 +302,56 @@ namespace PURPLE.Views.Home
             });
              ispop = false; // active pour signaler qu'il est ouvert
             }
-            /*
-            var PopPost = new PostPage();
-            App.Current.MainPage.Navigation.PushPopupAsync(PopPost,true);
+        /*
+        var PopPost = new PostPage();
+        App.Current.MainPage.Navigation.PushPopupAsync(PopPost,true);
 
+
+         App.Current.MainPage.Navigation.PopPopupAsync(true);
+          */
+
+        #endregion
+
+        #endregion
+
+        #region ListView
+
+        // determiner si nous avons atteint la fin de la liste
+        private void ScrollRows_Changed(object sender, ScrollChangedEventArgs e)
+        {
+            var lastIndex = visualContainer.ScrollRows.LastBodyVisibleLineIndex;
+            /*
+            //To include header if used
+            var header = (ListView.HeaderTemplate != null && !listView.IsStickyHeader) ? 1 : 0;
+
+            //To include footer if used
+            var footer = (listView.FooterTemplate != null && !listView.IsStickyFooter) ? 1 : 0;
+            var totalItems = listView.DataSource.DisplayItems.Count + header + footer;
+            */
+            var totalItems = listview.DataSource.DisplayItems.Count ;
             
-             App.Current.MainPage.Navigation.PopPopupAsync(true);
-              */
+            if ((lastIndex == totalItems - 1))
+            {
+                if (!isAlertShown)
+                {
+                    DisplayAlert("Alert", "End of list reached...", "Ok");
+                    isAlertShown = true;
+                }
+            }
+            else
+                isAlertShown = false;
+        }
+
+        // determiner si la liste est en defilement ou pas
+        private void ListView_ScrollStateChanged(object sender, ScrollStateChangedEventArgs e)
+        {
+            if (e.ScrollState == ScrollState.Idle)
+            {
+                DisplayAlert("ScrollState", "Scrolling has stopped", "OK");
+            }
+        }
         
         #endregion
 
-      
     }
 }

@@ -154,6 +154,9 @@
     <PackageReference Include="Syncfusion.Xamarin.SfListView">
       <Version>19.3.0.43</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfPullToRefresh">
+      <Version>19.3.0.43</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfTabView">
       <Version>19.3.0.43</Version>
     </PackageReference>
@@ -169,5 +172,11 @@
       <Project>{304DB301-9857-4DB4-992D-787B523527E9}</Project>
       <Name>PURPLE</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\avatar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\imagePost.jpg" />
   </ItemGroup>
 </Project>

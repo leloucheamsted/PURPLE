@@ -61,6 +61,7 @@
     <PackageReference Include="Syncfusion.Xamarin.Cards" Version="19.3.0.43" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="19.3.0.53" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="19.3.0.43" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPullToRefresh" Version="19.3.0.43" />
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="19.3.0.43" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
@@ -74,6 +75,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Views\ACCEUILVIEW\VoirPlusPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Home\AcceuilPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -92,7 +96,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\ACCEUILVIEW\" />
+    <Folder Include="TestVue\" />
     <Folder Include="Views\CHATVIEW\" />
     <Folder Include="Views\GROUPVIEW\" />
   </ItemGroup>
