@@ -9,17 +9,20 @@ namespace PURPLE.Models
     public class PostInfo : INotifyPropertyChanged
     {
         #region Variables
-        private string nom;
-        private string ville;
-        private string voirPlus;
-        private string avatar;
-        private string image;
-        private string btnPartager;
-        private string btnComment;
-        private string btnLiker;
-        private int nbreLike;
-        private int nbreComment;
-        private int nbrePartage;
+        private string nom; // nom de l'auteur de la publication
+        private string ville; // ville de residence
+        private string voirPlus; // Texte de publication
+        private string avatar; // avatar de l'auteur
+        private List<string> image; //  visuel de type Image de la publication
+        private List<string> videos; // visuel de type video de la  pubication
+        private string quesion; // visuel de type question de la publication
+        private string btnPartager; // Bouton partager
+        private string btnComment; // bouton commenter
+        private string btnLiker; // bouton liker
+        private int nbreLike; // nombre de like
+        private int nbreComment; // nombre de commentaire
+        private int nbrePartage; // nombre de partage
+        public int typePost; // type de post(Image,texte,video)
         #endregion
 
         #region constructeur
@@ -45,12 +48,21 @@ namespace PURPLE.Models
             get { return avatar; }
             set {  avatar = value; OnPropertyChanged("Avatar"); }
         }
-        public string Image
+        public List<string> Image
         {
             get { return image; }
             set {  image = value; OnPropertyChanged("Image"); }
         }
-       
+        public List <string> Videos
+        {
+            get { return videos; }
+            set {  videos = value; OnPropertyChanged("Videos"); }
+        }
+        public string Quesion
+        {
+            get { return quesion; }
+            set {  quesion = value; OnPropertyChanged("Question"); }
+        }
         public string VoirPlus
         {
             get { return voirPlus; }
@@ -85,6 +97,11 @@ namespace PURPLE.Models
         {
             get { return nbreComment; }
             set {  nbreComment = value; OnPropertyChanged("NbreComment"); }
+        }
+        public int TypePost
+        {
+            get { return typePost; }
+            set {  typePost = value; OnPropertyChanged("TypePost"); }
         }
         #endregion
 

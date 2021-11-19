@@ -24948,6 +24948,9 @@ namespace PURPLE.Droid
 			// aapt resource value: 0x7F0700C3
 			public const int tooltip_frame_light = 2131165379;
 			
+			// aapt resource value: 0x7F0700C4
+			public const int videoTest = 2131165380;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

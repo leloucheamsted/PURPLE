@@ -11,6 +11,9 @@
              xmlns:pulltoRefresh="clr-namespace:Syncfusion.SfPullToRefresh.XForms;assembly=Syncfusion.SfPullToRefresh.XForms"
              xmlns:local="clr-namespace:PURPLE.ViewModels"
              xmlns:customAcceuil="clr-namespace:PURPLE.Controls"
+             ControlTemplate="{DynamicResource TabView1}"
+             xmlns:Views="clr-namespace:PURPLE.Templates"
+             
              x:Class="PURPLE.Views.Home.AcceuilPage">
     <Grid BackgroundColor="Transparent">
         <!--#region Home Page nommer hom_page-->
@@ -192,7 +195,7 @@
 
                                 <!--#region Vue Publication et Post-->
 
-                                <syncfusion:SfListView x:Name="listview"  ItemSize="500" ItemSpacing="5,0,0,0" SelectionMode="None" IsScrollBarVisible="False" SelectionGesture="Tap" ItemsSource="{Binding Posts}">
+                                <syncfusion:SfListView x:Name="listview"  AutoFitMode="Height" ItemSpacing="5,0,0,0" SelectionMode="None" IsScrollBarVisible="False" SelectionGesture="Tap" ItemsSource="{Binding Posts}">
                                   
                                     <syncfusion:SfListView.ItemTemplate>
                                         <DataTemplate>
@@ -256,8 +259,9 @@
                                                         </Grid>
                                                         <!--#endregion-->
                                                         <!--#region  Contenu du Post-->
-                                                        <Image x:Name="ContenuPost" Grid.Row="1" Margin="0,8,0,0" Source="{Binding Image}" Visual="Material" Aspect="AspectFit"/>
-                                                            <!--#region  zone de reaction-->
+                                                    <customAcceuil:PostViewTemplate Grid.Row="1">
+                                                    </customAcceuil:PostViewTemplate>
+                                                    <!--#region  zone de reaction-->
                                                     <StackLayout Grid.Row="2">
                                                         <StackLayout Margin="05,0,0,0" Orientation="Horizontal">
                                                             <syncEffectsView:SfEffectsView WidthRequest="33" x:Name="Like_content" HeightRequest="33"  CornerRadius="20" RippleColor="Red">

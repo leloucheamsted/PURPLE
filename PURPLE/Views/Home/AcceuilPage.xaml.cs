@@ -28,6 +28,7 @@ namespace PURPLE.Views.Home
             InitializeComponent();
 
             #region ListView event
+            
             this.listview.ItemGenerator = new ItemGeneratorExt(this.listview);
           //  visualContainer = listview.GetVisualContainer();
            // visualContainer.ScrollRows.Changed += ScrollRows_Changed;

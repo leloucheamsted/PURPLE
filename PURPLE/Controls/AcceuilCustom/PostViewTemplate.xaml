@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Views="clr-namespace:PURPLE.Templates"
+            
+             Content="{DynamicResource PostOneImageView}"
+            x:Class="PURPLE.Controls.PostViewTemplate">
+
+    <ContentView.Triggers>
+        <DataTrigger TargetType="ContentView"
+                            Binding="{Binding TypePost}"
+                            Value="1">
+            <Setter Property="Content" Value="{DynamicResource PostMultiImageView}" />
+        </DataTrigger>
+        <DataTrigger TargetType="ContentView"
+                            Binding="{Binding TypePost}"
+                            Value="2">
+            <Setter Property="Content" Value="{DynamicResource QuestionView}" />
+        </DataTrigger>
+        <DataTrigger TargetType="ContentView"
+                            Binding="{Binding TypePost}"
+                            Value="3">
+            <Setter Property="Content" Value="{DynamicResource PostVideoView}" />
+        </DataTrigger>
+        <DataTrigger TargetType="ContentView"
+                            Binding="{Binding TypePost}"
+                            Value="1">
+            <Setter Property="Content" Value="{DynamicResource PostMultiVideoView}" />
+        </DataTrigger>
+    </ContentView.Triggers>
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ContentView x:Key="QuestionView">
+                <Views:QuestionView />
+            </ContentView>
+            <ContentView x:Key="PostOneImageView">
+                <Views:PostOneImageView />
+            </ContentView>
+            <ContentView x:Key="PostMultiImageView">
+                <Views:PostMultiImageView/>
+            </ContentView>
+            <ContentView x:Key="PostVideoView">
+                <Views:PostVideoView/>
+            </ContentView>
+            <ContentView x:Key="PostMultiVideoView">
+                <Views:PostMultiVideoView/>
+            </ContentView>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+</ContentView>

@@ -96,6 +96,24 @@
     <EmbeddedResource Update="Controls\AcceuilCustom\FooterCustom.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Controls\AcceuilCustom\PostViewTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Templates\PostMultiImageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Templates\PostMultiVideoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Templates\PostVideoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Templates\QuestionView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Templates\PostOneImageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\ACCEUILVIEW\VoirPlusPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -120,5 +138,17 @@
     <Folder Include="TestVue\" />
     <Folder Include="Views\CHATVIEW\" />
     <Folder Include="Views\GROUPVIEW\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Controls\AcceuilCustom\PostViewTemplate.xaml.cs">
+      <DependentUpon>PostViewTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\QuestionView.xaml.cs">
+      <DependentUpon>QuestionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\PostOneImageView.xaml.cs">
+      <DependentUpon>PostOneImageView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>
