@@ -3,8 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PURPLE.Templates.PostOneImageView">
     <ContentPresenter/>
-    <StackLayout BackgroundColor="Red"
-                 VerticalOptions="FillAndExpand">
-        <Label Text="Image View" TextColor="White"/>
+    <StackLayout   BindableLayout.ItemsSource="{Binding Image}">
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <Image x:Name="ContenuPost" 
+           Grid.Row="1"
+           Source="{Binding Img_name}" 
+           Visual="Material" 
+           Aspect="Fill"/>
+            </DataTemplate>
+        </BindableLayout.ItemTemplate> 
+   
     </StackLayout>
 </StackLayout>

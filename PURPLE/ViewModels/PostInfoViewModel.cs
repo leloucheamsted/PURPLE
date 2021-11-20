@@ -15,14 +15,16 @@ namespace PURPLE.ViewModels
 {
     public class PostInfoViewModel : INotifyPropertyChanged
     {
-        #region  Notes des Types de publications
+        #region  Notes des Types de publications 
         /*
-         0 = publication de type image uniaue
+         0 = publication de type image unique
          1 = publication de plusieurs images
          2 = publication de question 
          3 = publication d'une seule video
          4 = publication de plusieurs videos
          */
+       
+        
         #endregion
 
         #region variables
@@ -70,6 +72,7 @@ namespace PURPLE.ViewModels
         #region Methodes Privees
         private async void PullToRefresh_Refreshing(object obj)
         {
+            
             this.IsRefreshing = true;
             await Task.Delay(2000);
             var postsNameCount = this.PostsInfoName.Count() - 1;
@@ -83,6 +86,7 @@ namespace PURPLE.ViewModels
             var postsImageCount = this.PostInfoImage.Count() - 1;
             var postVideoCount = PostInfoVideo.Count() - 1;
             var postQuestionCount = PostInfoQuestion.Count() - 1;
+            var postTypeCount = PostInfoType.Count() - 1;
             for (int i = 0; i < 3; i++)
             {
                 var postsCount = this.Posts.Count;
@@ -95,6 +99,7 @@ namespace PURPLE.ViewModels
                     Image = PostInfoImage[postsImageCount-i],
                     Videos = PostInfoVideo[postVideoCount - i],
                     Quesion = PostInfoQuestion[postQuestionCount - i],
+                    TypePost = PostInfoType[postTypeCount - i],
                     BtnPartager = "&#xf064;",
                     BtnLiker = "&#xf004;",
                     BtnComment = "&#xf4b6;",
@@ -103,35 +108,12 @@ namespace PURPLE.ViewModels
                     NbrePartage = 20
 
                 };
-                #region Algo de choix de detection du type de publication
-                if (PostInfoImage[postsImageCount - i].Count() == 0) // si la liste d'image est vide alors on a pas a faire a une publicatio nde type image(s)
-                {
-                    if (PostInfoVideo[postVideoCount - i].Count() == 0) // si la liste de video est vide alors on  a faire une question
-                    {
-                        item.TypePost = 2; // type Question
-                    }
-                    else if (PostInfoVideo[postVideoCount - i].Count() == 1) // si la publication contient une video
-                    {
-                        item.TypePost = 3; // alors on affiche une publica tion de type video
-                    }
-                    else if (item.Videos[i].Count() > 1) // si la publication contient plusieurs video
-                    {
-                        item.TypePost = 4; // utilisation d'un carousel de videos
-                    }
-                }
-                else if (PostInfoImage[postsImageCount - i].Count() == 1) // si la liste n'a qu'un seul element alors c'est une publication d'une seul image
-                {
-                    item.TypePost = 0; // Publication d'image unique / pas de carouselView
-                }
-                else if (PostInfoImage[postsImageCount - i].Count() > 1) // si la publication a plusieurs images
-                {
-                    item.TypePost = 1; // utilisation du carouselView
-                }
-                #endregion
+                
 
                 this.Posts.Insert(0, item);
             }
             this.IsRefreshing = false;
+            
         }
 
         private void NavigateToReadMoreContent(object obj)
@@ -164,6 +146,7 @@ namespace PURPLE.ViewModels
             var postImageCount=PostInfoImage.Count() - 1;
             var postVideoCount=PostInfoVideo.Count() - 1;
             var postQuestionCount=PostInfoQuestion.Count() - 1;
+            var postTypeCount=PostInfoType.Count() - 1;
             for (int i = 0; i < 5; i++)
             {
                 var post = new PostInfo()
@@ -175,6 +158,7 @@ namespace PURPLE.ViewModels
                     Image = PostInfoImage[postImageCount -i],
                     Videos= PostInfoVideo[postVideoCount - i],
                     Quesion =PostInfoQuestion[postQuestionCount - i],
+                    TypePost = PostInfoType[postTypeCount - i],
                     BtnPartager = "&#xf064;",
                     BtnLiker = "&#xf004;",
                     BtnComment = "&#xf4b6;",
@@ -184,31 +168,7 @@ namespace PURPLE.ViewModels
 
 
                 };
-                #region Algo de choix de detection du type de publication
-                if (PostInfoImage[postImageCount - i].Count == 0) // si la liste d'image est vide alors on a pas a faire a une publicatio nde type image(s)
-                {
-                    if(PostInfoVideo[postVideoCount - i].Count() == 0) // si la liste de video est vide alors on  a faire une question
-                    {
-                        post.TypePost = 2; // type Question
-                    }
-                    else if (PostInfoVideo[postVideoCount - i].Count() == 1) // si la publication contient une video
-                    {
-                        post.TypePost= 3; // alors on affiche une publica tion de type video
-                    }
-                    else if (PostInfoVideo[postVideoCount - i].Count() > 1) // si la publication contient plusieurs video
-                    {
-                        post.TypePost = 4; // utilisation d'un carousel de videos
-                    }
-                }
-                 else if (PostInfoImage[postImageCount - i].Count() == 1) // si la liste n'a qu'un seul element alors c'est une publication d'une seul image
-                {
-                    post.TypePost = 0; // Publication d'image unique / pas de carouselView
-                }
-                else if(PostInfoImage[postImageCount - i].Count()>1) // si la publication a plusieurs images
-                {
-                    post.TypePost= 1; // utilisation du carouselView
-                }
-                #endregion
+              
                 postsInfo.Insert(0, post);
             }
            
@@ -251,30 +211,35 @@ namespace PURPLE.ViewModels
             "Alfred ruch",
             "Hiro Vam",
             "Grand orchert",
+
             "Lelouche Amsted",
             "Cabraule Ketch",
             "Zeus Pegazus",
             "Alfred ruch",
             "Hiro Vam",
             "Grand orchert",
+
             "Lelouche Amsted",
             "Cabraule Ketch",
             "Zeus Pegazus",
             "Alfred ruch",
             "Hiro Vam",
             "Grand orchert",
+
             "Lelouche Amsted",
             "Cabraule Ketch",
             "Zeus Pegazus",
             "Alfred ruch",
             "Hiro Vam",
             "Grand orchert",
+
             "Lelouche Amsted",
             "Cabraule Ketch",
             "Zeus Pegazus",
             "Alfred ruch",
             "Hiro Vam",
             "Grand orchert",
+
 
         };
         internal string[] PostsInfoVille = new string[]
@@ -342,69 +307,70 @@ namespace PURPLE.ViewModels
             "Syncfusion is always pleased to have the opportunity to talk to you in person. This month, we’re looking forward to seeing those of you who are attending either the dotnet Cologne conference, May 4–5, or the Magdeburger Developer Days Conference, May 10–11, in Germany. \n\nWe’re proud to be a silver sponsor of the dotnet Cologne conference and a gold sponsor of the Magdeburger Developer Days Conference. We will have a booth at both with three of our developers and our director of sales ready to answer any questions and give away prizes. If you’re planning to attend either conference, be sure to stop by and say hello to George, Jayakrishnan, Soundara, and Christian!",
             "Syncfusion is always pleased to have the opportunity to talk to you in person. This month, we’re looking forward to seeing those of you who are attending either the dotnet Cologne conference, May 4–5, or the Magdeburger Developer Days Conference, May 10–11, in Germany. \n\nWe’re proud to be a silver sponsor of the dotnet Cologne conference and a gold sponsor of the Magdeburger Developer Days Conference. We will have a booth at both with three of our developers and our director of sales ready to answer any questions and give away prizes. If you’re planning to attend either conference, be sure to stop by and say hello to George, Jayakrishnan, Soundara, and Christian!",
         };
-        internal List<List<string>> PostInfoImage = new List<List<string>>{
-            new List<string>{ "imagePost.jpg" ,"imagePost.jpg","imagePost.jpg" },
-            new List<string> {"imagePost.jpg"},
-            new List<string> {},
-            new List<string> {},
-            new List<string> {},
-            new List<string> {},
-            new List<string>{ "imagePost.jpg" ,"imagePost.jpg","imagePost.jpg" },
-            new List<string> {"imagePost.jpg"},
-            new List<string> {},
-            new List<string> {},
-            new List<string> {},
-            new List<string> {},
-            new List<string>{ "imagePost.jpg" ,"imagePost.jpg","imagePost.jpg" },
-            new List<string> {"imagePost.jpg"},
-            new List<string> {},
-            new List<string> {},
-            new List<string> {},
-            new List<string> {},
-            new List<string>{ "imagePost.jpg" ,"imagePost.jpg","imagePost.jpg" },
-            new List<string> {"imagePost.jpg"},
-            new List<string> {},
-            new List<string> {},
-            new List<string> {},
-            new List<string> {},
-            new List<string>{ "imagePost.jpg" ,"imagePost.jpg","imagePost.jpg" },
-            new List<string> {"imagePost.jpg"},
-            new List<string> {},
-            new List<string> {},
-            new List<string> {},
-            new List<string> {},
+        internal List<List<img>> PostInfoImage = new List<List<img>>{
+            new List<img>{ new img { Img_name= "imagePost.jpg" },new img { Img_name= "imagePost.jpg" },new img { Img_name= "imagePost.jpg" } },
+            new List<img> {new img { Img_name= "avatar.jpg" }},
+            new List<img> {},
+            new List<img> {},
+            new List<img> {},
+            new List<img> {},
+            new List<img>{ new img { Img_name= "imagePost.jpg" },new img { Img_name= "imagePost.jpg" },new img { Img_name= "imagePost.jpg" } },
+            new List<img> {new img { Img_name= "imagePost.jpg" }},
+            new List<img> {},
+            new List<img> {},
+            new List<img> {},
+            new List<img> {},
+            new List<img>{ new img { Img_name= "imagePost.jpg" },new img { Img_name= "imagePost.jpg" },new img { Img_name= "imagePost.jpg" } },
+            new List<img> {new img { Img_name= "imagePost.jpg" }},
+            new List<img> {},
+            new List<img> {},
+            new List<img> {},
+            new List<img> {},
+            new List<img>{ new img { Img_name= "imagePost.jpg" },new img { Img_name= "imagePost.jpg" },new img { Img_name= "imagePost.jpg" } },
+            new List<img> {new img { Img_name= "imagePost.jpg" }},
+            new List<img> {},
+            new List<img> {},
+            new List<img> {},
+            new List<img> {},
+            new List<img> {new img { Img_name = "imagePost.jpg" }},
+            new List<img>{ new img { Img_name= "imagePost.jpg" },new img { Img_name= "imagePost.jpg" },new img { Img_name= "avatar.jpg" } },
+            new List<img> {},
+            new List<img> {},
+            new List<img> {},
+            new List<img> {},
         };
-        internal List<List<string>> PostInfoVideo = new List<List<string>>{
-            new List<string> {},
-            new List<string> {},
-            new List<string>{"videoTest.mp4" , "videoTest.mp4", "videoTest.mp4" },
-            new List<string> {"videoTest.mp4"},
-            new List<string> {},
-            new List<string> {},
-              new List<string> {},
-            new List<string> {},
-            new List<string>{"videoTest.mp4" , "videoTest.mp4", "videoTest.mp4" },
-            new List<string> {"videoTest.mp4"},
-            new List<string> {},
-            new List<string> {},
-              new List<string> {},
-            new List<string> {},
-            new List<string>{"videoTest.mp4" , "videoTest.mp4", "videoTest.mp4" },
-            new List<string> {"videoTest.mp4"},
-            new List<string> {},
-            new List<string> {},
-              new List<string> {},
-            new List<string> {},
-            new List<string>{"videoTest.mp4" , "videoTest.mp4", "videoTest.mp4" },
-            new List<string> {"videoTest.mp4"},
-            new List<string> {},
-            new List<string> {},
-              new List<string> {},
-            new List<string> {},
-            new List<string>{"videoTest.mp4" , "videoTest.mp4", "videoTest.mp4" },
-            new List<string> {"videoTest.mp4"},
-            new List<string> {},
-            new List<string> {},
+        internal List<List<video>> PostInfoVideo = new List<List<video>>{
+            new List<video> {},
+            new List<video> {},
+            new List<video>{ new video { Video_name= "ms-appx:///videoTest.mp4" }, new video { Video_name = "ms-appx:///videoTest.mp4" },  new video { Video_name= "ms-appx:///videoTest.mp4" } },
+            new List<video>  {new video { Video_name= "ms-appx:///videoTest.mp4" } },
+            new List<video> {},
+            new List<video> {},
+            new List<video> {},
+            new List<video> {},
+            new List<video>{ new video { Video_name= "ms-appx:///videoTest.mp4" }, new video { Video_name = "ms-appx:///videoTest.mp4" },  new video { Video_name= "ms-appx:///videoTest.mp4" } },
+            new List<video>  {new video { Video_name= "ms-appx:///videoTest.mp4" } },
+            new List<video> {},
+            new List<video> {},
+            new List<video> {},
+            new List<video> {},
+            new List<video>{ new video { Video_name= "ms-appx:///videoTest.mp4" }, new video { Video_name = "ms-appx:///videoTest.mp4" },  new video { Video_name= "ms-appx:///videoTest.mp4" } },
+            new List<video>  {new video { Video_name= "ms-appx:///videoTest.mp4" } },
+            new List<video> {},
+            new List<video> {},
+            new List<video> {},
+            new List<video> {},
+            new List<video>{ new video { Video_name= "ms-appx:///videoTest.mp4" }, new video { Video_name = "ms-appx:///videoTest.mp4" },  new video { Video_name= "ms-appx:///videoTest.mp4" } },
+            new List<video>  {new video { Video_name= "ms-appx:///videoTest.mp4" } },
+            new List<video> {},
+            new List<video> {},
+            new List<video> {},
+            new List<video> {},
+            new List<video>{ new video { Video_name= "ms-appx:///videoTest.mp4" }, new video { Video_name = "ms-appx:///videoTest.mp4" },  new video { Video_name= "ms-appx:///videoTest.mp4" } },
+            new List<video>  {new video { Video_name= "ms-appx:///videoTest.mp4" } },
+            new List<video> {},
+            new List<video> {},
+
         };
         internal string[] PostInfoQuestion = new string[]{
             "",
@@ -413,31 +379,64 @@ namespace PURPLE.ViewModels
             "",
             "Comment allez-vous?",
             "Comment allez-vous?",
-              "",
             "",
-            "",
-            "",
-            "Comment allez-vous?",
-            "Comment allez-vous?",
-              "",
             "",
             "",
             "",
             "Comment allez-vous?",
             "Comment allez-vous?",
-              "",
+            "",
             "",
             "",
             "",
             "Comment allez-vous?",
             "Comment allez-vous?",
-              "",
+            "",
+            "",
+            "",
+            "",
+            "Comment allez-vous?",
+            "Comment allez-vous?",
+            "",
             "",
             "",
             "",
             "Comment allez-vous?",
             "Comment allez-vous?",
         };
+        internal int[] PostInfoType = new int[] {
+        1,
+        0,
+        3,
+        4,
+        2,
+        2,
+         1,
+        0,
+        3,
+        4,
+        2,
+        2,
+         1,
+        0,
+        3,
+        4,
+        2,
+        2,
+         1,
+        0,
+        3,
+        4,
+        2,
+        2,
+        0,
+        1,
+        3,
+        4,
+        2,
+        2,
+        };
+
         #endregion
 
         #region Interface Member

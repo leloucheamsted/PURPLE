@@ -1,5 +1,6 @@
 ﻿using PURPLE.LoginSignUp.Login;
 using PURPLE.LoginSignUp.SignUp;
+using PURPLE.TestVue;
 using PURPLE.Views.Home;
 using System;
 using Xamarin.Forms;

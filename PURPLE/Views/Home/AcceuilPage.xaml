@@ -200,29 +200,20 @@
                                     <syncfusion:SfListView.ItemTemplate>
                                         <DataTemplate>
                                             <cards:SfCardView  HasShadow="True" CornerRadius="5" Margin="5,5,10,5">
-                                                
-                                                    <Grid   Padding="0" >
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="40"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                        </Grid.RowDefinitions>
 
-                                                        <!--#region TopBar-->
-                                                        <Grid  TranslationY="5" Margin="0"  VerticalOptions="Center" >
+                                                <StackLayout   Padding="0" >
+                                                    <!--#region TopBar-->
+                                                        <Grid  TranslationY="2"  Margin="0"  VerticalOptions="Center" >
                                                             <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition  Width="40"/>
+                                                                <ColumnDefinition  Width="45"/>
                                                                 <ColumnDefinition Width="*"/>
-                                                                <ColumnDefinition Width="40"/>
-                                                                <ColumnDefinition Width="40"/>
+                                                                <ColumnDefinition Width="45"/>
+                                                                <ColumnDefinition Width="45"/>
                                                             </Grid.ColumnDefinitions>
                                                             <!--#region  Avatar de l'utilisateur qui publie-->
-                                                            <syncEffectsView:SfEffectsView Margin="10,3,-10,-3"  x:Name="avatar_profil"    VerticalOptions="Center" HorizontalOptions="Center"
+                                                            <syncEffectsView:SfEffectsView Margin="10,0,-10,0"  x:Name="avatar_profil"    VerticalOptions="Center" HorizontalOptions="Center"
                                                                  RippleColor="{StaticResource SecondColor}"
-                                                                 HeightRequest="55"
+                                                                 HeightRequest="45"
                                                                  BackgroundColor="{StaticResource SecondColor}" CornerRadius="30" >
                                                                 <sfavatar:SfAvatarView 
                                                                ContentType="Initials"
@@ -235,7 +226,7 @@
                                                                InitialsColor="White" 
                                                                WidthRequest="50"
                                                                FontAttributes="Bold"
-                                                               HeightRequest="50"
+                                                               HeightRequest="70"
                                                                CornerRadius="20"   
                                                                BorderColor="White"
                                                                BackgroundColor="{StaticResource ThirdColor}">
@@ -259,7 +250,8 @@
                                                         </Grid>
                                                         <!--#endregion-->
                                                         <!--#region  Contenu du Post-->
-                                                    <customAcceuil:PostViewTemplate Grid.Row="1">
+                                                    <customAcceuil:PostViewTemplate MinimumHeightRequest="300">
+                                                        
                                                     </customAcceuil:PostViewTemplate>
                                                     <!--#region  zone de reaction-->
                                                     <StackLayout Grid.Row="2">
@@ -285,7 +277,7 @@
                                                         <customAcceuil:FooterCustom x:Name="AddcommentBtn" Grid.Row="5"/>
                                                         <!--#endregion-->
                                                         <!--#region  Zone de texte de publication-->
-                                                    </Grid>
+                                                    </StackLayout>
                                                 
                                             </cards:SfCardView>
                                         </DataTemplate>

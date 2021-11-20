@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PURPLE.Models.AcceuilModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
@@ -13,8 +14,8 @@ namespace PURPLE.Models
         private string ville; // ville de residence
         private string voirPlus; // Texte de publication
         private string avatar; // avatar de l'auteur
-        private List<string> image; //  visuel de type Image de la publication
-        private List<string> videos; // visuel de type video de la  pubication
+        private List<img> image; //  visuel de type Image de la publication
+        private List<video> videos; // visuel de type video de la  pubication
         private string quesion; // visuel de type question de la publication
         private string btnPartager; // Bouton partager
         private string btnComment; // bouton commenter
@@ -48,12 +49,12 @@ namespace PURPLE.Models
             get { return avatar; }
             set {  avatar = value; OnPropertyChanged("Avatar"); }
         }
-        public List<string> Image
+        public List<img> Image
         {
             get { return image; }
             set {  image = value; OnPropertyChanged("Image"); }
         }
-        public List <string> Videos
+        public List <video> Videos
         {
             get { return videos; }
             set {  videos = value; OnPropertyChanged("Videos"); }

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             x:Class="PURPLE.TestVue.TesVideotPage">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="350"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+       
+        <xct:MediaElement Aspect="AspectFill"
+                          Margin="10,0,10,0"
+                          Grid.Row="0"
+                          AutoPlay="True"
+                          Volume="0" 
+                          IsLooping="True"
+                          Source="ms-appx:///video.mp4" 
+                          
+                          ShowsPlaybackControls="True" />
+       
+        <Grid BackgroundColor="Black" Opacity=".4">
+            <Label Text="&#xf2e2;" FontFamily="fal" Margin="10" FontSize="Body" TextColor="White" HorizontalOptions="End" VerticalOptions="Start"/>
+            
+            <Button Text="&#xf04b;" FontFamily="fas" WidthRequest="50" TextColor="White" FontSize="Large" CornerRadius="50" BackgroundColor="{StaticResource SecondColor}" HorizontalOptions="Center" VerticalOptions="Center" ></Button>
+
+        </Grid>
+    </Grid>
+  
+</ContentPage>

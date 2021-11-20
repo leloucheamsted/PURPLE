@@ -1,31 +1,33 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:Views="clr-namespace:PURPLE.Templates"
-            
-             Content="{DynamicResource PostOneImageView}"
+             xmlns:Views="clr-namespace:PURPLE.Templates"          
+             Content="{StaticResource PostOneImageView}"
             x:Class="PURPLE.Controls.PostViewTemplate">
-
+   
     <ContentView.Triggers>
         <DataTrigger TargetType="ContentView"
                             Binding="{Binding TypePost}"
                             Value="1">
-            <Setter Property="Content" Value="{DynamicResource PostMultiImageView}" />
+            <Setter Property="Content" Value="{StaticResource PostMultiImageView}" />
         </DataTrigger>
         <DataTrigger TargetType="ContentView"
                             Binding="{Binding TypePost}"
                             Value="2">
-            <Setter Property="Content" Value="{DynamicResource QuestionView}" />
+            <Setter Property="Content" Value="{StaticResource QuestionView}" />
+
+            <Setter Property="Margin" Value="0,0,0,0"/>
+            <Setter Property="MinimumHeightRequest" Value="200"/>
         </DataTrigger>
         <DataTrigger TargetType="ContentView"
                             Binding="{Binding TypePost}"
                             Value="3">
-            <Setter Property="Content" Value="{DynamicResource PostVideoView}" />
+            <Setter Property="Content" Value="{StaticResource PostVideoView}" />
         </DataTrigger>
         <DataTrigger TargetType="ContentView"
                             Binding="{Binding TypePost}"
-                            Value="1">
-            <Setter Property="Content" Value="{DynamicResource PostMultiVideoView}" />
+                            Value="4">
+            <Setter Property="Content" Value="{StaticResource PostMultiVideoView}" />
         </DataTrigger>
     </ContentView.Triggers>
     <ContentView.Resources>
@@ -47,5 +49,4 @@
             </ContentView>
         </ResourceDictionary>
     </ContentView.Resources>
-
 </ContentView>

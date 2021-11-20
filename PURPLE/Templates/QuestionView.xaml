@@ -3,8 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PURPLE.Templates.QuestionView">
     <ContentPresenter/>
-    <StackLayout BackgroundColor="Yellow"
-                 VerticalOptions="FillAndExpand">
-        <Label Text="QuestionView" TextColor="White"/>
-    </StackLayout>
+    <Grid  Margin="0"  MinimumHeightRequest="200"     
+                 BackgroundColor="Blue"
+                 VerticalOptions="FillAndExpand"  >
+        <Label Text="{Binding Quesion}" TextColor="Black"
+               HorizontalOptions="Center"
+              LineHeight="5" CharacterSpacing="2"
+               LineBreakMode="WordWrap"
+               
+               FontSize="25" 
+               FontFamily="MetroLight"
+               VerticalTextAlignment="Center"
+               VerticalOptions="Center"/>
+    </Grid>
 </StackLayout>

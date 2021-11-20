@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PURPLE.Templates.PostMultiVideoView">
   <ContentView.Content>
-      <StackLayout>
+      <StackLayout BackgroundColor="Green">
           <Label Text="Multi video View" />
       </StackLayout>
   </ContentView.Content>

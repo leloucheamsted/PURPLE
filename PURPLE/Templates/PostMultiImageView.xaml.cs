@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Timers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace PURPLE.Templates
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PostMultiImageView : ContentView
+    public partial class PostMultiImageView : StackLayout
     {
         public PostMultiImageView()
         {
             InitializeComponent();
         }
+        
+   
     }
 }
