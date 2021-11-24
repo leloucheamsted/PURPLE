@@ -2,98 +2,10 @@
 <Grid xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             xmlns:videoplayer="clr-namespace:Octane.Xamarin.Forms.VideoPlayer;assembly=Octane.Xamarin.Forms.VideoPlayer"
              x:Class="PURPLE.Templates.PostVideoView">
-    <Grid BackgroundColor="Red" >
+    <Grid BackgroundColor="Red">
+        <Label Text="VideoView"/>
 
-        <xct:MediaElement
-                          x:Name="video_player"
-                          Aspect="AspectFill"
-                          HorizontalOptions="CenterAndExpand" 
-                          VerticalOptions="Center"
-                          Margin="0"
-                          Grid.Row="0"
-                          HeightRequest="400"
-                          AutoPlay="True"
-                          Volume="0" 
-                          IsLooping="False"
-                          Source="ms-appx:///video.mp4" 
-                          
-                          ShowsPlaybackControls="True">
-
-        </xct:MediaElement>
-        <!--
-       
-        <Grid x:Name="control" Opacity="0" BackgroundColor="Black" BindingContext="{x:Reference video_player}">
-            <Label x:Name="volume_off" Text="&#xf2e2;" 
-                   FontFamily="fal" FontSize="Body"
-                   Margin="25" TextColor="White"
-                   HorizontalOptions="End" 
-                   VerticalOptions="Start">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                </Label.GestureRecognizers>
-                <Label.Triggers>
-                    <DataTrigger TargetType="Label"
-                                 Binding="{Binding Volume}"
-                                 Value="1"
-                                 >
-                        <Setter Property="Text" Value="&#xf028;"/>
-                    </DataTrigger>
-                </Label.Triggers>
-            </Label>
-            <Button x:Name="Btn_command" Text="&#xf04b;"
-                    IsEnabled="False"
-                    FontFamily="fas" WidthRequest="50" 
-                    TextColor="{StaticResource btnColor}" 
-                    FontSize="Large" CornerRadius="50" 
-                    BackgroundColor="{StaticResource SecondColor}"
-                    HorizontalOptions="Center" 
-                    Clicked="OnPlayPauseButtonClicked"
-                    VerticalOptions="Center" >
-                <Button.Triggers>
-                    <DataTrigger TargetType="Button"
-                                 Binding="{Binding CurrentState}"
-                                 Value="{x:Static xct:MediaElementState.Playing}">
-                        <Setter Property="Text"
-                                Value="&#xf04c;" />
-                    </DataTrigger>
-                    <DataTrigger TargetType="Button"
-                                 Binding="{Binding CurrentState}"
-                                 Value="{x:Static xct:MediaElementState.Buffering}">
-                        <Setter Property="IsEnabled"
-                                Value="False" />
-                    </DataTrigger>
-                </Button.Triggers>
-            </Button>
-
-        </Grid>
-    </Grid>   -->
-        <!--
-     <Label Text="lelouche"/>
-   
-    <video:VideoPlayer  x:Name="player" HorizontalOptions="FillAndExpand"  VerticalOptions="Center" Source="videoTest.mp4" />
-    <ActivityIndicator HorizontalOptions="Center"
-                       VerticalOptions="Center" 
-                           
-                       Color="White"
-                       BackgroundColor="Transparent"
-                       IsVisible="False">
-        <ActivityIndicator.Triggers>
-            <DataTrigger TargetType="ActivityIndicator"
-                         Binding="{Binding Source={x:Reference player}, Path=Status}"
-                         Value="{x:Static video:VideoStatus.NotReady}"
-                         >
-                <Setter Property="IsVisible" Value="True"/>
-                <Setter Property="IsRunning" Value="True"/>
-            </DataTrigger>
-            <DataTrigger  TargetType="ActivityIndicator"
-                          Binding="{Binding Source={x:Reference player},Path=IsBuffering}"
-                          Value="True">
-                <Setter Property="IsVisible" Value="True"/>
-                <Setter Property="IsRunning" Value="True"/>
-            </DataTrigger>
-        </ActivityIndicator.Triggers>
-    </ActivityIndicator>
-    -->
     </Grid>
-</Grid>
+    </Grid>

@@ -72,6 +72,7 @@
 
   <ItemGroup>
     <PackageReference Include="CarouselView.FormsPlugin" Version="6.0.0" />
+    <PackageReference Include="Octane.Xam.VideoPlayer" Version="3.1.0" />
     <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.14" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="19.3.0.54" />
     <PackageReference Include="Syncfusion.Xamarin.Cards" Version="19.3.0.54" />
@@ -142,6 +143,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Controls\NavigationViews\" />
     <Folder Include="Views\CHATVIEW\" />
     <Folder Include="Views\GROUPVIEW\" />
   </ItemGroup>

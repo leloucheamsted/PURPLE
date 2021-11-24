@@ -3,28 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
              x:Class="PURPLE.TestVue.TesVideotPage">
-    <Grid Margin="10">
+    <Grid Margin="10" BackgroundColor="Red">
         <Grid.RowDefinitions>
-            <RowDefinition Height="350"/>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-       
-        <xct:MediaElement Aspect="AspectFill"
+        <xct:MediaElement 
+                          x:Name="video_player"
+                          Aspect="AspectFit"
                           Margin="10,0,10,0"
                           Grid.Row="0"
-                          AutoPlay="True"
-                          Volume="0" 
-                          IsLooping="True"
-                          Source="ms-appx:///video.mp4" 
-                          
+                          AutoPlay="False"
+                         
+                          Source="https://sec.ch9.ms/ch9/5d93/a1eab4bf-3288-4faf-81c4-294402a85d93/XamarinShow_mid.mp4" 
+                               HorizontalOptions="FillAndExpand"
+                          VerticalOptions="FillAndExpand"
                           ShowsPlaybackControls="True" />
-       
-        <Grid BackgroundColor="Black" Opacity=".4">
-            <Label Text="&#xf2e2;" FontFamily="fal" Margin="10" FontSize="Body" TextColor="White" HorizontalOptions="End" VerticalOptions="Start"/>
-            
-            <Button Text="&#xf04b;" FontFamily="fas" WidthRequest="50" TextColor="White" FontSize="Large" CornerRadius="50" BackgroundColor="{StaticResource SecondColor}" HorizontalOptions="Center" VerticalOptions="Center" ></Button>
 
-        </Grid>
+     
+
     </Grid>
-  
 </ContentPage>

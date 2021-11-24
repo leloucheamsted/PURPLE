@@ -1,11 +1,12 @@
 ﻿using PURPLE.Models.AcceuilModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using Xamarin.Forms;
 
-namespace PURPLE.Models
+namespace PURPLE
 {
     public class PostInfo : INotifyPropertyChanged
     {
@@ -23,17 +24,26 @@ namespace PURPLE.Models
         private int nbreLike; // nombre de like
         private int nbreComment; // nombre de commentaire
         private int nbrePartage; // nombre de partage
-        public int typePost; // type de post(Image,texte,video)
+        private int typePost; // type de post(Image,texte,video)
+        private bool likeStatut; // Le poster est liker ou pas 
+        private ObservableCollection<commentaire> listcommentaire; // Liste de commentaires
         #endregion
 
+        public Command<object> LikeCommand { private set; get; }
         #region constructeur
         public PostInfo()
         {
-
         }
         #endregion
 
+       
         #region Proprietes
+
+        public ObservableCollection<commentaire> Listcommentaire
+        {
+            get { return listcommentaire; }
+            set {  listcommentaire = value; OnPropertyChanged("ListCommentaire"); }
+        }
         public string Nom
         {
             get { return nom; }
@@ -49,6 +59,7 @@ namespace PURPLE.Models
             get { return avatar; }
             set {  avatar = value; OnPropertyChanged("Avatar"); }
         }
+        
         public List<img> Image
         {
             get { return image; }
@@ -103,6 +114,11 @@ namespace PURPLE.Models
         {
             get { return typePost; }
             set {  typePost = value; OnPropertyChanged("TypePost"); }
+        }
+        public bool LikeStatut
+        {
+            get { return likeStatut; }
+            set {  likeStatut = value; OnPropertyChanged("LikeStatut"); }
         }
         #endregion
 

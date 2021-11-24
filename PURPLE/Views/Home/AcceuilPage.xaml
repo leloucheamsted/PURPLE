@@ -9,7 +9,7 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" 
              xmlns:pulltoRefresh="clr-namespace:Syncfusion.SfPullToRefresh.XForms;assembly=Syncfusion.SfPullToRefresh.XForms"
-             xmlns:local="clr-namespace:PURPLE.ViewModels"
+             xmlns:local="clr-namespace:PURPLE"
              xmlns:customAcceuil="clr-namespace:PURPLE.Controls"
              ControlTemplate="{DynamicResource TabView1}"
              xmlns:Views="clr-namespace:PURPLE.Templates"
@@ -95,6 +95,9 @@
 
             <!--#region  Acceuil-->
             <Grid x:Name="Acceuill_view" RowSpacing="0" >
+                <Grid.BindingContext>
+                    <local:PostInfoViewModel/>
+                </Grid.BindingContext>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="*"/>
@@ -155,9 +158,7 @@
                 
                 <!--#region  Zone d'actualite de publication-->
                 <ScrollView  HorizontalOptions="FillAndExpand" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never"  Margin="0,0,0,-6" Grid.Row="1">
-                    <ScrollView.BindingContext>
-                        <local:PostInfoViewModel/>
-                    </ScrollView.BindingContext>
+                   
                     <pulltoRefresh:SfPullToRefresh x:Name="pullToRefresh"
                                            ProgressBackgroundColor="{StaticResource ThirdColor}"
                                            RefreshContentHeight="50"
@@ -195,7 +196,16 @@
 
                                 <!--#region Vue Publication et Post-->
 
-                                <syncfusion:SfListView x:Name="listview"  AutoFitMode="Height" ItemSpacing="5,0,0,0" SelectionMode="None" IsScrollBarVisible="False" SelectionGesture="Tap" ItemsSource="{Binding Posts}">
+                                <syncfusion:SfListView x:Name="listview" 
+                                                       AutoFitMode="Height" 
+                                                       ItemSpacing="5,0,0,0" 
+                                                       SelectionMode="None" 
+                                                       IsScrollBarVisible="False" 
+                                                       SelectionGesture="Tap" 
+                                                       LoadMoreOption="AutoOnScroll"
+                                                       LoadMorePosition="Bottom"
+                                                       
+                                                       ItemsSource="{Binding Posts}">
                                   
                                     <syncfusion:SfListView.ItemTemplate>
                                         <DataTemplate>
@@ -256,12 +266,25 @@
                                                     <!--#region  zone de reaction-->
                                                     <StackLayout Grid.Row="2">
                                                         <StackLayout Margin="05,0,0,0" Orientation="Horizontal">
-                                                            <syncEffectsView:SfEffectsView WidthRequest="33" x:Name="Like_content" HeightRequest="33"  CornerRadius="20" RippleColor="Red">
-                                                                <Label x:Name="like_icone" Text="&#xf004;" HorizontalOptions="Center" HorizontalTextAlignment="Center" WidthRequest="33" VerticalOptions="Center" TextColor="Red"  FontFamily="fas" FontSize="Title" />
-                                                            </syncEffectsView:SfEffectsView>
+                                                            <syncEffectsView:SfEffectsView WidthRequest="33"  TouchUpCommand="{Binding Path=BindingContext.LikeCommand, Source={x:Reference listview}}" TouchUpCommandParameter="{Binding .}"  x:Name="Like_content" HeightRequest="33"  CornerRadius="20" RippleColor="Red">
+                                                                <Label x:Name="like_icone" Text="&#xf004;" HorizontalOptions="Center"
+                                                                       HorizontalTextAlignment="Center" 
+                                                                       WidthRequest="33" TextColor="Black" 
+                                                                       VerticalOptions="Center"  FontFamily="fal"
+                                                                        
+                                                                       FontSize="Title">
+                                                                    <Label.Triggers >
+                                                                        <DataTrigger  TargetType="Label" Binding="{Binding LikeStatut}" Value="True">
+                                                                            <Setter Property="TextColor" Value="Red"/>
+                                                                            <Setter Property="FontFamily" Value="fas"/>
+                                                                        </DataTrigger>
+                                                                    </Label.Triggers>
+                                                                </Label>
+                                                            </syncEffectsView:SfEffectsView >
                                                             <syncEffectsView:SfEffectsView WidthRequest="33" x:Name="Chat_content" HeightRequest="33"  CornerRadius="20" RippleColor="{StaticResource ThirdColor}">
                                                                 <Label x:Name="chat_icone" Text="&#xf1d8;" HorizontalOptions="Center" VerticalOptions="Center" TextColor="{StaticResource ThirdColor}" FontFamily="fas" FontSize="Title" />
                                                             </syncEffectsView:SfEffectsView>
+                                                           
                                                         </StackLayout>
                                                         <StackLayout Margin="5,0,0,0" Spacing="1.5" Grid.Row="4" Orientation="Horizontal">
                                                             <Label FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" Text="{Binding NbreLike}"/>
@@ -269,8 +292,8 @@
                                                         </StackLayout>
                                                     </StackLayout>
                                                     <!--#endregion-->
-                                                        <customAcceuil:CustomLabel Grid.Row="3" Text="{Binding VoirPlus}"/>
-                                                        <StackLayout Margin="5,0,0,0" Spacing="1.5" Grid.Row="4" Orientation="Horizontal">
+                                                    <customAcceuil:CustomLabel Grid.Row="3" Text="{Binding VoirPlus}"/>
+                                                    <StackLayout Margin="5,0,0,0" Spacing="1.5" Grid.Row="4" Orientation="Horizontal">
                                                             <Label FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" Text="{Binding NbreComment}"/>
                                                             <Label FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" Text="Commentaire"/>
                                                         </StackLayout>

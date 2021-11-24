@@ -10,8 +10,10 @@ using Syncfusion.ListView.XForms;
 using PURPLE.Models;
 using PURPLE.Views.ACCEUILVIEW;
 using PURPLE.Models.AcceuilModel;
+using System.Windows.Input;
+using System.Diagnostics;
 
-namespace PURPLE.ViewModels
+namespace PURPLE
 {
     public class PostInfoViewModel : INotifyPropertyChanged
     {
@@ -23,8 +25,8 @@ namespace PURPLE.ViewModels
          3 = publication d'une seule video
          4 = publication de plusieurs videos
          */
-       
-        
+
+
         #endregion
 
         #region variables
@@ -51,7 +53,7 @@ namespace PURPLE.ViewModels
             get { return postsInfo; }
             set { postsInfo = value; }
         }
-        public ObservableCollection <hastags> HastagsList
+        public ObservableCollection<hastags> HastagsList
         {
             get { return Hastags; }
             set { Hastags = value; }
@@ -72,7 +74,7 @@ namespace PURPLE.ViewModels
         #region Methodes Privees
         private async void PullToRefresh_Refreshing(object obj)
         {
-            
+
             this.IsRefreshing = true;
             await Task.Delay(2000);
             var postsNameCount = this.PostsInfoName.Count() - 1;
@@ -87,6 +89,8 @@ namespace PURPLE.ViewModels
             var postVideoCount = PostInfoVideo.Count() - 1;
             var postQuestionCount = PostInfoQuestion.Count() - 1;
             var postTypeCount = PostInfoType.Count() - 1;
+            var postLikeStatutCount = PostInfoLikeStatut.Count() - 1;
+
             for (int i = 0; i < 3; i++)
             {
                 var postsCount = this.Posts.Count;
@@ -96,10 +100,11 @@ namespace PURPLE.ViewModels
                     Ville = PostsInfoVille[postsVilleCount - i],
                     VoirPlus = PostsInfoVoirPlus[postsVoirPlusCount - i],
                     Avatar = "avatar.jpg",
-                    Image = PostInfoImage[postsImageCount-i],
+                    Image = PostInfoImage[postsImageCount - i],
                     Videos = PostInfoVideo[postVideoCount - i],
                     Quesion = PostInfoQuestion[postQuestionCount - i],
                     TypePost = PostInfoType[postTypeCount - i],
+                    LikeStatut = PostInfoLikeStatut[postLikeStatutCount - i],
                     BtnPartager = "&#xf064;",
                     BtnLiker = "&#xf004;",
                     BtnComment = "&#xf4b6;",
@@ -108,12 +113,12 @@ namespace PURPLE.ViewModels
                     NbrePartage = 20
 
                 };
-                
+
 
                 this.Posts.Insert(0, item);
             }
             this.IsRefreshing = false;
-            
+
         }
 
         private void NavigateToReadMoreContent(object obj)
@@ -123,10 +128,23 @@ namespace PURPLE.ViewModels
             App.Current.MainPage.Navigation.PushAsync(readMoreContentPage);
         }
 
-        private async void LikePublicatioin(object obj)
+        private  void LikePublicatioin(object obj)
         {
-            var like= (obj as PostInfo).NbreLike;
-            like += 1;
+           
+           
+            
+            if((obj as PostInfo).LikeStatut == false)
+            {
+                (obj as PostInfo).LikeStatut = true;
+                (obj as PostInfo).NbreLike += 1;
+                Console.WriteLine("LIKE");
+            }else
+            {
+                (obj as PostInfo).LikeStatut = false;
+                (obj as PostInfo).NbreLike -= 1;
+                Console.WriteLine("Dislike");
+            }
+            Console.WriteLine("Modification de l'etat du like");
         }
         private async void CommentPublicatioin(object obj)
         {
@@ -139,14 +157,15 @@ namespace PURPLE.ViewModels
         internal ObservableCollection<PostInfo> GenerateSource()
         {
             postsInfo = new ObservableCollection<PostInfo>();
-            
+
             var postsNameCount = PostsInfoName.Count() - 1;
-            var postsVilleCount= PostsInfoVille.Count() - 1;
-            var postsVoirPlusCount= PostsInfoVoirPlus.Count() - 1;
-            var postImageCount=PostInfoImage.Count() - 1;
-            var postVideoCount=PostInfoVideo.Count() - 1;
-            var postQuestionCount=PostInfoQuestion.Count() - 1;
-            var postTypeCount=PostInfoType.Count() - 1;
+            var postsVilleCount = PostsInfoVille.Count() - 1;
+            var postsVoirPlusCount = PostsInfoVoirPlus.Count() - 1;
+            var postImageCount = PostInfoImage.Count() - 1;
+            var postVideoCount = PostInfoVideo.Count() - 1;
+            var postQuestionCount = PostInfoQuestion.Count() - 1;
+            var postTypeCount = PostInfoType.Count() - 1;
+            var postLikeStatutCount = PostInfoLikeStatut.Count() - 1;
             for (int i = 0; i < 5; i++)
             {
                 var post = new PostInfo()
@@ -155,29 +174,30 @@ namespace PURPLE.ViewModels
                     Ville = PostsInfoVille[postsVilleCount - i],
                     VoirPlus = PostsInfoVoirPlus[postsVoirPlusCount - i],
                     Avatar = "avatar.jpg",
-                    Image = PostInfoImage[postImageCount -i],
-                    Videos= PostInfoVideo[postVideoCount - i],
-                    Quesion =PostInfoQuestion[postQuestionCount - i],
+                    Image = PostInfoImage[postImageCount - i],
+                    Videos = PostInfoVideo[postVideoCount - i],
+                    Quesion = PostInfoQuestion[postQuestionCount - i],
                     TypePost = PostInfoType[postTypeCount - i],
+                    LikeStatut=PostInfoLikeStatut[postLikeStatutCount - i],
                     BtnPartager = "&#xf064;",
                     BtnLiker = "&#xf004;",
                     BtnComment = "&#xf4b6;",
-                    NbreComment =20,
-                    NbreLike=20,
-                    NbrePartage=20
+                    NbreComment = 20,
+                    NbreLike = 20,
+                    NbrePartage = 20
 
 
                 };
-              
+
                 postsInfo.Insert(0, post);
             }
-           
+            LikeCommand = new Command<object>(LikePublicatioin);
             return postsInfo;
         }
         internal ObservableCollection<hastags> GetHastags()
         {
             Hastags = new ObservableCollection<hastags>();
-            for (int i=0;i<hashtag_name.Count(); i++)
+            for (int i = 0; i < hashtag_name.Count(); i++)
             {
                 var hash = new hastags()
                 {
@@ -198,11 +218,11 @@ namespace PURPLE.ViewModels
             "#technologie",
             "#marketing",
             "#buzz",
-            
+
         };
         #endregion
 
-        #region PostsInfo
+    #region PostsInfo
         internal string[] PostsInfoName = new string[]
         {
             "Lelouche Amsted",
@@ -436,8 +456,41 @@ namespace PURPLE.ViewModels
         2,
         2,
         };
+        internal bool[] PostInfoLikeStatut= new bool[] {
+            true,
+            false,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            true,
+            true,
+            false,
+            false,
+        };
 
         #endregion
+
 
         #region Interface Member
 
