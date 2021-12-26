@@ -109,13 +109,18 @@ namespace PURPLE
                     BtnPartager = "&#xf064;",
                     BtnLiker = "&#xf004;",
                     BtnComment = "&#xf4b6;",
-                    NbreComment = 20,
+                    
                     NbreLike = 20,
                     NbrePartage = 20
 
                 };
 
-
+                int nb_c = item.Listcommentaire.Count(); // nombrre de commentaire du post
+                item.NbreComment = nb_c;
+                for (int a = 0;a < nb_c - 1; a++)
+                {
+                    item.Listcommentaire[a].NbreReponses = item.Listcommentaire[a].Reponses.Count(); // nbre de reponses de chaque commentaire
+                }
                 this.Posts.Insert(0, item);
             }
             this.IsRefreshing = false;
@@ -182,13 +187,17 @@ namespace PURPLE
                     BtnPartager = "&#xf064;",
                     BtnLiker = "&#xf004;",
                     BtnComment = "&#xf4b6;",
-                    NbreComment = 20,
                     NbreLike = 20,
                     NbrePartage = 20
 
 
                 };
-
+               int nb_c= post.Listcommentaire.Count(); // nombrre de commentaire du post
+                post.NbreComment = nb_c;
+                for (int a = 0; a < nb_c - 1; a++)
+                {
+                    post.Listcommentaire[a].NbreReponses = post.Listcommentaire[a].Reponses.Count(); // nbre de reponses de chaque commentaire
+                }
                 postsInfo.Insert(0, post);
             }
             LikeCommand = new Command<object>(LikePublicatioin);
@@ -493,291 +502,325 @@ namespace PURPLE
             new commentaire
             {
                 Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca..",
+                Avatar= "leouche",
+                NomUtilisateur="Mr Ketch",
                 NbreJaime=2,
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    
                 },
             },
             new commentaire
             {
                 Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
                 NbreJaime=1,
+                 Avatar= "leouche",
+                NomUtilisateur="Mr Ketch",
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                    new reponse{ Response="Maf",NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png" },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0,NomUtilisateur="zeuss",Avatar="avatar.png"},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca..",
+                NomUtilisateur="lelouche",Avatar="avatar.png",
+                NbreJaime=2,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 ,NomUtilisateur="lelouche",Avatar="avatar.png"},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png", },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png",},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
+                
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png", },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png",},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 
+                    ,NomUtilisateur="lelouche",Avatar="avatar.png",},
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
             new commentaire
             {
                 Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca..",
                 NbreJaime=2,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 ,NomUtilisateur="lelouche",Avatar="avatar.png",},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1, NomUtilisateur="lelouche",Avatar="avatar.png",
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 ,NomUtilisateur="lelouche",Avatar="avatar.png",},
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png",},
+                },
+            },
+            new commentaire
+            {
+                NomUtilisateur="lelouche",Avatar="avatar.png",
+                Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca..",
+                NbreJaime=2,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png", },
                 },
             },
             new commentaire
             {
                 Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
                 NbreJaime=1,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                    new reponse{ Response="Maf",NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png", },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
             new commentaire
             {
                 Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
                 NbreJaime=1,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                    new reponse{ Response="Maf",NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png", },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
             new commentaire
             {
                 Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
                 NbreJaime=1,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                    new reponse{ Response="Maf",NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png", },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
             new commentaire
             {
                 Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca..",
                 NbreJaime=2,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 ,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
             new commentaire
             {
                 Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
                 NbreJaime=1,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 ,NomUtilisateur="lelouche",Avatar="avatar.png",},
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
             new commentaire
             {
                 Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca..",
                 NbreJaime=2,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{ Response="Maf",NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
             new commentaire
             {
                 Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
                 NbreJaime=1,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                    new reponse{ Response="Maf",NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png", },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
             new commentaire
             {
                 Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
                 NbreJaime=1,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 ,NomUtilisateur="lelouche",Avatar="avatar.png",},
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
             new commentaire
             {
                 Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
                 NbreJaime=1,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                    new reponse{ Response="Maf",NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png", },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
             new commentaire
             {
-                Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca..",
-                NbreJaime=2,
-                Reponses= new List<reponse>
-                {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                },
-            },
-            new commentaire
-            {
-                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
-                NbreJaime=1,
-                Reponses= new List<reponse>
-                {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
-                },
-            },
-            new commentaire
-            {
-                Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca..",
-                NbreJaime=2,
-                Reponses= new List<reponse>
-                {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                },
-            },
-            new commentaire
-            {
-                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
-                NbreJaime=1,
-                Reponses= new List<reponse>
-                {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
-                },
-            },
-            new commentaire
-            {
-                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
-                NbreJaime=1,
-                Reponses= new List<reponse>
-                {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
-                },
-            },
-            new commentaire
-            {
-                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
-                NbreJaime=1,
-                Reponses= new List<reponse>
-                {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
-                },
-            },
-            new commentaire
-            {
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca.. Hahaha!!! vous les camerounais vous etes toujours comme ca.. Hahaha!!! vous les camerounais vous etes toujours comme ca..",
                 NbreJaime=2,
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 ,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
             new commentaire
             {
                 Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
                 NbreJaime=1,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 ,NomUtilisateur="lelouche",Avatar="avatar.png",},
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
             new commentaire
             {
                 Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca..",
                 NbreJaime=2,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 ,NomUtilisateur="lelouche",Avatar="avatar.png",},
+                },
+            },
+            new commentaire
+            {
+                NomUtilisateur="lelouche",Avatar="avatar.png",
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 ,NomUtilisateur="lelouche",Avatar="avatar.png",},
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
             new commentaire
             {
                 Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
                 NbreJaime=1,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                    new reponse{ Response="Maf",NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png", },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
             new commentaire
             {
                 Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
                 NbreJaime=1,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
-                },
-            },
-            new commentaire
-            {
-                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
-                NbreJaime=1,
-                Reponses= new List<reponse>
-                {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                    new reponse{ Response="Maf",NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png", },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
             new commentaire
             {
                 Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca..",
                 NbreJaime=2,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Reponses= new List<reponse>
+
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 ,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
             new commentaire
             {
                 Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
                 NbreJaime=1,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 ,NomUtilisateur="lelouche",Avatar="avatar.png",},
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
             new commentaire
             {
                 Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca..",
                 NbreJaime=2,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 ,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
             new commentaire
             {
                 Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
                 NbreJaime=1,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 ,NomUtilisateur="lelouche",Avatar="avatar.png",},
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
             new commentaire
             {
                 Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
                 NbreJaime=1,
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 ,NomUtilisateur="lelouche",Avatar="avatar.png",},
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
             new commentaire
             {
+                NomUtilisateur="lelouche",Avatar="avatar.png",
                 Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
                 NbreJaime=1,
                 Reponses= new List<reponse>
                 {
-                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
-                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                    new reponse{ Response="Maf",NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png", },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0,NomUtilisateur="lelouche",Avatar="avatar.png",},
                 },
             },
         };
