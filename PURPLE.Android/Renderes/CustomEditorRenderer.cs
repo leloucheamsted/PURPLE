@@ -18,12 +18,15 @@ namespace PURPLE.Droid.Renderes
 
         public CustomEditorRenderer(Context context) : base(context)
         {
+            AutoPackage = false;
         }
-
+      
+      
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Editor> e)
         {
             base.OnElementChanged(e);
 
+            /*
             if (Control != null)
             {
                 if (initial)
@@ -32,8 +35,11 @@ namespace PURPLE.Droid.Renderes
                     initial = false;
                 }
 
+            }*/
+            if (Control != null)
+            {
+                Control.Background = new ColorDrawable(Android.Graphics.Color.Transparent);
             }
-
             if (e.NewElement != null)
             {
                 var customControl = (ExtendedEditorControl)Element;

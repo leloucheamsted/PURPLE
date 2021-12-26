@@ -9,6 +9,8 @@ namespace PURPLE.Models.AcceuilModel
     {
         #region variables
         private string response; // La reponse au commentaire
+        private string nomUtilisateur; // nom de celui qui reond
+        private string avatar; // lien source la photo de profile
         private int nbreJaimeReponse; // Nombre de reaction de la reponse
         #endregion
 
@@ -24,6 +26,16 @@ namespace PURPLE.Models.AcceuilModel
         {
             get { return response; }
             set { response = value; OnPropertyChanged("Response"); }
+        }
+        public string NomUtilisateur
+        {
+            get {  return nomUtilisateur; }
+            set {  nomUtilisateur = value; OnPropertyChanged("NomUtilisateur"); }
+        }
+        public string Avatar
+        {
+            get { return avatar; }
+            set {  avatar = value; OnPropertyChanged("Avatar"); }
         }
         public int NbreJaimeReponse
         {

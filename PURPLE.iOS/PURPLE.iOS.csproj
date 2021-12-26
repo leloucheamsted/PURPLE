@@ -65,6 +65,9 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderes\CustomEditorRenderer.cs" />
+    <Compile Include="Renderes\CustomEntryRenderer.cs" />
+    <Compile Include="Renderes\XEditorRenderer.cs" />
     <Compile Include="Services\StatutBarStyleManager.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />

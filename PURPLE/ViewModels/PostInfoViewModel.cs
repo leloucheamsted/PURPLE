@@ -90,7 +90,7 @@ namespace PURPLE
             var postQuestionCount = PostInfoQuestion.Count() - 1;
             var postTypeCount = PostInfoType.Count() - 1;
             var postLikeStatutCount = PostInfoLikeStatut.Count() - 1;
-
+           
             for (int i = 0; i < 3; i++)
             {
                 var postsCount = this.Posts.Count;
@@ -105,6 +105,7 @@ namespace PURPLE
                     Quesion = PostInfoQuestion[postQuestionCount - i],
                     TypePost = PostInfoType[postTypeCount - i],
                     LikeStatut = PostInfoLikeStatut[postLikeStatutCount - i],
+                    Listcommentaire=PostInfoComment,
                     BtnPartager = "&#xf064;",
                     BtnLiker = "&#xf004;",
                     BtnComment = "&#xf4b6;",
@@ -163,6 +164,7 @@ namespace PURPLE
             var postQuestionCount = PostInfoQuestion.Count() - 1;
             var postTypeCount = PostInfoType.Count() - 1;
             var postLikeStatutCount = PostInfoLikeStatut.Count() - 1;
+            var postinfoComment= PostInfoComment.Count() - 1;
             for (int i = 0; i < 5; i++)
             {
                 var post = new PostInfo()
@@ -176,6 +178,7 @@ namespace PURPLE
                     Quesion = PostInfoQuestion[postQuestionCount - i],
                     TypePost = PostInfoType[postTypeCount - i],
                     LikeStatut = PostInfoLikeStatut[postLikeStatutCount - i],
+                    Listcommentaire = PostInfoComment ,
                     BtnPartager = "&#xf064;",
                     BtnLiker = "&#xf004;",
                     BtnComment = "&#xf4b6;",
@@ -484,7 +487,7 @@ namespace PURPLE
             true,
             false,
             false,
-        };
+        };  
         internal ObservableCollection<commentaire> PostInfoComment = new ObservableCollection<commentaire>
         {
             new commentaire
@@ -778,6 +781,7 @@ namespace PURPLE
                 },
             },
         };
+        
         #endregion
 
 

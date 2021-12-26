@@ -11,9 +11,9 @@
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" 
              xmlns:pulltoRefresh="clr-namespace:Syncfusion.SfPullToRefresh.XForms;assembly=Syncfusion.SfPullToRefresh.XForms"
              xmlns:customAcceuil="clr-namespace:PURPLE.Controls"
-            
+             xmlns:controls="clr-namespace:PURPLE.Controls"
              BackgroundColor="{StaticResource whiteColor}"
-             xmlns:vm="clr-namespace:PURPLE.ViewModels"
+             xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.Core;assembly=Xamarin.CommunityToolkit"
              x:Name="voirPlus"
              
              ControlTemplate="{DynamicResource TabView1}"
@@ -23,8 +23,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="1"/>
-            <RowDefinition Height="55"/>
+            <RowDefinition Height="0.5"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <!--#region TopBar-->
         <Grid   TranslationY="2" BackgroundColor="{StaticResource whiteColor}"  Margin="0"  VerticalOptions="Center" >
@@ -131,42 +131,33 @@
 
                 <StackLayout Margin="5,0,0,0" Spacing="1.5" Grid.Row="4" Orientation="Horizontal">
                     <Label FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" Text="{Binding NbreComment}"/>
-                    <Label FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" Text="Commentaire"/>
+                    <Label FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" Text="Commentaire(s)"/>
                 </StackLayout>
-                <customAcceuil:FooterCustom x:Name="AddcommentBtn" Grid.Row="5"/>
                 <!--#endregion-->
+                
+                <!--#region Barre de separation-->
+                <StackLayout HeightRequest="1" BackgroundColor="#B6ACAC" Margin="-10,0,-10,0"/>
+                <!--#endregion-->
+                
                 <!--#region  Zone de texte de publication-->
-            </StackLayout>
-        </ScrollView>
-
-        <!--#endregion-->
-        
-        <!--#region Barre de separation-->
-        <StackLayout Grid.Row="2" Spacing="0"  BackgroundColor="#B6ACAC" Margin="-10,0,-10,0"/>
-        <!--#endregion-->
-
-        <!--#region  Zone de saisir du commentaire-->
-            <Grid Grid.Row="3" BackgroundColor="White" RowSpacing="0" Margin="0" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="3"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <!--#region  Avatar de l'utilisateur qui publie-->
-            <Grid Grid.Row="1" Padding="5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-              
-                <syncEffectsView:SfEffectsView Grid.Column="0" x:Name="votre_avatar"
-                                                Margin="10,0,-10,0"
+                
+                <!--#region  commentaire-->
+                <StackLayout BindableLayout.ItemsSource="{Binding Listcommentaire}" Orientation="Vertical">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="35"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <!--#region  Avatar de l'utilisateur qui publie-->
+                                <syncEffectsView:SfEffectsView Margin="5,0,-5,0" Grid.Column="0" x:Name="avatar_profilCommntMan"
                                                    VerticalOptions="Center" HorizontalOptions="Center"
                                                                  RippleColor="{StaticResource SecondColor}"
                                                                  HeightRequest="35"
                                                                  BackgroundColor="{StaticResource SecondColor}"
                                                    CornerRadius="30" >
-                    <sfavatar:SfAvatarView 
+                                    <sfavatar:SfAvatarView 
                                                                ContentType="Initials"
                                                                HorizontalOptions="Center"
                                                                VerticalOptions="Center"
@@ -181,13 +172,109 @@
                                                                CornerRadius="20"   
                                                                BorderColor="White"
                                                                BackgroundColor="{StaticResource ThirdColor}">
-                    </sfavatar:SfAvatarView>
-                </syncEffectsView:SfEffectsView>
-              
-            </Grid>
+                                    </sfavatar:SfAvatarView>
+                                </syncEffectsView:SfEffectsView>
+                                <!--#endregion-->
+
+                                <!--#region  design espace comment-->
+
+                                <StackLayout Grid.Column="1" Margin="5 " >
+                                    <Label Text="Mr Ketch" FontSize="Body" 
+                                   FontAttributes="Bold" FontFamily="MetroBold" 
+                                   
+                                   TextColor="{StaticResource iconeColor}"/>
+                                    <Label Text="C'est le dernier ici einhfekjbekjrnl bkrnkjbrnbrbnk trnkrjbnrktjbnrk fdjbv dfjerj egueriguierb erber"
+                               LineBreakMode="WordWrap"   LineHeight="1" CharacterSpacing="1.5"
+                               
+                               />
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout Orientation="Horizontal" Spacing="3">
+                                            <Label TextColor="{StaticResource iconeColor}" FontAttributes="Bold" Text="10"/>
+                                            <Label TextColor="{StaticResource iconeColor}" FontAttributes="Bold" FontFamily="fal" FontSize="Body" VerticalOptions="Center" Text="&#xf004;"/>
+                                        </StackLayout>
+                                        <StackLayout Margin="15,0,0,0" Orientation="Horizontal">
+                                            <Label TextColor="{StaticResource iconeColor}" FontAttributes="Bold"  Text="repondre"/>
+                                            <Label TextColor="{StaticResource iconeColor}" FontAttributes="Bold" FontFamily="fal" FontSize="Body" VerticalOptions="Center" Text="&#xf4b6;"/>
+                                            <Label TextColor="{StaticResource iconeColor}" FontAttributes="Bold"  Text="20"/>
+
+                                        </StackLayout>
+                                        <StackLayout HorizontalOptions="Fill" WidthRequest="100" BackgroundColor="{StaticResource iconeColor}" Opacity=".3" HeightRequest="0"/>
+                                    </StackLayout>
+                                    <Label Text="Afficher les reponses" Margin="5" TextColor="{StaticResource ThirdColor}"/>
+                                    <StackLayout HorizontalOptions="Fill" WidthRequest="100" BackgroundColor="{StaticResource ThirdColor}" Opacity=".3" HeightRequest="1"/>
+
+                                </StackLayout>
+
+                                <!--#endregion-->
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+                <!--#endregion-->
+            </StackLayout>
+        </ScrollView>
+
+        <!--#endregion-->
+        
+        <!--#region Barre de separation-->
+        <StackLayout Grid.Row="2" Spacing="0"  BackgroundColor="#B6ACAC" Margin="-10,0,-10,0"/>
+        <!--#endregion-->
+
+        <!--#region  Zone de saisir du commentaire-->
+        <Grid Grid.Row="3"  BackgroundColor="White" RowSpacing="0" Margin="0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <!--#region  Avatar de l'utilisateur qui publie-->
+            <syncEffectsView:SfEffectsView Grid.Column="0" x:Name="votre_avatar"
+                                                Margin="10,0,-10,0"
+                                                   VerticalOptions="Center" HorizontalOptions="Center"
+                                                                 RippleColor="{StaticResource SecondColor}"
+                                                                 HeightRequest="35"
+                                                                 BackgroundColor="{StaticResource SecondColor}"
+                                                   CornerRadius="30" >
+                <sfavatar:SfAvatarView 
+                                                               ContentType="Initials"
+                                                               HorizontalOptions="Center"
+                                                               VerticalOptions="Center"
+                                                                ImageSource="{Binding Avatar}"
+                                                               InitialsType="SingleCharacter"
+                                                               AvatarName="Alex"
+                                                                
+                                                               InitialsColor="White" 
+                                                               WidthRequest="50"
+                                                               FontAttributes="Bold"
+                                                               HeightRequest="70"
+                                                               CornerRadius="20"   
+                                                               BorderColor="White"
+                                                               BackgroundColor="{StaticResource ThirdColor}">
+                </sfavatar:SfAvatarView>
+            </syncEffectsView:SfEffectsView>
+            <!--#endregion-->
+            
+            <!--#region  Zone de texte-->
+            <controls:ExtendedEditorControl Grid.Column="1" Margin="5"
+                                            IsExpandable="True"
+                                            FontSize="Medium"
+                                            FontFamily="AvenirNextRegular"
+                                            Placeholder="Ajouter un commentaire.."/>
+            <!--#endregion-->
+            
+            <!--#region  Bouton d'envoi du commentaire-->
+            <Label Padding="5" 
+                   Text="purpler"
+                   Grid.Column="2" 
+                   FontFamily="AvenirNextDemiBold"
+                   HorizontalTextAlignment="Start"
+                   FontSize="Medium"
+                   TextColor="{StaticResource ThirdColor}"
+                   VerticalTextAlignment="Center"/>
             <!--#endregion-->
         </Grid>
-
+        
         <!--#endregion-->
     </Grid>
 </ContentPage>
