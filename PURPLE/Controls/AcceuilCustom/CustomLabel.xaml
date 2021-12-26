@@ -14,11 +14,7 @@
                    FontSize="15"
                    MaxLines="4" LineBreakMode="TailTruncation">
         </Label>
-            <Label x:Name="lblReadMore" Text="...voirplus" FontSize="15" FontFamily="AvenirNextDemiBold" TextColor="{StaticResource iconeColor}" >
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-            </Label.GestureRecognizers>
-        </Label>
+       
         </StackLayout>
   
 

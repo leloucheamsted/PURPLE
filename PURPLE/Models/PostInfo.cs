@@ -33,6 +33,7 @@ namespace PURPLE
         #region constructeur
         public PostInfo()
         {
+            LikeCommand = new Command<object>(LikePublicatioin);
         }
         #endregion
 
@@ -119,6 +120,25 @@ namespace PURPLE
         {
             get { return likeStatut; }
             set {  likeStatut = value; OnPropertyChanged("LikeStatut"); }
+        }
+        #endregion
+
+        #region Proprietes privees
+        private void LikePublicatioin(object obj)
+        {
+            if ((obj as PostInfo).LikeStatut == false)
+            {
+                (obj as PostInfo).LikeStatut = true;
+                (obj as PostInfo).NbreLike += 1;
+                Console.WriteLine("LIKE");
+            }
+            else
+            {
+                (obj as PostInfo).LikeStatut = false;
+                (obj as PostInfo).NbreLike -= 1;
+                Console.WriteLine("Dislike");
+            }
+            Console.WriteLine("Modification de l'etat du like");
         }
         #endregion
 

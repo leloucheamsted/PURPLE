@@ -38,7 +38,7 @@ namespace PURPLE.Controls
             var control = (CustomLabel)bindable;
             if (newValue != null)
             {
-                control.lblReadMore.IsVisible = false;
+                
                 control.customLabel.Text = (string)newValue;
                 if (control.customLabel.Text.Split().Length > 100)
                 {
@@ -65,15 +65,15 @@ namespace PURPLE.Controls
                 if (ShortTextVisible)
                 {
                     customLabel.Text = string.Join(" ", Text.Split().Take(100));
-                    lblReadMore.Text = "...voirplus";
-                    lblReadMore.IsVisible = true;
+                  
+                   
                     //var PopPost = new PostPage();
                     //App.Current.MainPage.Navigation.PushAsync(PopPost, true);
                 }
                 else
                 {
                     customLabel.Text = Text;
-                    lblReadMore.Text = "...voirplus";
+                    
                 }
             }
             

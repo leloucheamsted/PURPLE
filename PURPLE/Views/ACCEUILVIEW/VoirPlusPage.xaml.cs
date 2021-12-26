@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PURPLE.Interface;
+using Rg.Plugins.Popup.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,16 @@ namespace PURPLE.Views.ACCEUILVIEW
         public VoirPlusPage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            var currentNavPage = (Application.Current.MainPage as NavigationPage);
+            var statusBarStyleManager = DependencyService.Get<IStatusBarStyleManager>();
+            currentNavPage.BarBackgroundColor = Color.DarkCyan;
+            statusBarStyleManager.SetLightTheme("#ffffff");
+            statusBarStyleManager.SetNavigationBarColor("#ffffff");
         }
     }
 }

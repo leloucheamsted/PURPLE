@@ -11,5 +11,6 @@
         <Color x:Key="SecondColor">#2673D1</Color>
         <Color x:Key="ThirdColor">#43A3DB</Color>
         <Color x:Key="iconeColor">#000000</Color>
+        <Color x:Key="whiteColor">#ffffff</Color>
     </Application.Resources>
 </Application>

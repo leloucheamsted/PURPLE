@@ -16,7 +16,7 @@
              
              x:Class="PURPLE.Views.Home.AcceuilPage">
     <Grid BackgroundColor="Transparent">
-        <!--#region Home Page nommer hom_page-->
+        <!-- #region Home Page nommer hom_page-->
         <Grid  x:Name="home_page" BackgroundColor="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -293,6 +293,11 @@
                                                     </StackLayout>
                                                     <!--#endregion-->
                                                     <customAcceuil:CustomLabel Grid.Row="3" Text="{Binding VoirPlus}"/>
+                                                    <Label Margin="5,0,0,0"  Text="...voirplus" FontSize="15" FontFamily="AvenirNextDemiBold" TextColor="{StaticResource iconeColor}" >
+                                                        <Label.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.VoirPlusCommand, Source={x:Reference listview}}" CommandParameter="{Binding .}"    />
+                                                        </Label.GestureRecognizers>
+                                                    </Label>
                                                     <StackLayout Margin="5,0,0,0" Spacing="1.5" Grid.Row="4" Orientation="Horizontal">
                                                             <Label FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" Text="{Binding NbreComment}"/>
                                                             <Label FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" Text="Commentaire"/>

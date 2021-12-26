@@ -10,7 +10,7 @@ namespace PURPLE.Models.AcceuilModel
         #region variables
         private string comment; // Le commentaire
         private int nbrejaime; // Nombre de jaime du commentaire
-        private List<string> reponses; // Liste de reponse q'ua recue le commentaire
+        private List<reponse> reponses; // Liste de reponse q'ua recue le commentaire
         private int nbreReponses; // Nombre de reponse qu'a recue le commentaire
         #endregion
 
@@ -32,7 +32,7 @@ namespace PURPLE.Models.AcceuilModel
             get { return nbreReponses; }
             set { nbreReponses = value; OnPropertyChanged("NbreReponses"); }
         }
-        public List<string> Reponses
+        public List<reponse> Reponses
         {
             get { return reponses; }
             set { reponses = value; OnPropertyChanged("Reponses"); }

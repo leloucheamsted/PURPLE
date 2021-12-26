@@ -128,17 +128,14 @@ namespace PURPLE
             App.Current.MainPage.Navigation.PushAsync(readMoreContentPage);
         }
 
-        private  void LikePublicatioin(object obj)
+        private void LikePublicatioin(object obj)
         {
-           
-           
-            
-            if((obj as PostInfo).LikeStatut == false)
+            if ((obj as PostInfo).LikeStatut == false)
             {
                 (obj as PostInfo).LikeStatut = true;
                 (obj as PostInfo).NbreLike += 1;
                 Console.WriteLine("LIKE");
-            }else
+            } else
             {
                 (obj as PostInfo).LikeStatut = false;
                 (obj as PostInfo).NbreLike -= 1;
@@ -178,7 +175,7 @@ namespace PURPLE
                     Videos = PostInfoVideo[postVideoCount - i],
                     Quesion = PostInfoQuestion[postQuestionCount - i],
                     TypePost = PostInfoType[postTypeCount - i],
-                    LikeStatut=PostInfoLikeStatut[postLikeStatutCount - i],
+                    LikeStatut = PostInfoLikeStatut[postLikeStatutCount - i],
                     BtnPartager = "&#xf064;",
                     BtnLiker = "&#xf004;",
                     BtnComment = "&#xf4b6;",
@@ -222,7 +219,7 @@ namespace PURPLE
         };
         #endregion
 
-    #region PostsInfo
+        #region PostsInfo
         internal string[] PostsInfoName = new string[]
         {
             "Lelouche Amsted",
@@ -456,7 +453,7 @@ namespace PURPLE
         2,
         2,
         };
-        internal bool[] PostInfoLikeStatut= new bool[] {
+        internal bool[] PostInfoLikeStatut = new bool[] {
             true,
             false,
             true,
@@ -488,7 +485,299 @@ namespace PURPLE
             false,
             false,
         };
-
+        internal ObservableCollection<commentaire> PostInfoComment = new ObservableCollection<commentaire>
+        {
+            new commentaire
+            {
+                Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca..",
+                NbreJaime=2,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca..",
+                NbreJaime=2,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca..",
+                NbreJaime=2,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca..",
+                NbreJaime=2,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca..",
+                NbreJaime=2,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca..",
+                NbreJaime=2,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca.. Hahaha!!! vous les camerounais vous etes toujours comme ca.. Hahaha!!! vous les camerounais vous etes toujours comme ca..",
+                NbreJaime=2,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca..",
+                NbreJaime=2,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca..",
+                NbreJaime=2,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Hahaha!!! vous les camerounais vous etes toujours comme ca..",
+                NbreJaime=2,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                },
+            },
+            new commentaire
+            {
+                Comment= "Demande la meme chose aux gens qui t'on amener ici\n les bizzares appres vous vous plsignes..",
+                NbreJaime=1,
+                Reponses= new List<reponse>
+                {
+                    new reponse{ Response="Maf",NbreJaimeReponse=0 },
+                    new reponse{Response="bIG lOL", NbreJaimeReponse=0},
+                },
+            },
+        };
         #endregion
 
 
