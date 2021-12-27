@@ -1,18 +1,23 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="Red"
+             HorizontalOptions="Center"
+             VerticalOptions="Center"
+             
              x:Class="PURPLE.Templates.PostOneImageView">
+             
     <ContentPresenter/>
-    <StackLayout   BindableLayout.ItemsSource="{Binding Image}">
+    <StackLayout  HorizontalOptions="StartAndExpand" x:Name="stack" Margin="0,-6,0,0" VerticalOptions="FillAndExpand"  BindableLayout.ItemsSource="{Binding Image}">
         <BindableLayout.ItemTemplate>
             <DataTemplate>
                 <Image x:Name="ContenuPost" 
-           Grid.Row="1"
+                  
            Source="{Binding Img_name}" 
-           Visual="Material" 
-           Aspect="Fill"/>
+           
+          />
             </DataTemplate>
-        </BindableLayout.ItemTemplate> 
-   
+        </BindableLayout.ItemTemplate>
+        <ListView ></ListView>
     </StackLayout>
 </StackLayout>

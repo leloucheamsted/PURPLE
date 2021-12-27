@@ -209,9 +209,18 @@
                                   
                                     <syncfusion:SfListView.ItemTemplate>
                                         <DataTemplate>
-                                            <cards:SfCardView  HasShadow="True" CornerRadius="5" Margin="5,5,10,5">
+                                            <Frame   HasShadow="True" CornerRadius="5" Margin="5">
 
-                                                <StackLayout   Padding="0" >
+                                                <Grid   Padding="0" Margin="-15,-15,-15,-5" >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="45"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="50"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="30"/>
+                                                        <RowDefinition Height="30"/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
                                                     <!--#region TopBar-->
                                                         <Grid  TranslationY="2"  Margin="0"  VerticalOptions="Center" >
                                                             <Grid.ColumnDefinitions>
@@ -259,12 +268,10 @@
                                                             <!--#endregion-->
                                                         </Grid>
                                                         <!--#endregion-->
-                                                        <!--#region  Contenu du Post-->
-                                                    <customAcceuil:PostViewTemplate MinimumHeightRequest="300">
-                                                        
-                                                    </customAcceuil:PostViewTemplate>
+                                                    <!--#region  Contenu du Post https://aka.ms/campus  -->
+                                                    <customAcceuil:PostViewTemplate Grid.Row="1"/>
                                                     <!--#region  zone de reaction-->
-                                                    <StackLayout Grid.Row="2">
+                                                    <StackLayout Grid.Row="2" >
                                                         <StackLayout Margin="05,0,0,0" Orientation="Horizontal">
                                                             <syncEffectsView:SfEffectsView WidthRequest="33"  TouchUpCommand="{Binding Path=BindingContext.LikeCommand, Source={x:Reference listview}}" TouchUpCommandParameter="{Binding .}"  x:Name="Like_content" HeightRequest="33"  CornerRadius="20" RippleColor="Red">
                                                                 <Label x:Name="like_icone" Text="&#xf004;" HorizontalOptions="Center"
@@ -286,28 +293,87 @@
                                                             </syncEffectsView:SfEffectsView>
                                                            
                                                         </StackLayout>
-                                                        <StackLayout Margin="5,0,0,0" Spacing="1.5" Grid.Row="4" Orientation="Horizontal">
+                                                        <StackLayout Margin="5,0,0,0" Spacing="1.5" Orientation="Horizontal">
                                                             <Label FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" Text="{Binding NbreLike}"/>
                                                             <Label FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" Text="J'aime(s)"/>
                                                         </StackLayout>
                                                     </StackLayout>
                                                     <!--#endregion-->
+                                                    
                                                     <customAcceuil:CustomLabel Grid.Row="3" Text="{Binding VoirPlus}"/>
-                                                    <Label Margin="5,0,0,0"  Text="...voirplus" FontSize="15" FontFamily="AvenirNextDemiBold" TextColor="{StaticResource iconeColor}" >
+                                                    <Label Margin="5,0,0,0"  Grid.Row="4"  Text="...voirplus" FontSize="15" FontFamily="AvenirNextDemiBold" TextColor="{StaticResource iconeColor}" >
                                                         <Label.GestureRecognizers>
                                                             <TapGestureRecognizer Command="{Binding Path=BindingContext.VoirPlusCommand, Source={x:Reference listview}}" CommandParameter="{Binding .}"    />
                                                         </Label.GestureRecognizers>
                                                     </Label>
-                                                    <StackLayout Margin="5,0,0,0" Spacing="1.5" Grid.Row="4" Orientation="Horizontal">
+                                                    <StackLayout Margin="5,0,0,0" Grid.Row="5" Spacing="1.5"  Orientation="Horizontal">
                                                             <Label FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" Text="{Binding NbreComment}"/>
                                                             <Label FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" Text="Commentaire"/>
                                                         </StackLayout>
-                                                        <customAcceuil:FooterCustom x:Name="AddcommentBtn" Grid.Row="5"/>
-                                                        <!--#endregion-->
-                                                        <!--#region  Zone de texte de publication-->
-                                                    </StackLayout>
+
+                                                    <!--#region  Zone de saisir du commentaire-->
+                                                    <Grid  Grid.Row="6" Margin="10,0,10,0"  BackgroundColor="White" RowSpacing="0"  >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="35"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="auto"/>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <!--#region  Avatar de l'utilisateur qui publie-->
+                                                        <syncEffectsView:SfEffectsView Grid.Column="0" x:Name="votre_avatar"
                                                 
-                                            </cards:SfCardView>
+                                                   VerticalOptions="Center" HorizontalOptions="Center"
+                                                                 RippleColor="{StaticResource SecondColor}"
+                                                                 HeightRequest="35"
+                                                                 BackgroundColor="{StaticResource SecondColor}"
+                                                   CornerRadius="30" >
+                                                            <sfavatar:SfAvatarView 
+                                                               ContentType="Initials"
+                                                               HorizontalOptions="Center"
+                                                               VerticalOptions="Center"
+                                                                ImageSource="{Binding Avatar}"
+                                                               InitialsType="SingleCharacter"
+                                                               AvatarName="Alex"
+                                                                
+                                                               InitialsColor="White" 
+                                                               WidthRequest="50"
+                                                               FontAttributes="Bold"
+                                                               HeightRequest="70"
+                                                               CornerRadius="20"   
+                                                               BorderColor="White"
+                                                               BackgroundColor="{StaticResource ThirdColor}">
+                                                            </sfavatar:SfAvatarView>
+                                                        </syncEffectsView:SfEffectsView>
+                                                        <!--#endregion-->
+
+                                                        <!--#region  Zone de texte-->
+                                                        <customAcceuil:ExtendedEditorControl Grid.Column="1" Margin="5"
+                                            IsExpandable="True"
+                                            FontSize="Medium"
+                                            FontFamily="AvenirNextRegular"
+                                            Placeholder="Ajouter un commentaire.."/>
+                                                        <!--#endregion-->
+
+                                                        <!--#region  Bouton d'envoi du commentaire-->
+                                                        <Label Padding="5" 
+                   Text="purpler"
+                   Grid.Column="2" 
+                   FontFamily="AvenirNextDemiBold"
+                   HorizontalTextAlignment="Start"
+                   FontSize="Medium"
+                   TextColor="{StaticResource ThirdColor}"
+                   VerticalTextAlignment="Center"/>
+                                                        <!--#endregion-->
+                                                    </Grid>
+
+                                                    <!--#endregion-->
+                                                    
+                                                    <!--#endregion-->
+                                                    
+                                                        <!--#region  Zone de texte de publication-->
+                                                    </Grid>
+                                                
+                                            </Frame>
                                         </DataTemplate>
                                     </syncfusion:SfListView.ItemTemplate>
                                 </syncfusion:SfListView>

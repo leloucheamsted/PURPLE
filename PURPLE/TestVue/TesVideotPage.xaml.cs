@@ -15,19 +15,12 @@ namespace PURPLE.TestVue
         public TesVideotPage()
         {
             InitializeComponent();
-            if(video_player.CurrentState == MediaElementState.Playing)
-            {
-                video_player.Stop();
-            }
+           
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if (video_player.CurrentState == MediaElementState.Playing)
-            {
-                video_player.Stop();
-            } 
-
+          
         }
     }
 }

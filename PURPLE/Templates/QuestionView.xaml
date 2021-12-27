@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PURPLE.Templates.QuestionView">
     <ContentPresenter/>
-    <Grid  Margin="0"  MinimumHeightRequest="200"     
-                 BackgroundColor="Blue"
+    <Grid  Margin="0"  HeightRequest="200"     
+                 BackgroundColor="{StaticResource ThirdColor}"
                  VerticalOptions="FillAndExpand"  >
-        <Label Text="{Binding Quesion}" TextColor="Black"
+        <Label Text="{Binding Quesion}" TextColor="{StaticResource whiteColor}"
                HorizontalOptions="Center"
               LineHeight="5" CharacterSpacing="2"
                LineBreakMode="WordWrap"

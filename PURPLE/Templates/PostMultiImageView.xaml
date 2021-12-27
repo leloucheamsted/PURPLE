@@ -1,25 +1,53 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <StackLayout  xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
       xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
       xmlns:carousel="clr-namespace:Syncfusion.SfCarousel.XForms;assembly=Syncfusion.SfCarousel.XForms"
-             HeightRequest="400"
+       
+      xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
       x:Class="PURPLE.Templates.PostMultiImageView">
-    <StackLayout.Resources>
-        <ResourceDictionary>
-            <DataTemplate x:Key="itemTemplate">
-                <Image Source="{Binding Img_name}" 
-                       Aspect="AspectFill" />
+    <!--
+         <carousel:SfCarousel ViewMode="Linear"  BackgroundColor="{StaticResource backgroundColorPrimary}"  ItemsSource="{Binding Image}">
+        <carousel:SfCarousel.ItemTemplate>
+            <DataTemplate>
+                <ContentView>
+                    <Image  Aspect="AspectFill" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="https://aka.ms/campus.jpg" 
+                       />
+                </ContentView>
             </DataTemplate>
-        </ResourceDictionary>
-    </StackLayout.Resources>
-    <CarouselView ItemsSource="{Binding Image}" IndicatorView="indicatorView" ItemTemplate="{StaticResource itemTemplate}">
-        
-    </CarouselView>
-    <IndicatorView x:Name="indicatorView"
+        </carousel:SfCarousel.ItemTemplate>
+    </carousel:SfCarousel>
+    
+    <StackLayout  HorizontalOptions="StartAndExpand" Orientation="Horizontal" Margin="0,6,0,0" VerticalOptions="FillAndExpand"  BindableLayout.ItemsSource="{Binding Image}">
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <Image WidthRequest="350" x:Name="ContenuPost" 
+                  
+           Source="{Binding Img_name}" 
+           
+          />
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+
+    </StackLayout>
+
+    -->
+    <carousel:SfCarousel ViewMode="Linear"  BackgroundColor="{StaticResource backgroundColorPrimary}"  ItemsSource="{Binding Image}">
+        <carousel:SfCarousel.ItemTemplate>
+            <DataTemplate>
+                <ContentView>
+                    <Image  Aspect="AspectFill" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ava.jpg" 
+                       />
+                </ContentView>
+            </DataTemplate>
+        </carousel:SfCarousel.ItemTemplate>
+    </carousel:SfCarousel>
+
+    <IndicatorView Grid.Row="1"  x:Name="indicatorView"
                    IndicatorColor="LightGray"
                    IndicatorsShape="Circle"
                    
                    SelectedIndicatorColor="{StaticResource SecondColor}"
-                   HorizontalOptions="Center" />
+                   HorizontalOptions="Center"/>
+                  
 </StackLayout>
