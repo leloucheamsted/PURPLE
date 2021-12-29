@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rg:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:rg="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+             NavigationPage.HasNavigationBar="False"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+              
+             x:Class="PURPLE.Views.Home.PopupPost">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+            </Grid.GestureRecognizers>
+        </Grid>
+      
+        <!--#region  Popup Post Menu nommer PopupPost et de bouton de control closeBtnPost-->
+        <Grid Grid.Row="1" 
+                          
+              BackgroundColor="{StaticResource backgroundColorPrimary}"
+              HeightRequest="350" 
+              VerticalOptions="End"
+              >
+          
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="auto"/>
+
+                </Grid.RowDefinitions>
+
+                <!-- close bouton -->
+                <Grid Margin="140,5,140,0">
+                   
+                    <StackLayout HeightRequest="3" BackgroundColor="{StaticResource btnColor}" VerticalOptions="Start"/>
+                </Grid>
+                <ScrollView Grid.Row="1" Margin="10" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+
+                <StackLayout>
+                    <Label Text="Qu'aimeriez vous partarger ?" FontSize="Body" TextTransform="Uppercase"  TextColor="{StaticResource btnColor}" FontFamily="MetroBold" FontAttributes="Bold"/>
+
+                    <!-- Reussite-->
+                    <syncEffectsView:SfEffectsView x:Name="reussite_postBtn" Margin="0" HeightRequest="50" RippleColor="{StaticResource SecondColor}">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="Transparent">
+                            <Label Text="&#xf2f7;" FontFamily="fas" FontSize="30" VerticalOptions="Center" TextColor="Green"/>
+                            <Label Text="Une Reussite" FontFamily="MetroLight" VerticalOptions="Center" TextColor="{StaticResource btnColor}" FontSize="Large"/>
+                        </StackLayout>
+                    </syncEffectsView:SfEffectsView>
+
+                    <!-- idee Bouton-->
+                    <syncEffectsView:SfEffectsView x:Name="idee_postBtn" Margin="0" HeightRequest="50" RippleColor="{StaticResource SecondColor}">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="Transparent">
+                            <Label Text="&#xf672;" FontFamily="fas" FontSize="30" VerticalOptions="Center" TextColor="Orange"/>
+                            <Label Text="Une idée" FontFamily="MetroLight" VerticalOptions="Center" TextColor="{StaticResource btnColor}" FontSize="Large"/>
+                        </StackLayout>
+                    </syncEffectsView:SfEffectsView>
+
+                    <!-- Post-->
+                    <syncEffectsView:SfEffectsView x:Name="post_postBtn" Margin="0" HeightRequest="50" RippleColor="{StaticResource SecondColor}" >
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="Transparent">
+                            <Label Text="&#xf8c4;" FontFamily="fas" FontSize="30" VerticalOptions="Center" TextColor="{StaticResource SecondColor}"/>
+                            <Label Text="Un Poste" FontFamily="MetroLight" VerticalOptions="Center" TextColor="{StaticResource btnColor}" FontSize="Large"/>
+                        </StackLayout>
+                    </syncEffectsView:SfEffectsView>
+
+                    <!-- question-->
+                    <syncEffectsView:SfEffectsView x:Name="question_postBtn" Margin="0,10,0,0" HeightRequest="50" RippleColor="{StaticResource SecondColor}">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="Transparent">
+                            <Label Text="&#xf059;" FontFamily="fas" FontSize="30" VerticalOptions="Center" TextColor="#C14110"/>
+                            <Label Text="Une question" FontFamily="MetroLight" VerticalOptions="Center" TextColor="{StaticResource btnColor}" FontSize="Large"/>
+                        </StackLayout>
+                    </syncEffectsView:SfEffectsView>
+                </StackLayout>
+
+            </ScrollView>
+            
+        </Grid>
+        <!--#endregion-->
+    </Grid>
+</rg:PopupPage>

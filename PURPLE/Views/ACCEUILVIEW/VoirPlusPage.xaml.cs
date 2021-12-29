@@ -1,4 +1,5 @@
 ﻿using PURPLE.Interface;
+using PURPLE.Models.AcceuilModel;
 using Rg.Plugins.Popup.Pages;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,12 @@ namespace PURPLE.Views.ACCEUILVIEW
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VoirPlusPage : ContentPage
     {
-        public VoirPlusPage()
+        public  VoirPlusPage(PostInfo obj)
         {
             InitializeComponent();
+            BindingContext = obj;
+            
+            
         }
 
         protected override void OnAppearing()
@@ -27,6 +31,24 @@ namespace PURPLE.Views.ACCEUILVIEW
             currentNavPage.BarBackgroundColor = Color.DarkCyan;
             statusBarStyleManager.SetLightTheme("#ffffff");
             statusBarStyleManager.SetNavigationBarColor("#ffffff");
+
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            var obj = ((StackLayout)sender).BindingContext as commentaire;
+            string nom = obj.NomUtilisateur;
+            Entrer_du_commentaire.Text = "@"+ nom + " ";
+            Entrer_du_commentaire.Focus();
+
+        }
+
+        private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
+        {
+            var obj = ((Label)sender).BindingContext as reponse;
+            string nom = obj.NomUtilisateur;
+            Entrer_du_commentaire.Text = "@" + nom + " ";
+            Entrer_du_commentaire.Focus();
         }
     }
 }

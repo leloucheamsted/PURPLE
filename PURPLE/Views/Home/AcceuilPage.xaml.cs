@@ -12,6 +12,8 @@ using Xamarin.Forms.Xaml;
 using Syncfusion.ListView.XForms;
 using Syncfusion.GridCommon.ScrollAxis;
 using Syncfusion.ListView.XForms.Control.Helpers;
+using Syncfusion.XForms.EffectsView;
+using PURPLE.Views.ACCEUILVIEW;
 
 namespace PURPLE.Views.Home
 {
@@ -47,6 +49,14 @@ namespace PURPLE.Views.Home
             statusBarStyleManager.SetNavigationBarColor("#DCE8F6");
             await NavEvent(); 
 
+        }
+
+        private async void  SfEffectsView_TouchUp(object sender, EventArgs e)
+        {
+            
+            var obj = ((SfEffectsView)sender).BindingContext as PostInfo;
+            var readMoreContentPage = new VoirPlusPage(obj);
+           await App.Current.MainPage.Navigation.PushAsync(readMoreContentPage);
         }
 
         #region Vue
@@ -268,51 +278,11 @@ namespace PURPLE.Views.Home
         }
         #endregion
 
-
-        #region Popup Menu de Post
-        /*------- fonction de changement d'etat de la home page*/
-        private async Task  homeChange(Grid home ,double opa,Color color,bool isenable)
+        private async void BtnPlusOnglet_AnimationCompleted(object sender, EventArgs e)
         {
-            home.Opacity = opa;
-            home.BackgroundColor = color;
-            BtnPlusOnglet.IsEnabled = isenable;
+            var readMoreContentPage = new PopupPost();
+          await  App.Current.MainPage.Navigation.PushPopupAsync(readMoreContentPage);
         }
-        private void BtnPlusOnglet_AnimationCompleted(object sender, EventArgs e)
-        {
-            // si le popup est ferme
-            Device.InvokeOnMainThreadAsync(async () =>
-            {
-                await Task.WhenAll(
-                PopupPost.TranslateTo(0, 0, 200),
-               _= homeChange(home_page, 0.4, Color.Black, false)
-               
-                );
-            });
-
-            ispop = true; // signaler pour fermer
-        }
-            private void closeBtnPopup_AnimationCompleted(object sender, EventArgs e)
-            {
-            Device.InvokeOnMainThreadAsync(async () =>
-            {
-                await Task.WhenAll(
-                    _ = homeChange(home_page, 1, Color.White, true),
-                    PopupPost.TranslateTo(0, 350, 200)
-                   
-                    );
-            });
-             ispop = false; // active pour signaler qu'il est ouvert
-            }
-        /*
-        var PopPost = new PostPage();
-        App.Current.MainPage.Navigation.PushPopupAsync(PopPost,true);
-
-
-         App.Current.MainPage.Navigation.PopPopupAsync(true);
-          */
-
-        #endregion
-
         #endregion
 
         #region ListView
@@ -351,8 +321,14 @@ namespace PURPLE.Views.Home
                 DisplayAlert("ScrollState", "Scrolling has stopped", "OK");
             }
         }
-        
+
+
         #endregion
 
+        private async void Btn_hashtag_AnimationCompleted(object sender, EventArgs e)
+        {
+            var hastagsPage = new HastagsPage();
+            await App.Current.MainPage.Navigation.PushAsync(hastagsPage);
+        }
     }
 }

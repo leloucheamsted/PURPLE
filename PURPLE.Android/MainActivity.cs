@@ -17,6 +17,7 @@ namespace PURPLE.Droid
             Xam.Forms.VideoPlayer.Android.VideoPlayerRenderer.Init();
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Rg.Plugins.Popup.Popup.Init(this);
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             CarouselViewRenderer.Init();
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

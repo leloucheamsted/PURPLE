@@ -26,7 +26,7 @@ namespace PURPLE
         private int nbrePartage; // nombre de partage
         private int typePost; // type de post(Image,texte,video)
         private bool likeStatut; // Le poster est liker ou pas 
-        private ObservableCollection<commentaire> listcommentaire; // Liste de commentaires
+        private List<commentaire> listcommentaire; // Liste de commentaires
         #endregion
 
         public Command<object> LikeCommand { private set; get; }
@@ -40,7 +40,7 @@ namespace PURPLE
        
         #region Proprietes
 
-        public ObservableCollection<commentaire> Listcommentaire
+        public List<commentaire> Listcommentaire
         {
             get { return listcommentaire; }
             set {  listcommentaire = value; OnPropertyChanged("ListCommentaire"); }

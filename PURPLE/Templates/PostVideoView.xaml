@@ -3,9 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
              xmlns:videoplayer="clr-namespace:Octane.Xamarin.Forms.VideoPlayer;assembly=Octane.Xamarin.Forms.VideoPlayer"
+       BackgroundColor="Red"
+      Margin="-5,0,-5,0"
              x:Class="PURPLE.Templates.PostVideoView">
-    <Grid BackgroundColor="Red">
-        <Label Text="VideoView"/>
-
+    <Grid>
+        <Label Text="OnveVideoView"/>
+        <!--
+        
+        
+        <videoplayer:VideoPlayer Source="https://sec.ch9.ms/ch9/5d93/a1eab4bf-3288-4faf-81c4-294402a85d93/XamarinShow_mid.mp4"
+               AutoPlay="True" DisplayControls="False" Volume="0" />
+        -->
     </Grid>
-    </Grid>
+  
+</Grid>

@@ -3,9 +3,12 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
       xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
       xmlns:carousel="clr-namespace:Syncfusion.SfCarousel.XForms;assembly=Syncfusion.SfCarousel.XForms"
-       
+      xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
       xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+        Margin="-5,0,-5,0"  
+              
       x:Class="PURPLE.Templates.PostMultiImageView">
+ 
     <!--
          <carousel:SfCarousel ViewMode="Linear"  BackgroundColor="{StaticResource backgroundColorPrimary}"  ItemsSource="{Binding Image}">
         <carousel:SfCarousel.ItemTemplate>
@@ -32,17 +35,21 @@
     </StackLayout>
 
     -->
-    <carousel:SfCarousel ViewMode="Linear"  BackgroundColor="{StaticResource backgroundColorPrimary}"  ItemsSource="{Binding Image}">
-        <carousel:SfCarousel.ItemTemplate>
+    <CarouselView ItemsSource="{Binding Image}" HeightRequest="460"
+                  IndicatorView="indicatorView">
+        <CarouselView.ItemTemplate>
             <DataTemplate>
-                <ContentView>
-                    <Image  Aspect="AspectFill" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ava.jpg" 
-                       />
-                </ContentView>
+                <ffimageloading:CachedImage CacheDuration="7" LoadingPlaceholder="Loading..." 
+                                            HorizontalOptions="Start" 
+                                            DownsampleToViewSize="True" 
+                                            BackgroundColor="{StaticResource whiteColor}"
+                                            Source="avatar.jpg">
+                
+                    </ffimageloading:CachedImage>
             </DataTemplate>
-        </carousel:SfCarousel.ItemTemplate>
-    </carousel:SfCarousel>
-
+        </CarouselView.ItemTemplate>
+    </CarouselView>
+    
     <IndicatorView Grid.Row="1"  x:Name="indicatorView"
                    IndicatorColor="LightGray"
                    IndicatorsShape="Circle"

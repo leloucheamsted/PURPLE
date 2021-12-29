@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:PURPLE"
+             xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:control="clr-namespace:PURPLE.Controls"
+             x:Class="PURPLE.Views.HastagsPage">
+    <ContentPage.BindingContext>
+        <vm:PostInfoViewModel/>
+    </ContentPage.BindingContext>
+    <ScrollView VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
+        <StackLayout Padding="10" BackgroundColor="{StaticResource whiteColor}">
+
+            <!--#region  TopBar Navigation-->
+            <StackLayout Orientation="Horizontal" HeightRequest="50" >
+                <syncEffectsView:SfEffectsView x:Name="BackButton" HorizontalOptions="StartAndExpand" TouchUpEffects="Ripple" RippleColor="{StaticResource ThirdColor}" CornerRadius="20"  HeightRequest="40" WidthRequest="40" VerticalOptions="CenterAndExpand" AnimationCompleted="BackButton_AnimationCompleted">
+                    <Label Text="&#xf00d;" FontFamily="fal" FontSize="Title" TextColor="{StaticResource SecondColor}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </syncEffectsView:SfEffectsView>
+                <buttons:SfButton x:Name="ValidButtton" HorizontalOptions="EndAndExpand"  CornerRadius="15" WidthRequest="100" HeightRequest="30"  BackgroundColor="{StaticResource ThirdColor}" VerticalOptions="CenterAndExpand">
+                    <Label Text="Terminer" FontFamily="MetroMedium" FontSize="Body" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="{StaticResource whiteColor}"  />
+                </buttons:SfButton>
+            </StackLayout>
+            <!--#endregion-->
+
+            <!--#region  Barre de recherche-->
+            <Label Text="Ajouter des #Hashtags"
+               FontSize="Large"
+               FontFamily="MetroLight"
+               TextColor="{StaticResource iconeColor}"
+               />
+            <Frame HasShadow="False" CornerRadius="10"  BackgroundColor="{StaticResource backgroundColorPrimary}" Margin="0" Padding="0">
+                <control:CustomEntry CharacterSpacing="1" PlaceholderColor="{StaticResource iconeColor}" Keyboard="Default"  Placeholder="Rechercher" FontFamily="MetroLight"/>
+            </Frame>
+            <!--#endregion-->
+
+            <!--#region  FlexLayout Hastags-->
+            <FlexLayout Margin="0,0,0,30" BindableLayout.ItemsSource="{Binding HastagsList}"  Direction="Row" Wrap="Wrap" AlignItems="Start"  JustifyContent="Start">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <syncEffectsView:SfEffectsView x:Name="BackButton" Margin="5" Padding="5" HorizontalOptions="StartAndExpand" BackgroundColor="{StaticResource backgroundColorPrimary}" TouchUpEffects="Ripple" RippleColor="{StaticResource btnColor}" CornerRadius="20"   VerticalOptions="CenterAndExpand">
+                            <Label Text="{Binding Hashtag_name}" FontFamily="MetroRegular" FontSize="18" TextColor="{StaticResource iconeColor}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </syncEffectsView:SfEffectsView>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+            <!--#endregion-->
+
+            <Label Text="Recommander par Purple"
+               FontSize="Large"
+               FontFamily="MetroBold"
+               TextColor="{StaticResource iconeColor}"
+               />
+            <!--#region  FlexLayout Hastags-->
+            <FlexLayout BindableLayout.ItemsSource="{Binding HastagsList}"  Direction="Row" Wrap="Wrap" AlignItems="Start"  JustifyContent="Start">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <syncEffectsView:SfEffectsView x:Name="BackButton" Margin="5" Padding="5" HorizontalOptions="StartAndExpand" BackgroundColor="{StaticResource backgroundColorPrimary}" TouchUpEffects="Ripple" RippleColor="{StaticResource btnColor}" CornerRadius="20"   VerticalOptions="CenterAndExpand">
+                            <Label Text="{Binding Hashtag_name}" FontFamily="MetroRegular" FontSize="18" TextColor="{StaticResource iconeColor}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </syncEffectsView:SfEffectsView>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+            <!--#endregion-->
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

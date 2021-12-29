@@ -13,13 +13,12 @@
              xmlns:customAcceuil="clr-namespace:PURPLE.Controls"
              xmlns:controls="clr-namespace:PURPLE.Controls"
              BackgroundColor="{StaticResource whiteColor}"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    x:Name="voirPlus"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" xmlns:purple="clr-namespace:PURPLE"    x:Name="voirPlus"
              
              ControlTemplate="{DynamicResource TabView1}"
              NavigationPage.HasNavigationBar="False" 
              x:Class="PURPLE.Views.ACCEUILVIEW.VoirPlusPage">
-    <Grid  RowSpacing="0" >
+    <Grid  RowSpacing="0" x:Name="grid" >
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
@@ -79,7 +78,7 @@
         <!--#endregion-->
         
        <!--#region contenue -->
-        <ScrollView  Padding="5" Grid.Row="1" BindableLayout.ItemsSource="{Binding  obj}" VerticalScrollBarVisibility="Never">
+        <ScrollView  Padding="5" Grid.Row="1"  VerticalScrollBarVisibility="Never">
             <StackLayout    >
 
                 <!--#region  Contenu du Post-->
@@ -137,13 +136,13 @@
                 <!--#endregion-->
                 
                 <!--#region Barre de separation-->
-                <StackLayout HeightRequest="1" BackgroundColor="#B6ACAC" Margin="-10,0,-10,0"/>
+                <StackLayout HeightRequest="1" BackgroundColor="{StaticResource SecondColor}" Margin="-10,0,-10,0"/>
                 <!--#endregion-->
                 
                 <!--#region  Zone de texte de publication-->
                 
                 <!--#region  commentaire-->
-                <StackLayout BindableLayout.ItemsSource="{Binding Listcommentaire}" Orientation="Vertical">
+                <StackLayout  BindableLayout.ItemsSource="{Binding Listcommentaire}" Orientation="Vertical">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <Grid>
@@ -176,39 +175,44 @@
                                 </syncEffectsView:SfEffectsView>
                                 <!--#endregion-->
 
+                               
                                 <!--#region  design espace comment-->
+                                
+                                  <StackLayout Grid.Column="1" Margin="5 " >
+                                    <Frame HasShadow="False" CornerRadius="5"  BackgroundColor="#D7D7D7">
+                                        <StackLayout Margin="-10" BackgroundColor="#D7D7D7">
+                                            <!-- Nom du commentataire-->
 
-                                <StackLayout Grid.Column="1" Margin="5 " >
-                                    <!-- Nom du commentataire-->
-                                    <Label Text="{Binding NomUtilisateur}" FontSize="Body" 
+                                            <Label Text="{Binding NomUtilisateur}" FontSize="Body" 
                                    FontAttributes="Bold" FontFamily="MetroBold" 
                                    
                                    TextColor="{StaticResource iconeColor}"/>
-                                    <!-- commnetaire-->
-                                    <Label Text="{Binding Comment}"
+                                            <!-- commnetaire-->
+                                            <Label Text="{Binding Comment}"
                                LineBreakMode="WordWrap"   LineHeight="1" CharacterSpacing="1.5"
                                
                                />
-                                    <StackLayout Orientation="Horizontal">
-                                        <StackLayout Orientation="Horizontal" Spacing="3">
-                                            <Label TextColor="{StaticResource iconeColor}" FontAttributes="Bold" Text="{Binding NbreJaime}"/>
-                                            <Label TextColor="{StaticResource iconeColor}" FontAttributes="Bold" FontFamily="fal" FontSize="Body" VerticalOptions="Center" Text="&#xf004;"/>
-                                        </StackLayout>
-                                        
-                                        <!--  bouton pour repondre-->
-                                        <StackLayout Margin="15,0,0,5" Orientation="Horizontal">
-                                            <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer  />
-                                            </StackLayout.GestureRecognizers>
-                                            <Label TextColor="{StaticResource iconeColor}" FontAttributes="Bold"  Text="repondre"/>
-                                            <Label TextColor="{StaticResource iconeColor}" FontAttributes="Bold" FontFamily="fal" FontSize="Body" VerticalOptions="Center" Text="&#xf4b6;"/>
-                                            <Label TextColor="{StaticResource iconeColor}" FontAttributes="Bold"  Text="{Binding NbreReponses}"/>
+                                            <StackLayout Orientation="Horizontal">
+                                                <StackLayout Orientation="Horizontal" Spacing="3">
+                                                    <Label TextColor="{StaticResource iconeColor}" FontAttributes="Bold" Text="{Binding NbreJaime}"/>
+                                                    <Label TextColor="{StaticResource iconeColor}" FontAttributes="Bold" FontFamily="fal" FontSize="Body" VerticalOptions="Center" Text="&#xf004;"/>
+                                                </StackLayout>
 
+                                                <!--  bouton pour repondre-->
+                                                <StackLayout x:Name="reponseStackView" Margin="15,0,0,5" Orientation="Horizontal">
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                                    </StackLayout.GestureRecognizers>
+                                                    <Label TextColor="{StaticResource iconeColor}" FontAttributes="Bold"  Text="repondre"/>
+                                                    <Label TextColor="{StaticResource iconeColor}" FontAttributes="Bold" FontFamily="fal" FontSize="Body" VerticalOptions="Center" Text="&#xf4b6;"/>
+                                                    <Label TextColor="{StaticResource iconeColor}" FontAttributes="Bold"  Text="{Binding NbreReponses}"/>
+
+                                                </StackLayout>
+                                            </StackLayout>
                                         </StackLayout>
-                                        <StackLayout HorizontalOptions="Fill" WidthRequest="100" BackgroundColor="{StaticResource iconeColor}" Opacity=".3" HeightRequest="0"/>
-                                    </StackLayout>
-                                    
-                                    <!--#region  reponses au commentaire-->
+                                    </Frame>
+                                      
+                                       <!--#region  reponses au commentaire-->
                                     <xct:Expander Margin="5">
                                         <xct:Expander.Triggers>
                                             <DataTrigger TargetType="xct:Expander" Binding="{Binding NbreReponses}" Value="0">
@@ -275,9 +279,13 @@
                                                                     </StackLayout>
                                                                 </StackLayout>
                                                                 <!--  bouton pour repondre-->
-                                                                <Label TextColor="{StaticResource iconeColor}" Margin="15,0,0,0" FontSize="14" FontAttributes="Bold"  Text="repondre"/>
+                                                                <Label TextColor="{StaticResource iconeColor}" Margin="15,0,0,0" FontSize="14" FontAttributes="Bold"  Text="repondre">
+                                                                    <Label.GestureRecognizers>
+                                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />
+                                                                    </Label.GestureRecognizers>
+                                                                </Label>
                                                             </StackLayout>
-                                                            <StackLayout HorizontalOptions="Fill" BackgroundColor="{StaticResource ThirdColor}" BindableLayout.ItemsSource="{Binding Listcommentaire }" Opacity=".3" HeightRequest="1">
+                                                            <StackLayout HorizontalOptions="Fill" BackgroundColor="{StaticResource ThirdColor}"  Opacity=".3" HeightRequest="1">
                                                                
                                                             </StackLayout>
 
@@ -289,11 +297,13 @@
                                     </xct:Expander>
                                         <!--#endregion-->
                                    
-                                    <StackLayout HorizontalOptions="Fill" WidthRequest="100" BackgroundColor="{StaticResource ThirdColor}" Opacity=".3" HeightRequest="1"/>
 
-                                </StackLayout>
+                                
 
                                 <!--#endregion-->
+                                    </StackLayout>
+                                    
+                                   
                                 
                             </Grid>
                         </DataTemplate>
@@ -311,7 +321,7 @@
         <!--#endregion-->
 
         <!--#region  Zone de saisir du commentaire-->
-        <Grid Grid.Row="3"  BackgroundColor="White" RowSpacing="0" Margin="0" >
+        <Grid x:Name="zone_saisir" Grid.Row="3"  BackgroundColor="White" RowSpacing="0" Margin="0" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="35"/>
                 <ColumnDefinition Width="*"/>
@@ -349,7 +359,10 @@
             <controls:ExtendedEditorControl Grid.Column="1" Margin="5"
                                             IsExpandable="True"
                                             FontSize="Medium"
+                                            Visual="Material"
+                                           
                                             FontFamily="AvenirNextRegular"
+                                            x:Name="Entrer_du_commentaire"
                                             Placeholder="Ajouter un commentaire.."/>
             <!--#endregion-->
             

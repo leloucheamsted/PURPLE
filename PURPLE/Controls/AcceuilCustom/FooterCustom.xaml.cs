@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PURPLE.Views.ACCEUILVIEW;
+using Syncfusion.XForms.EffectsView;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,14 @@ namespace PURPLE.Controls
         public FooterCustom()
         {
             InitializeComponent();
+        }
+
+       
+       private void SfEffectsView_TouchUp(object sender, EventArgs e)
+        {
+            var obj = ((SfEffectsView)sender).BindingContext as PostInfo;
+            var readMoreContentPage = new VoirPlusPage(obj);
+            App.Current.MainPage.Navigation.PushAsync(readMoreContentPage);
         }
     }
 }

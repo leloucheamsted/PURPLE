@@ -174,7 +174,10 @@
                                 <!--#region  Zone de Hashtags-->
                                 <Grid HeightRequest="40" Padding="10,0,10,0" >
                                     <Label  Text="Mes #hashtags" FontSize="Large" FontFamily="MetroRegular" TextColor="{StaticResource iconeColor}" VerticalOptions="Center"/>
-                                    <syncEffectsView:SfEffectsView HeightRequest="40" x:Name="Btn_hashtag" WidthRequest="40" CornerRadius="20" TouchDownEffects="Highlight" HighlightColor="{StaticResource SecondColor}" HorizontalOptions="End" VerticalOptions="Center"  >
+                                    <syncEffectsView:SfEffectsView HeightRequest="40" x:Name="Btn_hashtag" WidthRequest="40" CornerRadius="20" TouchDownEffects="Highlight" HighlightColor="{StaticResource SecondColor}" HorizontalOptions="End" VerticalOptions="Center" >
+                                        <syncEffectsView:SfEffectsView.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Btn_hashtag_AnimationCompleted"/>
+                                        </syncEffectsView:SfEffectsView.GestureRecognizers>
                                         <Label  Text="&#xf640;" TextColor="{StaticResource btnColor}" FontFamily="fal" HorizontalOptions="Center" VerticalOptions="Center"  FontSize="20"  />
                                     </syncEffectsView:SfEffectsView>
 
@@ -311,63 +314,24 @@
                                                             <Label FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" Text="Commentaire"/>
                                                         </StackLayout>
 
-                                                    <!--#region  Zone de saisir du commentaire-->
-                                                    <Grid  Grid.Row="6" Margin="10,0,10,0"  BackgroundColor="White" RowSpacing="0"  >
+                                                    <!--#region footer-->
+                                                    <Grid Grid.Row="6">
                                                         <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="35"/>
-                                                            <ColumnDefinition Width="*"/>
-                                                            <ColumnDefinition Width="auto"/>
+                                                            <ColumnDefinition />
+                                                            <ColumnDefinition/>
                                                         </Grid.ColumnDefinitions>
-
-                                                        <!--#region  Avatar de l'utilisateur qui publie-->
-                                                        <syncEffectsView:SfEffectsView Grid.Column="0" x:Name="votre_avatar"
-                                                
-                                                   VerticalOptions="Center" HorizontalOptions="Center"
-                                                                 RippleColor="{StaticResource SecondColor}"
-                                                                 HeightRequest="35"
-                                                                 BackgroundColor="{StaticResource SecondColor}"
-                                                   CornerRadius="30" >
-                                                            <sfavatar:SfAvatarView 
-                                                               ContentType="Initials"
-                                                               HorizontalOptions="Center"
-                                                               VerticalOptions="Center"
-                                                                ImageSource="{Binding Avatar}"
-                                                               InitialsType="SingleCharacter"
-                                                               AvatarName="Alex"
-                                                                
-                                                               InitialsColor="White" 
-                                                               WidthRequest="50"
-                                                               FontAttributes="Bold"
-                                                               HeightRequest="70"
-                                                               CornerRadius="20"   
-                                                               BorderColor="White"
-                                                               BackgroundColor="{StaticResource ThirdColor}">
-                                                            </sfavatar:SfAvatarView>
+                                                        <syncEffectsView:SfEffectsView AnimationCompleted="SfEffectsView_TouchUp"   Grid.Column="0" RippleColor="{StaticResource ThirdColor}"  CornerRadius="10" WidthRequest="40" HeightRequest="30" Margin="5,0,0,10" >
+                                                            
+                                                            <Label HorizontalOptions="Start" 
+                                                                       VerticalOptions="Center"
+                                                                       Text="Ajouter un commentaire"
+                                                                       FontFamily="MetroRegular"
+                   FontSize="Medium"                                      
+                                                                       TextColor="{StaticResource ThirdColor}"
+                                                                       />
                                                         </syncEffectsView:SfEffectsView>
-                                                        <!--#endregion-->
-
-                                                        <!--#region  Zone de texte-->
-                                                        <customAcceuil:ExtendedEditorControl Grid.Column="1" Margin="5"
-                                            IsExpandable="True"
-                                            FontSize="Medium"
-                                            FontFamily="AvenirNextRegular"
-                                            Placeholder="Ajouter un commentaire.."/>
-                                                        <!--#endregion-->
-
-                                                        <!--#region  Bouton d'envoi du commentaire-->
-                                                        <Label Padding="5" 
-                   Text="purpler"
-                   Grid.Column="2" 
-                   FontFamily="AvenirNextDemiBold"
-                   HorizontalTextAlignment="Start"
-                   FontSize="Medium"
-                   TextColor="{StaticResource ThirdColor}"
-                   VerticalTextAlignment="Center"/>
-                                                        <!--#endregion-->
                                                     </Grid>
-
                                                     <!--#endregion-->
-                                                    
                                                     <!--#endregion-->
                                                     
                                                         <!--#region  Zone de texte de publication-->
@@ -456,7 +420,7 @@
 
                     <!--#region du boutotn de plus -->
                     <syncEffectsView:SfEffectsView TranslationY="0"  Grid.Column="2"  Padding="0"
-                                           AnimationCompleted="BtnPlusOnglet_AnimationCompleted"
+                                           TouchDown="BtnPlusOnglet_AnimationCompleted"
                                            x:Name="BtnPlusOnglet" 
                                            BackgroundColor="Transparent"
                                            TouchDownEffects="Ripple" 
@@ -509,66 +473,6 @@
         </Grid>
          
         
-        <!--#region  Popup Post Menu nommer PopupPost et de bouton de control closeBtnPost-->
-        <Grid x:Name="PopupPost"  TranslationY="350"
-                          
-              BackgroundColor="{StaticResource backgroundColorPrimary}"
-              HeightRequest="350" 
-              VerticalOptions="End"
-              >
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="*"/>
-                  
-                </Grid.RowDefinitions>
-                
-                <!-- close bouton -->
-                <Grid Margin="140,5,140,0">
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="closeBtnPopup_AnimationCompleted"/>
-                    </Grid.GestureRecognizers>
-                    <StackLayout HeightRequest="3" BackgroundColor="{StaticResource btnColor}" VerticalOptions="Start"/>
-                </Grid>
-                <ScrollView Grid.Row="1" Margin="10" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-                    <StackLayout>
-                        <Label Text="Qu'aimeriez vous partarger ?" FontSize="Body" TextTransform="Uppercase"  TextColor="{StaticResource btnColor}" FontFamily="MetroBold" FontAttributes="Bold"/>
-
-                        <!-- Reussite-->
-                        <syncEffectsView:SfEffectsView x:Name="reussite_postBtn" Margin="0" HeightRequest="50" RippleColor="{StaticResource SecondColor}">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="Transparent">
-                                <Label Text="&#xf2f7;" FontFamily="fas" FontSize="30" VerticalOptions="Center" TextColor="Green"/>
-                                <Label Text="Une Reussite" FontFamily="MetroLight" VerticalOptions="Center" TextColor="{StaticResource btnColor}" FontSize="Large"/>
-                            </StackLayout>
-                        </syncEffectsView:SfEffectsView>
-
-                        <!-- idee Bouton-->
-                        <syncEffectsView:SfEffectsView x:Name="idee_postBtn" Margin="0" HeightRequest="50" RippleColor="{StaticResource SecondColor}">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="Transparent">
-                                <Label Text="&#xf672;" FontFamily="fas" FontSize="30" VerticalOptions="Center" TextColor="Orange"/>
-                                <Label Text="Une idée" FontFamily="MetroLight" VerticalOptions="Center" TextColor="{StaticResource btnColor}" FontSize="Large"/>
-                            </StackLayout>
-                        </syncEffectsView:SfEffectsView>
-
-                        <!-- Post-->
-                        <syncEffectsView:SfEffectsView x:Name="post_postBtn" Margin="0" HeightRequest="50" RippleColor="{StaticResource SecondColor}" >
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="Transparent">
-                                <Label Text="&#xf8c4;" FontFamily="fas" FontSize="30" VerticalOptions="Center" TextColor="{StaticResource SecondColor}"/>
-                                <Label Text="Un Poste" FontFamily="MetroLight" VerticalOptions="Center" TextColor="{StaticResource btnColor}" FontSize="Large"/>
-                            </StackLayout>
-                        </syncEffectsView:SfEffectsView>
-                        
-                        <!-- question-->
-                        <syncEffectsView:SfEffectsView x:Name="question_postBtn" Margin="0,10,0,0" HeightRequest="50" RippleColor="{StaticResource SecondColor}">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="Transparent">
-                                <Label Text="&#xf059;" FontFamily="fas" FontSize="30" VerticalOptions="Center" TextColor="#C14110"/>
-                                <Label Text="Une question" FontFamily="MetroLight" VerticalOptions="Center" TextColor="{StaticResource btnColor}" FontSize="Large"/>
-                            </StackLayout>
-                        </syncEffectsView:SfEffectsView>
-                    </StackLayout>
-                </ScrollView>
-            </Grid>
-        </Grid>
-        <!--#endregion-->
+     
     </Grid>
 </ContentPage>
