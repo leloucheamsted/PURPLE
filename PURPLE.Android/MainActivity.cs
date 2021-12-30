@@ -13,7 +13,11 @@ namespace PURPLE.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+         ;
+
             base.OnCreate(savedInstanceState);
+
+
             Xam.Forms.VideoPlayer.Android.VideoPlayerRenderer.Init();
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Rg.Plugins.Popup.Popup.Init(this);

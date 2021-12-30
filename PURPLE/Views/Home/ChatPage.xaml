@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:controls="clr-namespace:PURPLE.Controls" xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="PURPLE.Views.Home.ChatPage">
+    <Grid Padding="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions> 
+        <Grid  HeightRequest="50" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="Boite de Messagerie"
+                   TextColor="{StaticResource iconeColor}"
+                   VerticalOptions="Center"
+                   FontSize="Title"
+                   FontFamily="MetroBold"
+                   />
+            <Label Text="&#xf03a;"
+                   Grid.Column="1"
+                   FontSize="28"
+                   x:Name="selectBtn"
+                   TextColor="{StaticResource iconeColor}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   
+                   FontFamily="fal"/>
+            <Label Text="&#xf044;"
+                   FontFamily="fal"
+                   Grid.Column="2"
+                   x:Name="newMessageBtn"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="28"
+                   TextColor="{StaticResource iconeColor}"
+                />
+        </Grid>
+        
+        <!-- SearchBar-->
+        <syncEffectsView:SfEffectsView Grid.Row="1" x:Name="search_Btn"  HeightRequest="45"  TouchDownEffects="Highlight"
+    HighlightColor="{StaticResource SecondColor}"  BackgroundColor="{StaticResource backgroundColorPrimary}"  CornerRadius="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="&#xf002;" FontFamily="fal" Margin="10,0,0,0" FontSize="Title" TextColor="{StaticResource btnColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                <controls:CustomEntry Grid.Column="1" x:Name="searchBar" TextColor="{StaticResource iconeColor}"  Placeholder="Rechercher" FontFamily="AvenirNextRegular"/>
+                <Label Text="&#xf0b0;" x:Name="filter" FontFamily="fas" FontSize="Title" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  />
+            </Grid>
+
+        </syncEffectsView:SfEffectsView>
+
+        <xct:TabView  Grid.Row="2"
+                TabStripHeight="20"
+                TabIndicatorColor="{StaticResource ThirdColor}"
+                TabContentBackgroundColor="{StaticResource whiteColor}">
+
+            <xct:TabViewItem
+                    Text="Inbox"
+                FontFamily="MetroRegular"
+                    TextColor="{StaticResource iconeColor}"
+                    TextColorSelected="{StaticResource ThirdColor}"
+                    FontSize="14">
+                <Grid 
+                        BackgroundColor="{StaticResource whiteColor}">
+                    <Label
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Text="Message privee" TextColor="Black" />
+                </Grid>
+            </xct:TabViewItem>
+
+            <xct:TabViewItem
+                    Text="Groupes"
+                    FontFamily="MetroRegular"
+                    TextColor="{StaticResource iconeColor}"
+                    TextColorSelected="{StaticResource ThirdColor}"
+                    FontSize="14">
+                <Grid>
+                    <Label    
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Text="Groupes Chat" />
+                </Grid>
+            </xct:TabViewItem>
+        </xct:TabView>
+    </Grid>
+</ContentPage>

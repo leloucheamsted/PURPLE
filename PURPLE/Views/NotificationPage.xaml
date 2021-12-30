@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="PURPLE.Views.NotificationPage">
+    <StackLayout Padding="0" BackgroundColor="{StaticResource whiteColor}" Margin="0">
+        <cards:SfCardView  HasShadow="True" CornerRadius="0" Margin="0,-2,0,0" Padding="0" BorderColor="{StaticResource whiteColor}">
+            <Grid  Padding="5" HeightRequest="45" BackgroundColor="{StaticResource whiteColor}"  >
+                <Label Text="Centre de Notifications"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   TextColor="{StaticResource iconeColor}"
+                   FontSize="18"
+                       FontFamily="MetroBold"
+                       CharacterSpacing="0.5"
+                       Margin="15,0"
+                   
+                   />
+                <syncEffectsView:SfEffectsView x:Name="BackButton" 
+                                           HorizontalOptions="EndAndExpand"
+                                           TouchUpEffects="Ripple"
+                                           RippleColor="{StaticResource ThirdColor}" 
+                                           CornerRadius="20"  
+                                           HeightRequest="40" 
+                                           WidthRequest="40" 
+                                           VerticalOptions="CenterAndExpand" 
+                                               Margin="15,0"
+                                           >
+                    <Label Text="&#xf013;" FontFamily="fal" FontSize="Title" TextColor="{StaticResource iconeColor}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                </syncEffectsView:SfEffectsView>
+
+            </Grid>
+
+        </cards:SfCardView>
+        <ScrollView>
+        
+      </ScrollView>
+    </StackLayout>
+</ContentPage>

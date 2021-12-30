@@ -18,7 +18,7 @@ namespace PURPLE
             Device.SetFlags(new string[] { "MediaElement_Experimental" });
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTU0OTI3QDMxMzkyZTM0MmUzMGNDSGpDV2VYZ0owcmVGWk9salcxb0FncFhhV1RaYythWHBnU045UE5rRFE9");
             InitializeComponent();
-            MainPage = new NavigationPage(new AcceuilPage());
+            MainPage = new NavigationPage(new TabNavPage());
         }
 
         protected override void OnStart()
