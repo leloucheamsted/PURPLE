@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:AnimationPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:FormsControls.Base;assembly=FormsControls.Base" 
+             xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+             xmlns:SyncExpnader="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" 
+                        xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+                        BackgroundColor="{StaticResource whiteColor}"
+                        NavigationPage.HasNavigationBar="False"
+                        
+             x:Class="PURPLE.Views.ProfilPage">
+    <controls:AnimationPage.PageAnimation>
+        <controls:SlidePageAnimation Duration="Medium" Subtype="FromBottom" />
+    </controls:AnimationPage.PageAnimation>
+    <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" Padding="0">
+        
+    <StackLayout Padding="10">
+       <!--#region AvatarTopBar-->
+        <!--#region  Top BARRE DE LA PAGE ACCEUILL-->
+            <Grid HeightRequest="45">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="45"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+
+                <!--Avatar-->
+                <syncEffectsView:SfEffectsView x:Name="profil_btn1" 
+                                               RippleColor="{StaticResource SecondColor}"
+                                                WidthRequest="45"       
+                                               BackgroundColor="{StaticResource ThirdColor}" CornerRadius="50">
+                    <sfavatar:SfAvatarView 
+                              ContentType="Custom"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               InitialsType="SingleCharacter"
+                               AvatarName="Alex"
+                               Margin="-2"
+                               InitialsColor="White" 
+                               ImageSource="avatar.jpg"
+                               WidthRequest="50"
+                               FontAttributes="Bold"
+                               HeightRequest="50"
+                               CornerRadius="20"   
+                        BorderColor="White"
+                               BackgroundColor="{StaticResource ThirdColor}">
+                    </sfavatar:SfAvatarView>
+                </syncEffectsView:SfEffectsView>
+
+                <!-- Name Profil-->
+            <Label Grid.Column="1" HorizontalOptions="CenterAndExpand" 
+                   VerticalOptions="CenterAndExpand" 
+                   FontFamily="MetroBold" 
+                   FontSize="Title"
+                   TextColor="{StaticResource iconeColor}"
+                   Text="Mr Ketch"/>
+                
+            <!--Bouton de parametres-->
+                <syncEffectsView:SfEffectsView HeightRequest="50"   x:Name="Notification_Btn1" Grid.Column="2" BackgroundColor="Transparent" CornerRadius="25" RippleColor="{StaticResource SecondColor}">
+                <Label Text="&#xf013;" FontSize="Title" FontFamily="fal" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" />
+                </syncEffectsView:SfEffectsView>
+            </Grid>
+
+        <!--#endregion-->
+
+        <!--#endregion-->
+        <StackLayout HorizontalOptions="FillAndExpand" Margin="0,5,0,0"  HeightRequest="1" BackgroundColor="{StaticResource grayDateColor}"/>
+        <cards:SfCardView CornerRadius="10" HasShadow="True" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Abonnes -->
+                <StackLayout>
+                    <Label Text="Abonnés" Padding="5"
+                           TextColor="{StaticResource iconeColor}"
+                           FontSize="Medium"
+                           FontFamily="AvenirNextDemiBold"
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center" />
+                    <Label Text="100" Padding="5"
+                           TextColor="{StaticResource grayDateColor}"
+                           FontSize="Medium"
+                           FontFamily="AvenirNextDemiBold"
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center" />
+                </StackLayout>
+                
+                <!-- Abonnements -->
+                <StackLayout Grid.Column="1">
+                    <Label Text="Abonnements" Padding="5"
+                           TextColor="{StaticResource iconeColor}"
+                           FontSize="Medium"
+                           FontFamily="AvenirNextDemiBold"
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center" />
+                    <Label Text="100" Padding="5"
+                           TextColor="{StaticResource grayDateColor}"
+                           FontSize="Medium"
+                           FontFamily="AvenirNextDemiBold"
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center" />
+                </StackLayout>
+            </Grid>
+        </cards:SfCardView>
+        <StackLayout HorizontalOptions="FillAndExpand" Margin="0,0,5,0"  HeightRequest="1" BackgroundColor="{StaticResource grayDateColor}"/>
+        <SyncExpnader:SfExpander  x:Name="expander" Margin="-10"  IconColor="{StaticResource whiteColor}" 
+                                 HeaderBackgroundColor="{StaticResource ThirdColor}" 
+                                 AnimationDuration="250"
+                                 AnimationEasing="SinOut">
+            <SyncExpnader:SfExpander.Header>
+                <Grid HeightRequest="55" Padding="5" BackgroundColor="{StaticResource ThirdColor}">
+                    <Label Text="Etat du profil" Margin="5,0,0,0" HorizontalOptions="StartAndExpand" 
+                           VerticalOptions="Center"
+                           TextColor="{StaticResource whiteColor}"
+                           FontSize="Title"
+                           FontFamily="AvenirNextDemiBold"/>
+                </Grid>
+            </SyncExpnader:SfExpander.Header>
+            <SyncExpnader:SfExpander.Content>
+                <StackLayout Padding="5" BackgroundColor="{StaticResource ThirdColor}">
+                    <Label Text="Renforcez votre profil pour augmenter votre visibilité auprès des autres."
+                           TextColor="{StaticResource whiteColor}"
+                           FontSize="Large"
+                           LineBreakMode="WordWrap"
+                           FontFamily="AvenirNextRegular"/>
+                </StackLayout>
+            </SyncExpnader:SfExpander.Content>
+        </SyncExpnader:SfExpander>
+        <StackLayout Spacing="20" Margin="5,20,0,0" Orientation="Horizontal">
+            <Label Text="À propos" FontSize="Title" FontFamily="MetroBold" CharacterSpacing="1" TextColor="{StaticResource iconeColor}" />
+            <Label x:Name="Edit_propos" Text="&#xf303;" FontFamily="fal" HorizontalOptions="Center" TextColor="{StaticResource iconeColor}" VerticalOptions="Center" FontSize="Title">
+                
+            </Label>
+            
+        </StackLayout>
+        <Label LineBreakMode="WordWrap" Margin="0,0,0,10" FontFamily="MetroLight" TextColor="{StaticResource grayDateColor}" MaxLines="8"  LineHeight="1.3" FontSize="Body"  CharacterSpacing="1" Text="Ready to pour… the Font Awesome 6 Beta!
+The next generation of the web's favorite icon library + toolkit is now available as a Beta release! Try out the Free versionReady to pour… the Font Awesome 6 Beta!
+The next generation of the web's favorite icon library + toolkit is now available as a Beta release! Try out the Free version"/>
+
+        <!--#region cirruculum vitae-->
+            <SyncExpnader:SfExpander  x:Name="cv_expander" Margin="-10"  IconColor="{StaticResource whiteColor}" 
+                                 HeaderBackgroundColor="{StaticResource ThirdColor}" 
+                                 AnimationDuration="250"
+                                 AnimationEasing="SinOut">
+                <SyncExpnader:SfExpander.Header>
+                    <Grid HeightRequest="55" Padding="5" BackgroundColor="{StaticResource ThirdColor}">
+                        <Label Text="Cirriculum vitae" Margin="5,0,0,0" HorizontalOptions="StartAndExpand" 
+                           VerticalOptions="Center"
+                           TextColor="{StaticResource whiteColor}"
+                           FontSize="Title"
+                           FontFamily="AvenirNextDemiBold"/>
+                    </Grid>
+                </SyncExpnader:SfExpander.Header>
+                <SyncExpnader:SfExpander.Content>
+                    <StackLayout Padding="5" BackgroundColor="{StaticResource ThirdColor}">
+                        <Label Text="Renforcez votre profil pour augmenter votre visibilité auprès des autres."
+                           TextColor="{StaticResource whiteColor}"
+                           FontSize="Large"
+                           LineBreakMode="WordWrap"
+                           FontFamily="AvenirNextRegular"/>
+                    </StackLayout>
+                </SyncExpnader:SfExpander.Content>
+            </SyncExpnader:SfExpander>
+          <!--#endregion-->
+        
+        <!--#region  PosteView-->
+            <xct:TabView 
+                TabStripHeight="40"
+                TabIndicatorColor="{StaticResource ThirdColor}"
+                Margin="0,10,0,0"
+                TabContentBackgroundColor="{StaticResource whiteColor}">
+                 
+                <xct:TabViewItem
+                    Text="Inbox"
+                FontFamily="MetroRegular"
+                    TextColor="{StaticResource iconeColor}"
+                    TextColorSelected="{StaticResource ThirdColor}"
+                    FontSize="14">
+                    <ScrollView>
+                        <StackLayout 
+                        BackgroundColor="{StaticResource whiteColor}">
+                            <Label
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Text="Message privee" TextColor="Black" />
+                            <Label
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Text="Message privee" TextColor="Black" />
+                            <Label
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Text="Message privee" TextColor="Black" />
+                            <Label
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Text="Message privee" TextColor="Black" />
+                            <Label
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Text="Message privee" TextColor="Black" />
+                            <Label
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Text="Message privee" TextColor="Black" />
+                            <Label
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Text="Message privee" TextColor="Black" />
+                            <Label
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Text="Message privee" TextColor="Black" />
+                            <Label
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Text="Message privee" TextColor="Black" />
+                        </StackLayout>
+                    </ScrollView>
+                </xct:TabViewItem>
+
+                <xct:TabViewItem
+                    Text="Groupes"
+                    FontFamily="MetroRegular"
+                    TextColor="{StaticResource iconeColor}"
+                    TextColorSelected="{StaticResource ThirdColor}"
+                    FontSize="14">
+                    <Grid>
+                        <Label    
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Text="Groupes Chat" />
+                    </Grid>
+                </xct:TabViewItem>
+            </xct:TabView>
+            <!--#endregion-->
+        </StackLayout>
+
+    </ScrollView>
+</controls:AnimationPage>

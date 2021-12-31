@@ -167,6 +167,9 @@
     <PackageReference Include="Syncfusion.Xamarin.Core">
       <Version>19.4.0.38</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.Expander">
+      <Version>19.3.0.43</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfCarousel">
       <Version>19.4.0.38</Version>
     </PackageReference>
@@ -239,5 +242,17 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\post.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sucess.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\idea.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\question.png" />
   </ItemGroup>
 </Project>

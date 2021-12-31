@@ -103,5 +103,14 @@ namespace PURPLE.Views.Home
             var notificationPage = new NotificationPage();
             await App.Current.MainPage.Navigation.PushAsync(notificationPage);
         }
+
+        // Porfil Page 
+
+        private async void profil_btn1_TouchUp(object sender, EventArgs e)
+        {
+            var ProfilPage = new ProfilPage();
+            await App.Current.MainPage.Navigation.PushAsync(ProfilPage);
+        }
+
     }
 }

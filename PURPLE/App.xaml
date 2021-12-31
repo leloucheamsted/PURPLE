@@ -13,5 +13,6 @@
         <Color x:Key="iconeColor">#000000</Color>
         <Color x:Key="whiteColor">#ffffff</Color>
         <Color x:Key="colorLike">#ff0000</Color>
+        <Color x:Key="grayDateColor">#939597</Color>
     </Application.Resources>
 </Application>

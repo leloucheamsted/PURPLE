@@ -33,6 +33,7 @@ namespace PURPLE.iOS
             SfListViewRenderer.Init();
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
             FormsControls.Touch.Main.Init();
+            Syncfusion.XForms.iOS.Expander.SfExpanderRenderer.Init();
             CarouselViewRenderer.Init();
             Syncfusion.SfCarousel.XForms.iOS.SfCarouselRenderer.Init();
             SfEffectsViewRenderer.Init();

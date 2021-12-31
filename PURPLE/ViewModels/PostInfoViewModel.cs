@@ -12,6 +12,7 @@ using PURPLE.Views.ACCEUILVIEW;
 using PURPLE.Models.AcceuilModel;
 using System.Windows.Input;
 using System.Diagnostics;
+using PURPLE.Views;
 
 namespace PURPLE
 {
@@ -44,6 +45,7 @@ namespace PURPLE
             VoirPlusCommand = new Command<object>(NavigateToReadMoreContent);
             LikeCommand = new Command<object>(LikePublicatioin);
             CommentCommand = new Command<object>(CommentPublicatioin);
+            NavigateProfilCommand = new Command<object>(NavigateToProfil);
         }
         #endregion
 
@@ -70,6 +72,7 @@ namespace PURPLE
         public Command<object> LikeCommand { get; set; }
         public Command<object> VoirPlusCommand { get; set; }
         public Command<object> CommentCommandNav { get; set; }
+        public Command<object> NavigateProfilCommand { get; set; }
         #endregion
 
         #region Methodes Privees
@@ -128,13 +131,25 @@ namespace PURPLE
 
         }
 
+        #region
+        /// <summary>
+        /// Naviguer sur les pages liees au donnees
+        /// </summary>
+        /// <param name="obj"></param>
         private void  NavigateToReadMoreContent(object obj)
         {
             var ob = obj as PostInfo;
             var readMoreContentPage = new VoirPlusPage(ob);
             App.Current.MainPage.Navigation.PushAsync(readMoreContentPage);
         }
+         private void NavigateToProfil(object obj)
+        {
+            var ob = obj as PostInfo;
+            var consulProfilPage = new ConsulProfilPage();
+            App.Current.MainPage.Navigation.PushAsync(consulProfilPage);
+        }
 
+        #endregion
         private void LikePublicatioin(object obj)
         {
             if ((obj as PostInfo).LikeStatut == false)

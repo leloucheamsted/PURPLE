@@ -3,7 +3,6 @@ using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android.AppCompat;
 using Android.Content;
-using Android.Support.Design.Widget;
 using Android.Graphics;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Android.Views;

@@ -15,7 +15,7 @@
     <controls:ExtendedTabbedPage.Children>
         <views:PurplePage1 Title="Purple" Icon="hashtag.png"/>
         <views:AcceuilPage Title="Acceuill" x:Name="home" Icon="home.png"/>
-        <views:PopupPost  Icon="plus.png" />
+        <views:PostElement  Icon="plus.png" />
         <views:ChatPage Title="Messages" Icon="chat.png"/>
         <views:EmploiPage Title="Emplois" Icon="career.png"/>
     </controls:ExtendedTabbedPage.Children>

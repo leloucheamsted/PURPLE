@@ -78,6 +78,7 @@
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="19.4.0.38" />
     <PackageReference Include="Syncfusion.Xamarin.Cards" Version="19.4.0.38" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="19.4.0.38" />
+    <PackageReference Include="Syncfusion.Xamarin.Expander" Version="19.3.0.43" />
     <PackageReference Include="Syncfusion.Xamarin.SfCarousel" Version="19.4.0.38" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="19.4.0.38" />
     <PackageReference Include="Syncfusion.Xamarin.SfPullToRefresh" Version="19.4.0.38" />
@@ -122,6 +123,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Templates\PostOneImageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ConsulProfilPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Home\TabbedNavPage.xaml">
@@ -170,6 +174,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NotificationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ProfilPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\PURPLEVIEW\View1.xaml">

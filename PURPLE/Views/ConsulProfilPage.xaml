@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:AnimationPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:FormsControls.Base;assembly=FormsControls.Base"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="PURPLE.Views.ConsulProfilPage">
+    <controls:AnimationPage.PageAnimation>
+        <controls:SlidePageAnimation Duration="Medium" Subtype="FromBottom" />
+       
+    </controls:AnimationPage.PageAnimation>
+    <Grid>
+        <Label Text="gkjnog"/>
+    </Grid>
+</controls:AnimationPage>
