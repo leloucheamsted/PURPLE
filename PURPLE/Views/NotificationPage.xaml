@@ -1,9 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<controls:AnimationPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              NavigationPage.HasNavigationBar="False"
+             xmlns:controls="clr-namespace:FormsControls.Base;assembly=FormsControls.Base"
              x:Class="PURPLE.Views.NotificationPage">
+    <controls:AnimationPage.PageAnimation>
+        <controls:FadePageAnimation Duration="Short" Subtype="FromRight" />
+    </controls:AnimationPage.PageAnimation>
     <StackLayout Padding="0" BackgroundColor="{StaticResource whiteColor}" Margin="0">
         <cards:SfCardView  HasShadow="True" CornerRadius="0" Margin="0,-2,0,0" Padding="0" BorderColor="{StaticResource whiteColor}">
             <Grid  Padding="5" HeightRequest="45" BackgroundColor="{StaticResource whiteColor}"  >
@@ -37,4 +41,4 @@
         
       </ScrollView>
     </StackLayout>
-</ContentPage>
+</controls:AnimationPage>

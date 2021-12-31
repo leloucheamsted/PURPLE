@@ -1,12 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<controls:AnimationPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:PURPLE"
              xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              NavigationPage.HasNavigationBar="False"
+             xmlns:controls="clr-namespace:FormsControls.Base;assembly=FormsControls.Base"
              xmlns:control="clr-namespace:PURPLE.Controls"
              x:Class="PURPLE.Views.HastagsPage">
+    <controls:AnimationPage.PageAnimation>
+        <controls:SlidePageAnimation Duration="Medium" Subtype="FromRight" />
+    </controls:AnimationPage.PageAnimation>
     <ContentPage.BindingContext>
         <vm:PostInfoViewModel/>
     </ContentPage.BindingContext>
@@ -65,4 +69,4 @@
             <!--#endregion-->
         </StackLayout>
     </ScrollView>
-</ContentPage>
+</controls:AnimationPage>

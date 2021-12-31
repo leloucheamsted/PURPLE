@@ -1,10 +1,71 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:yummi="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              NavigationPage.HasNavigationBar="False"
+             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              x:Class="PURPLE.Views.Home.PostElement">
     <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-          
+        <Grid  Padding="15" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Label Text="Ajouter un Poste"
+                   Margin="0,40,0,0"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="StartAndExpand"
+                   TextColor="{StaticResource iconeColor}"
+                   FontFamily="MetroBold"
+                   FontSize="Title"/>
+            <Grid Grid.Row="1" VerticalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Qestion-->
+                <cards:SfCardView Padding="5" HeightRequest="110">
+                    <StackLayout>
+                        <Label Text="&#xf059;" 
+                               FontFamily="fas" 
+                               TextColor="{StaticResource ThirdColor}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="70"/>
+                        <Label Text="Question"
+                               FontFamily="AvenirNextRegular"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource iconeColor}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="Title"/>
+                    </StackLayout>  
+                </cards:SfCardView>
+
+                <cards:SfCardView Padding="5" Grid.Column="1" HeightRequest="110">
+                    <StackLayout>
+                        <Label Text="&#xf808;" 
+                               FontFamily="fas" 
+                               TextColor="{StaticResource ThirdColor}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="70"/>
+                        <Label Text="Idée"
+                               FontFamily="AvenirNextRegular"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource iconeColor}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="Title"/>
+                    </StackLayout>
+                </cards:SfCardView>
+
+            </Grid>
+        </Grid> 
     </ScrollView>
    
 </ContentPage>

@@ -65,13 +65,7 @@
                            FontFamily="fal" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" TextColor="Black" ></Label>
                         </syncEffectsView:SfEffectsView>
 
-                        <!--Emploi Bouton-->
-                        <syncEffectsView:SfEffectsView x:Name="Btn_emploi1" Grid.Column="3" RippleColor="{StaticResource SecondColor}"  BackgroundColor="Transparent" CornerRadius="25">
-                            <Label Text="&#xf0b1;"
-                           FontFamily="fal" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" TextColor="Black" ></Label>
-                        </syncEffectsView:SfEffectsView>
-
-
+                        
                         <!--Bouton de notifiaction-->
                         <syncEffectsView:SfEffectsView AnimationCompleted="Notification_Btn1_AnimationCompleted" x:Name="Notification_Btn1" Grid.Column="4" BackgroundColor="Transparent" CornerRadius="25" RippleColor="{StaticResource SecondColor}">
                             <Label Text="&#xf0f3;" FontSize="25" FontFamily="fal" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" />

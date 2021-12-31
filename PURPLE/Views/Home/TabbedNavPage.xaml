@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:ExtendedTabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PURPLE"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             android:TabbedPage.ToolbarPlacement="Bottom"
+             android:TabbedPage.BarItemColor="{StaticResource iconeColor}"
+             android:TabbedPage.BarSelectedItemColor="{StaticResource ThirdColor}"
+             BarBackgroundColor="Black"
+             BackgroundColor="{StaticResource whiteColor}"
+              NavigationPage.HasNavigationBar="False"
+             xmlns:views="clr-namespace:PURPLE.Views.Home"
+             BarTextColor="{StaticResource iconeColor}"
+             x:Class="PURPLE.Views.Home.TabbedNavPage">
+    <controls:ExtendedTabbedPage.Children>
+        <views:PurplePage1 Title="Purple" Icon="hashtag.png"/>
+        <views:AcceuilPage Title="Acceuill" x:Name="home" Icon="home.png"/>
+        <views:PopupPost  Icon="plus.png" />
+        <views:ChatPage Title="Messages" Icon="chat.png"/>
+        <views:EmploiPage Title="Emplois" Icon="career.png"/>
+    </controls:ExtendedTabbedPage.Children>
+</controls:ExtendedTabbedPage>
