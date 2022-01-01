@@ -27,7 +27,7 @@ namespace PURPLE.Droid.Services
             }
         }
 
-       
+        [System.Obsolete]
         public void SetLightTheme(string textcolor)
         {
             if (Build.VERSION.SdkInt >= BuildVersionCodes.M)

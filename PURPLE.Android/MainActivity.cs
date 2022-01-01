@@ -4,7 +4,6 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using Plugin.CurrentActivity;
-using CarouselView.FormsPlugin.Droid;
 
 namespace PURPLE.Droid
 {
@@ -23,7 +22,6 @@ namespace PURPLE.Droid
             Rg.Plugins.Popup.Popup.Init(this);
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             FormsControls.Droid.Main.Init(this);
-            CarouselViewRenderer.Init();
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             global::Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);

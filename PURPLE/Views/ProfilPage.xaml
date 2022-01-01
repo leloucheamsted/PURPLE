@@ -70,7 +70,7 @@
 
         <!--#endregion-->
         <StackLayout HorizontalOptions="FillAndExpand" Margin="0,5,0,0"  HeightRequest="1" BackgroundColor="{StaticResource grayDateColor}"/>
-        <cards:SfCardView CornerRadius="10" HasShadow="True" >
+        
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -108,8 +108,7 @@
                            VerticalOptions="Center" />
                 </StackLayout>
             </Grid>
-        </cards:SfCardView>
-        <StackLayout HorizontalOptions="FillAndExpand" Margin="0,0,5,0"  HeightRequest="1" BackgroundColor="{StaticResource grayDateColor}"/>
+        <StackLayout HorizontalOptions="FillAndExpand" Margin="0,5,0,0"  HeightRequest="3" BackgroundColor="{StaticResource grayDateColor}"/>
         <SyncExpnader:SfExpander  x:Name="expander" Margin="-10"  IconColor="{StaticResource whiteColor}" 
                                  HeaderBackgroundColor="{StaticResource ThirdColor}" 
                                  AnimationDuration="250"
@@ -171,57 +170,21 @@ The next generation of the web's favorite icon library + toolkit is now availabl
           <!--#endregion-->
         
         <!--#region  PosteView-->
-            <xct:TabView 
+            <xct:TabView      BackgroundColor="Red"
                 TabStripHeight="40"
                 TabIndicatorColor="{StaticResource ThirdColor}"
                 Margin="0,10,0,0"
                 TabContentBackgroundColor="{StaticResource whiteColor}">
                  
-                <xct:TabViewItem
+                <xct:TabViewItem    BackgroundColor="Red"
                     Text="Inbox"
                 FontFamily="MetroRegular"
                     TextColor="{StaticResource iconeColor}"
                     TextColorSelected="{StaticResource ThirdColor}"
                     FontSize="14">
                     <ScrollView>
-                        <StackLayout 
-                        BackgroundColor="{StaticResource whiteColor}">
-                            <Label
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            Text="Message privee" TextColor="Black" />
-                            <Label
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            Text="Message privee" TextColor="Black" />
-                            <Label
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            Text="Message privee" TextColor="Black" />
-                            <Label
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            Text="Message privee" TextColor="Black" />
-                            <Label
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            Text="Message privee" TextColor="Black" />
-                            <Label
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            Text="Message privee" TextColor="Black" />
-                            <Label
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            Text="Message privee" TextColor="Black" />
-                            <Label
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            Text="Message privee" TextColor="Black" />
-                            <Label
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            Text="Message privee" TextColor="Black" />
+                        <StackLayout>
+                            <Label Text="dhuvhv"/>
                         </StackLayout>
                     </ScrollView>
                 </xct:TabViewItem>

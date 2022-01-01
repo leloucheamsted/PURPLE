@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CarouselView.FormsPlugin.iOS;
 using Foundation;
 using Syncfusion.ListView.XForms.iOS;
 using Syncfusion.SfPullToRefresh.XForms.iOS;
@@ -29,13 +28,10 @@ namespace PURPLE.iOS
             Xam.Forms.VideoPlayer.iOS.VideoPlayerRenderer.Init();
             Syncfusion.XForms.iOS.EffectsView.SfEffectsViewRenderer.Init();
             Rg.Plugins.Popup.Popup.Init();
-            Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
             SfListViewRenderer.Init();
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
             FormsControls.Touch.Main.Init();
             Syncfusion.XForms.iOS.Expander.SfExpanderRenderer.Init();
-            CarouselViewRenderer.Init();
-            Syncfusion.SfCarousel.XForms.iOS.SfCarouselRenderer.Init();
             SfEffectsViewRenderer.Init();
             Syncfusion.XForms.iOS.Cards.SfCardViewRenderer.Init();
             Syncfusion.XForms.iOS.Core.SfAvatarViewRenderer.Init();
