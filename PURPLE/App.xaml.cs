@@ -20,7 +20,7 @@ namespace PURPLE
             Device.SetFlags(new string[] { "MediaElement_Experimental" });
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTU0OTI3QDMxMzkyZTM0MmUzMGNDSGpDV2VYZ0owcmVGWk9salcxb0FncFhhV1RaYythWHBnU045UE5rRFE9");
             InitializeComponent();
-            MainPage = new AnimationNavigationPage(new CameraPage());
+            MainPage = new AnimationNavigationPage(new FormulairePostPage());
         }
 
         protected override void OnStart()

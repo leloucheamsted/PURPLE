@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:yummi="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              NavigationPage.HasNavigationBar="False"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" 
              xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
              x:Class="PURPLE.Views.Home.PostElement">
-    <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+    <!--#region  Vue de choix du type de poste-->
+    <ScrollView x:Name="ChoixPostView" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
         <Grid  Padding="15" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -33,7 +33,7 @@
               
                 <!--#region Reussite-->
                 <Frame Padding="0"  HasShadow="True" CornerRadius="10" HeightRequest="150"  >
-                    <syncEffectsView:SfEffectsView  x:Name="reussite_postBtn" Margin="0" HeightRequest="50" RippleColor="{StaticResource SecondColor}">
+                    <syncEffectsView:SfEffectsView  AnimationCompleted="reussite_postBtn_TouchUp" x:Name="reussite_postBtn" Margin="0" HeightRequest="50" RippleColor="{StaticResource SecondColor}">
                         <StackLayout>
                             <Image HeightRequest="100" Source="sucess.png"/>
                             <Label Text="Une réussite ?"
@@ -107,5 +107,7 @@
             </Grid>
         </Grid> 
     </ScrollView>
-   
+    <!--#endregion-->
+    
+ 
 </ContentPage>

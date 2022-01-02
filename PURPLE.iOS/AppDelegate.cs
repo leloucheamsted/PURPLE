@@ -25,7 +25,7 @@ namespace PURPLE.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            Xam.Forms.VideoPlayer.iOS.VideoPlayerRenderer.Init();
+            //Xam.Forms.VideoPlayer.iOS.VideoPlayerRenderer.Init();
             Syncfusion.XForms.iOS.EffectsView.SfEffectsViewRenderer.Init();
             Rg.Plugins.Popup.Popup.Init();
             SfListViewRenderer.Init();
@@ -36,7 +36,7 @@ namespace PURPLE.iOS
             Syncfusion.XForms.iOS.Cards.SfCardViewRenderer.Init();
             Syncfusion.XForms.iOS.Core.SfAvatarViewRenderer.Init();
             SfPullToRefreshRenderer.Init();
-            global::Xamarin.Forms.FormsMaterial.Init();
+            //global::Xamarin.Forms.FormsMaterial.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
