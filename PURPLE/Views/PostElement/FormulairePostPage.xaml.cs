@@ -1,11 +1,13 @@
 ﻿using FormsControls.Base;
 using Plugin.Media;
 using PURPLE.Interface;
+using Syncfusion.XForms.EffectsView;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
@@ -20,7 +22,7 @@ namespace PURPLE.Views.PostElement
         public FormulairePostPage()
         {
             InitializeComponent();
-          
+           
 
         }
 
@@ -69,177 +71,97 @@ namespace PURPLE.Views.PostElement
             });
         }
 
+        //
+        private void CustomEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
 
-        /*
-             /// <summary>
-             /// Prendre une image en photo
-             /// </summary>
-             public async void TakePhoto()
-             {
-                 await CrossMedia.Current.Initialize();
+        /// <summary>
+        /// Evenement d'apparition de la liste des comeptences
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CompetenceBtn_Clicked(object sender, EventArgs e)
+        {
+            Device.InvokeOnMainThreadAsync(async () =>
+            {
 
-                 if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
-                 {
-                   await  DisplayAlert("No Camera", ":( No camera available.", "OK");
-                     return;
-                 }
-
-                 var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
-                 {
-                     AllowCropping = true,
-                     // Directory = "Sample",
-                     //  Name = "test.jpg"
-                 }) ;
-
-                 if (file == null)
-                     return;
-
-                // await DisplayAlert("File Location", file.Path, "OK");
-
-                 img.Source = ImageSource.FromStream(() =>
-                 {
-                     var stream = file.GetStream();
-                     return stream;
-                 });
-             }
-
-             /*
-
-             #region TappedGesture
-             /// <summary>
-             ///     Retour a la page precedente
-             /// </summary>
-             /// <param name="sender"></param>
-             /// <param name="e"></param>
-             private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-             {
-                 await Navigation.PopAsync();
-             }
+                await Task.WhenAll(
+                    Listcompetences.TranslateTo(0, 0, animationLength),
+                    Listcompetences.FadeTo(1, animationLength)
+                   );
 
 
+            });
+            #region sfview
+            SfEffectsView sfv = new SfEffectsView()
+            {
+          Margin = new Thickness(5),
+              
+          Padding = new Thickness(5),
+          BackgroundColor = Color.FromHex("#DCE8F6"),
+          TouchUpEffects = SfEffects.Ripple,
+           RippleColor = Color.FromHex("#0F2D52"),
+            CornerRadius = 20,
+            HorizontalOptions = LayoutOptions.StartAndExpand,
+            VerticalOptions = LayoutOptions.CenterAndExpand,
+            
+        };
+            #endregion
 
-             /// <summary>
-             /// Chage le sens de la camera (avant ou arriere)
-             /// </summary>
-             /// <param name="sender"></param>
-             /// <param name="e"></param>
-             private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
-             {
-                 if (cameraView.CameraOptions == CameraOptions.Front)
-                 {
-                     cameraView.CameraOptions = CameraOptions.Back;
-                 }
-                 else
-                 {
-                     cameraView.CameraOptions = CameraOptions.Front;
-                 }
+            #region Label
+            Label lab = new Label()
+            {
+                FontFamily="MetroRegular",
+                FontSize=18,
+                HorizontalOptions=LayoutOptions.Center,
+                VerticalOptions=LayoutOptions.Center,
+                TextColor=Color.FromHex("#000000"),
+                Text ="Lelouche"
+            };
+            #endregion
 
-             }
+            /* Added lABEL IN DFVIEW Listcompetences
+            sfv.Content=lab;
+           flexLayoutCompetences.Children.Add(sfv);
+            Debug.WriteLine("Adddded");
+            */
+        }
 
-             /// <summary>
-             /// Activer ou desactvier le flash de la camera
-             /// </summary>
-             /// <param name="sender"></param>
-             /// <param name="e"></param>
-             private void TapGestureRecognizer_Tapped_2(object sender, EventArgs e)
-             {
-                 if (cameraView.FlashMode == CameraFlashMode.Off)
-                 {
-                     cameraView.FlashMode = CameraFlashMode.On;
-                     BtnFlash.FontFamily = "fas";
-                 }
-                 else
-                 {
-                     cameraView.FlashMode = CameraFlashMode.Off;
-                     BtnFlash.FontFamily = "fal";
-                 }
-             }
+        /// <summary>
+        ///  Fermeture de la Page de competenes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
+        {
+            Device.InvokeOnMainThreadAsync(async () =>
+            {
 
-             /// <summary>
-             ///  Changer le Mode de la camera ( video ou audio)
-             /// </summary>
-             /// <param name="sender"></param>
-             /// <param name="e"></param>
-             private void TapGestureRecognizer_Tapped_3(object sender, EventArgs e)
-             {
-
-                  if(cameraView.CaptureMode==CameraCaptureMode.Video)
-                 {
-                     BtnChange.IsVisible=false;
-                     BtnChange.IsEnabled=false;
-                     BtnChange1.IsVisible = true;
-                     BtnChange1.IsEnabled = true;
-                     cameraView.CaptureMode= CameraCaptureMode.Photo;
-                     cameraView.FlashMode = CameraFlashMode.Off;
-                     BtnFlash.FontFamily = "fal";
-                    ;
-
-                 }
-                 else
-                 {
-                     BtnChange.IsVisible = true;
-                     BtnChange.IsEnabled = true;
-                     BtnChange1.IsVisible = false;
-                     BtnChange1.IsEnabled = false;
-                     cameraView.CaptureMode = CameraCaptureMode.Video;
-                     cameraView.FlashMode = CameraFlashMode.Off;
-                     BtnFlash.FontFamily = "fal";
-
-                 }
-             }
-
-             #endregion
-
-             /// <summary>
-             ///  Capture d'image et Photos 
-             /// </summary>
-             /// <param name="sender"></param>
-             /// <param name="e"></param>
-             private void CaptureImage(object sender, EventArgs e)
-             {
-                 cameraView.Shutter();
+                await Task.WhenAll(
+                    Listcompetences.TranslateTo(800, 0, animationLength),
+                    Listcompetences.FadeTo(0, animationLength)
+                   );
 
 
-             }
-             private void RecordVideo(object sender, EventArgs e)
-             {
-                 cameraView.Shutter();
-             }
-             private void StopVideo(object sender, EventArgs e)
-             {
-                 cameraView.Shutter();
-             }
-             /// <summary>
-             /// Prise de l'image ou de la video
-             /// </summary>
-             /// <param name="sender"></param>
-             /// <param name="e"></param>
-             private void cameraView_MediaCaptured(object sender, MediaCapturedEventArgs e)
-             {
-                 switch (cameraView.CaptureMode)
-                 {
-                     default:
-                     case CameraCaptureMode.Default:
-                     case CameraCaptureMode.Photo:
-                         previewVideo.IsVisible = false;
-                         previewPicture.IsVisible = true;
-                         previewPicture.Rotation = e.Rotation;
-                         previewPicture.Source = e.Image;
-                         gridShowMedia.TranslateTo(0, 0);
-                         break;
-                     case CameraCaptureMode.Video:
-                         previewPicture.IsVisible = false;
-                         previewVideo.IsVisible = true;
-                         previewVideo.Source = e.Video;
-                         gridShowMedia.TranslateTo(0, 0);
-                         break;
-                 }
-             }
+            });
+        }
 
-             private void TapGestureRecognizer_Tapped_4(object sender, EventArgs e)
-             {
-                 gridShowMedia.TranslateTo(400, 0);
-             }
-             */
+        /// <summary>
+        /// Selection de la data
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void date_DateSelected(object sender, DateChangedEventArgs e)
+        {
+           
+            TimePicker TimePicker = new TimePicker();
+           var h= TimePicker.Time= DateTime.Now.TimeOfDay;
+            Debug.WriteLine(date.Date.ToString());
+            Debug.WriteLine(h.ToString());
+
+
+        }
     }
 }

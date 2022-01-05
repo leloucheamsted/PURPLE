@@ -47,7 +47,7 @@
         <!--#endregion-->
 
         <ScrollView   Grid.Row="1" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" Margin="-10" >
-            <StackLayout  Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout x:Name="stackView"  Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Label Text="Intitulé de la réussite"
                        FontSize="Large"
                        FontFamily="MetroBold"
@@ -56,6 +56,7 @@
                 <!--#region Zone de saisir de l'intitule-->
                 <Frame Margin="0,0,0,15" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" HasShadow="False">
                     <entry:CustomEntry  TextColor="{StaticResource iconeColor}"
+                                        TextChanged="CustomEntry_TextChanged"
                                         FontSize="Subtitle"
                                         FontFamily="MetroLight"/>
                 </Frame>
@@ -70,10 +71,12 @@
                 
                   <!--#region  Zone de saisir de dscription-->
                 <Frame  Margin="0" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" HasShadow="False">
-                    <entry:ExtendedEditorControl IsExpandable="True" IsTextPredictionEnabled="True" x:Name="desciprion_entry" TextColor="{StaticResource iconeColor}" FontSize="Subtitle" FontFamily="MetroLight"/>
-                </Frame>
+                        <entry:ExtendedEditorControl IsExpandable="True" IsTextPredictionEnabled="True" x:Name="desciprion_entry" TextColor="{StaticResource iconeColor}" FontSize="Subtitle" FontFamily="MetroLight">
+                          
+                        </entry:ExtendedEditorControl>
+                    </Frame>
                 <!--#endregion-->
-
+                   
                 <!--#region  Hashtags-->
                 <buttons:SfButton Text="+hashtags" TextColor="{StaticResource iconeColor}"
                                   BackgroundColor="{StaticResource transparentColor}" 
@@ -84,32 +87,7 @@
                 </buttons:SfButton>
 
 
-                <!--#region  FlexLayout Hastags-->
-                    <syncfusion:SfListView  Margin="-10,0" x:Name="Collection_Hastag" HeightRequest="40" IsScrollBarVisible="False" ItemSpacing="0" ItemSize="100" Orientation="Horizontal"  ItemsSource="{Binding Listhastag}">
-                        <syncfusion:SfListView.BindingContext>
-                            <vm1:FormulaPostVewModel/>
-                        </syncfusion:SfListView.BindingContext>
-                        <syncfusion:SfListView.ItemTemplate >
-                            <DataTemplate>
-                                <syncEffectsView:SfEffectsView x:Name="hashtagBtn" MinimumWidthRequest="50" WidthRequest="40" Margin="5" CornerRadius="15" BackgroundColor="{StaticResource ThirdColor}">
-                                    <Label TextColor="White" FontFamily="MetroRegular" HorizontalOptions="Center"  VerticalOptions="Center" Text="{Binding .}"/>
-                                </syncEffectsView:SfEffectsView>
-                            </DataTemplate>
-                        </syncfusion:SfListView.ItemTemplate>
-                    </syncfusion:SfListView>
-                    <FlexLayout  BindableLayout.ItemsSource="{Binding Listhastag}"  Direction="Row" Wrap="Wrap" AlignItems="Start"  JustifyContent="Start">
-                        <FlexLayout.BindingContext>
-                            <vm1:FormulaPostVewModel/>
-                        </FlexLayout.BindingContext>
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate>
-                            <syncEffectsView:SfEffectsView x:Name="BackButton" Margin="5" Padding="5" HorizontalOptions="StartAndExpand" BackgroundColor="{StaticResource backgroundColorPrimary}" TouchUpEffects="Ripple" RippleColor="{StaticResource btnColor}" CornerRadius="20"   VerticalOptions="CenterAndExpand">
-                                <Label Text="{Binding .}" FontFamily="MetroRegular" FontSize="18" TextColor="{StaticResource iconeColor}" HorizontalOptions="Center" VerticalOptions="Center"/>
-                            </syncEffectsView:SfEffectsView>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </FlexLayout>
-                <!--#endregion-->
+            
                 
                 <Label Text="Lieu"
                        FontSize="Large"
@@ -131,39 +109,32 @@
                        />
                 
                 <!--#region Zone de Date-->
-                <buttons:SfButton x:Name="DateBtn" Text="" HeightRequest="36" Margin="0,0,0,15" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" >
+                    <Grid>
+                        <buttons:SfButton x:Name="DateBtn" Text="122" HorizontalTextAlignment="Start" FontFamily="MetroLight" TextColor="{StaticResource iconeColor}" HeightRequest="36" Margin="0,0,0,15" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" >
 
-                </buttons:SfButton>
+                        </buttons:SfButton>
 
-                <!--#endregion-->
+                       
+                        <DatePicker x:Name="date" DateSelected="date_DateSelected" 
+                                    Format="D"
+         BackgroundColor="Transparent" Opacity="0"/>
 
-
-                <Label Text="Compétences"
+                    </Grid>
+                    <!--#endregion-->
+                    <Label Text="Compétences"
                        FontSize="Large"
                        FontFamily="MetroBold"
                        TextColor="{StaticResource iconeColor}"
                        />
-                <!--#region Zone de Lieu-->
-                <buttons:SfButton x:Name="CompetenceBtn" HeightRequest="36" Margin="0,0,0,15" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" >
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="+"
-                               Margin="5,0,0,0"
-                               HorizontalOptions="Start"
-                               VerticalTextAlignment="Center"
-                               FontSize="Title"
-                       FontFamily="MetroLight"
-                       TextColor="{StaticResource iconeColor}"/>
-                        <Label Text="Compétences"
-                               Margin="5,0,0,0"
-                               HorizontalOptions="Start"
-                               VerticalTextAlignment="Center"
-                               FontSize="Body"
-                       FontFamily="MetroLight"
-                       TextColor="{StaticResource iconeColor}"/>
-                    </StackLayout>  
-                </buttons:SfButton>
+                <!--#region Zone de Competences-->
+                <Button Text="+competences" x:Name="CompetenceBtn" Clicked="CompetenceBtn_Clicked" HeightRequest="36" Margin="0,0,0,15" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" >
+                  
+                </Button>
+                    <FlexLayout x:Name="flexLayoutCompetences" Direction="Row" Wrap="Wrap" AlignItems="Start"  JustifyContent="Start">
+                        
+                    </FlexLayout>
 
-                <Label Text="Photo(s) ou video"
+                    <Label Text="Photo(s) ou video"
                        FontSize="Large"
                        FontFamily="MetroBold"
                        TextColor="{StaticResource iconeColor}"
@@ -212,7 +183,7 @@
           
             
         <!--#region  ListdeHashtags-->
-        <StackLayout Padding="0" Spacing="0" x:Name="stacklist">
+        <StackLayout Padding="0" Spacing="0" x:Name="stacklist" TranslationX="400">
             <StackLayout HeightRequest="1" BackgroundColor="{StaticResource grayDateColor}"></StackLayout>
             <syncfusion:SfListView  x:Name="listView"
                    ItemsSource="{Binding Listhastag}"
@@ -241,5 +212,50 @@
         </StackLayout>
 
         <!--#endregion-->
+            
+            <!--#region  Listes de competences-->
+        <StackLayout Padding="0" x:Name="Listcompetences" TranslationY="800" Spacing="0">
+
+            <Label Padding="10" BackgroundColor="{StaticResource whiteColor}"
+                    x:Name="closeCompetencesView"
+                    Text="&#xf00d;"
+                       FontFamily="fal"
+                       TextColor="{StaticResource ThirdColor}"
+                       FontSize="Title"
+                       
+                       HorizontalOptions="Fill"
+                       VerticalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <StackLayout HeightRequest="1" BackgroundColor="{StaticResource grayDateColor}"></StackLayout>
+            <syncfusion:SfListView 
+                   ItemsSource="{Binding ListCompetences}"
+                                SelectionMode="None"
+                                IsScrollBarVisible="False"
+                               
+                                BackgroundColor="{StaticResource whiteColor}"
+                   ItemSize="30">
+                <syncfusion:SfListView.BindingContext>
+                    <vm1:FormulaPostVewModel/>
+                </syncfusion:SfListView.BindingContext>
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="5">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer  Command="{Binding Path=BindingContext.AddHashtagCommand, Source={x:Reference listView}}"
+                                                      CommandParameter="{Binding .}" Tapped="TapGestureRecognizer_Tapped"/>
+                            </StackLayout.GestureRecognizers>
+                            <Label Text="{Binding .}" x:Name="hastgasitem" FontFamily="MetroRegular"  TextColor="{StaticResource iconeColor}" FontSize="Body" />
+                            <StackLayout HeightRequest="1" Opacity=".6" BackgroundColor="{StaticResource grayDateColor}"></StackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+            <StackLayout HeightRequest="1" BackgroundColor="{StaticResource grayDateColor}"></StackLayout>
+        </StackLayout>
+        <!--#endregion-->
+            
     </Grid>
 </controls:AnimationPage>

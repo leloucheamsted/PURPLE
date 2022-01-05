@@ -15,13 +15,15 @@ namespace PURPLE
         #region variables
         ObservableCollection<string> listhastag; // Liste des # 
         ObservableCollection<string> listhastagsForm; // Liste Hashtags du formulaires
+        ObservableCollection<string> listcompetences; // Liste de competences a ajouter 
           #endregion
 
         #region constructeur
         public FormulaPostVewModel()
         {
             GetHastags();
-            AddHashtagCommand=new Command<object>(showListHashtag);
+            GetCompetences();
+            AddHashtagCommand =new Command<object>(showListHashtag);
         }
         #endregion
 
@@ -37,6 +39,11 @@ namespace PURPLE
             set { listhastagsForm = value; OnPropertyChanged("ListhastagForm"); }
         }
 
+        public ObservableCollection<string> ListCompetences
+        {
+            get { return listcompetences; }
+            set {  listcompetences = value; OnPropertyChanged("ListCompetences"); }
+        }
         public Command<object> AddHashtagCommand { get; set; }
         #endregion
 
@@ -57,7 +64,17 @@ namespace PURPLE
             }
             return Listhastag;
         }
+        internal ObservableCollection<string> GetCompetences()
+        {
+            ListCompetences = new ObservableCollection<string>();
+            for (int i = 0; i < list_competences.Count(); i++)
+            {
 
+                listcompetences.Add(list_competences[i]);
+            }
+            return ListCompetences;
+
+        }
         #region HashtagList
         internal string[] hashtag_name = new string[]
         {
@@ -67,6 +84,28 @@ namespace PURPLE
             "#marketing",
             "#buzz",
 
+        };
+
+        internal string[] list_competences = new string[]
+        {
+            "Marketing",
+            "Developpement",
+            "Data",
+            "Sql",
+            "Transite",
+            "Commerce",
+            "Marketing",
+            "Developpement",
+            "Data",
+            "Sql",
+            "Transite",
+            "Commerce",
+            "Marketing",
+            "Developpement",
+            "Data",
+            "Sql",
+            "Transite",
+            "Commerce"
         };
         #endregion
 
