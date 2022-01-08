@@ -96,11 +96,14 @@
                        />
                 
                 <!--#region Zone de Lieu-->
-                <buttons:SfButton x:Name="LieuBtn" Text="" HeightRequest="36" Margin="0,0,0,15" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" >
-                    
-                </buttons:SfButton>
+                    <Frame Margin="0,0,0,15" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" HasShadow="False">
+                        <entry:CustomEntry  TextColor="{StaticResource iconeColor}"
+                                        TextChanged="CustomEntry_TextChanged"
+                                        FontSize="Subtitle"
+                                        FontFamily="MetroLight"/>
+                    </Frame>
 
-                <!--#endregion-->
+                    <!--#endregion-->
 
                 <Label Text="Date"
                        FontSize="Large"
@@ -110,7 +113,7 @@
                 
                 <!--#region Zone de Date-->
                     <Grid>
-                        <buttons:SfButton x:Name="DateBtn" Text="122" HorizontalTextAlignment="Start" FontFamily="MetroLight" TextColor="{StaticResource iconeColor}" HeightRequest="36" Margin="0,0,0,15" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" >
+                        <buttons:SfButton x:Name="DateBtn" Text="" HorizontalTextAlignment="Start" FontFamily="MetroLight" TextColor="{StaticResource iconeColor}" HeightRequest="36" Margin="0,0,0,15" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" >
 
                         </buttons:SfButton>
 
@@ -127,19 +130,27 @@
                        TextColor="{StaticResource iconeColor}"
                        />
                 <!--#region Zone de Competences-->
-                <Button Text="+competences" x:Name="CompetenceBtn" Clicked="CompetenceBtn_Clicked" HeightRequest="36" Margin="0,0,0,15" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" >
+                <buttons:SfButton Text="+competences" HorizontalTextAlignment="Start" TextColor="{StaticResource iconeColor}"  x:Name="CompetenceBtn" Clicked="CompetenceBtn_Clicked" HeightRequest="36" Margin="0,0,0,15" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" >
                   
-                </Button>
+                </buttons:SfButton>
                     <FlexLayout x:Name="flexLayoutCompetences" Direction="Row" Wrap="Wrap" AlignItems="Start"  JustifyContent="Start">
                         
                     </FlexLayout>
+                    <!--#endregion-->
 
+                    <!--#region  Photos video-->
                     <Label Text="Photo(s) ou video"
                        FontSize="Large"
                        FontFamily="MetroBold"
                        TextColor="{StaticResource iconeColor}"
                        />
+                    <FlexLayout x:Name="flexMedia" Direction="Row" Wrap="Wrap" AlignItems="Start"  JustifyContent="Start">
+                        
+                    </FlexLayout>
                 <!--#endregion-->
+                
+                
+                
             </StackLayout>
         </ScrollView>   
             
@@ -150,14 +161,17 @@
                     <ColumnDefinition Width="40"/>
                     <ColumnDefinition Width="40"/>
                 </Grid.ColumnDefinitions>
+                
                 <!--Camera Bouton-->
-                <syncEffectsView:SfEffectsView x:Name="CameraBtn" Grid.Column="0"  RippleColor="{StaticResource SecondColor}"  BackgroundColor="{StaticResource transparentColor}" CornerRadius="25">
+                <syncEffectsView:SfEffectsView x:Name="CameraBtn" Grid.Column="0" AnimationCompleted="CameraBtn_AnimationCompletedAsync" RippleColor="{StaticResource SecondColor}"  BackgroundColor="{StaticResource transparentColor}" CornerRadius="25">
                     <Label Text="&#xf030;"
-                           FontFamily="fal" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" TextColor="Black" ></Label>
+                           FontFamily="fal" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" TextColor="Black" >
+                        
+                    </Label>
                 </syncEffectsView:SfEffectsView>
 
                 <!--Video Bouton-->
-                <syncEffectsView:SfEffectsView x:Name="VideoBtn" Grid.Column="1"  RippleColor="{StaticResource SecondColor}"  BackgroundColor="{StaticResource transparentColor}" CornerRadius="25">
+                <syncEffectsView:SfEffectsView x:Name="VideoBtn" AnimationCompleted="VideoBtn_AnimationCompleted" Grid.Column="1"  RippleColor="{StaticResource SecondColor}"  BackgroundColor="{StaticResource transparentColor}" CornerRadius="25">
                     <Label Text="&#xf03d;"
                            FontFamily="fal" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" TextColor="Black" ></Label>
                 </syncEffectsView:SfEffectsView>

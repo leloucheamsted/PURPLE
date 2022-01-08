@@ -28780,52 +28780,55 @@ namespace PURPLE.Droid
 			public const int question = 2131165375;
 			
 			// aapt resource value: 0x7F0700C0
-			public const int sfcheckbox_animation = 2131165376;
+			public const int remove = 2131165376;
 			
 			// aapt resource value: 0x7F0700C1
-			public const int sfcheckbox_checked = 2131165377;
+			public const int sfcheckbox_animation = 2131165377;
 			
 			// aapt resource value: 0x7F0700C2
-			public const int sfcheckbox_checked_indeterminate = 2131165378;
+			public const int sfcheckbox_checked = 2131165378;
 			
 			// aapt resource value: 0x7F0700C3
-			public const int sfcheckbox_checked_unchecked = 2131165379;
+			public const int sfcheckbox_checked_indeterminate = 2131165379;
 			
 			// aapt resource value: 0x7F0700C4
-			public const int sfcheckbox_indeterminate = 2131165380;
+			public const int sfcheckbox_checked_unchecked = 2131165380;
 			
 			// aapt resource value: 0x7F0700C5
-			public const int sfcheckbox_indeterminate_checked = 2131165381;
+			public const int sfcheckbox_indeterminate = 2131165381;
 			
 			// aapt resource value: 0x7F0700C6
-			public const int sfcheckbox_indeterminate_unchecked = 2131165382;
+			public const int sfcheckbox_indeterminate_checked = 2131165382;
 			
 			// aapt resource value: 0x7F0700C7
-			public const int sfcheckbox_unchecked = 2131165383;
+			public const int sfcheckbox_indeterminate_unchecked = 2131165383;
 			
 			// aapt resource value: 0x7F0700C8
-			public const int sfcheckbox_unchecked_checked = 2131165384;
+			public const int sfcheckbox_unchecked = 2131165384;
 			
 			// aapt resource value: 0x7F0700C9
-			public const int sfcheckbox_unchecked_indeterminate = 2131165385;
+			public const int sfcheckbox_unchecked_checked = 2131165385;
 			
 			// aapt resource value: 0x7F0700CA
-			public const int shadow_effect = 2131165386;
+			public const int sfcheckbox_unchecked_indeterminate = 2131165386;
 			
 			// aapt resource value: 0x7F0700CB
-			public const int sucess = 2131165387;
+			public const int shadow_effect = 2131165387;
 			
 			// aapt resource value: 0x7F0700CC
-			public const int test_custom_background = 2131165388;
+			public const int sucess = 2131165388;
 			
 			// aapt resource value: 0x7F0700CD
-			public const int tooltip_frame_dark = 2131165389;
+			public const int test_custom_background = 2131165389;
 			
 			// aapt resource value: 0x7F0700CE
-			public const int tooltip_frame_light = 2131165390;
+			public const int tooltip_frame_dark = 2131165390;
 			
 			// aapt resource value: 0x7F0700CF
-			public const int video = 2131165391;
+			public const int tooltip_frame_light = 2131165391;
+			
+			// aapt resource value: 0x7F0700D0
+			public const int video = 2131165392;
 			
 			static Drawable()
 			{

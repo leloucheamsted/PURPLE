@@ -27,6 +27,10 @@ namespace PURPLE.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             await CrossMedia.Current.Initialize();
             //global::Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
+
+          
+
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             LoadApplication(new App());
         }
 

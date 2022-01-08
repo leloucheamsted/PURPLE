@@ -4,11 +4,14 @@ using PURPLE.Interface;
 using Syncfusion.XForms.EffectsView;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.Core;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -23,7 +26,6 @@ namespace PURPLE.Views.PostElement
         {
             InitializeComponent();
            
-
         }
 
         protected async override void OnAppearing()
@@ -69,6 +71,7 @@ namespace PURPLE.Views.PostElement
 
 
             });
+           
         }
 
         //
@@ -140,7 +143,7 @@ namespace PURPLE.Views.PostElement
             {
 
                 await Task.WhenAll(
-                    Listcompetences.TranslateTo(800, 0, animationLength),
+                    Listcompetences.TranslateTo(0,800, animationLength),
                     Listcompetences.FadeTo(0, animationLength)
                    );
 
@@ -157,11 +160,97 @@ namespace PURPLE.Views.PostElement
         {
            
             TimePicker TimePicker = new TimePicker();
-           var h= TimePicker.Time= DateTime.Now.TimeOfDay;
-            Debug.WriteLine(date.Date.ToString());
-            Debug.WriteLine(h.ToString());
+           var h= DateTime.Now.ToString("HH:mm");
+            DateBtn.Text = date.Date.ToString("dd/MM/yyy");
+            Debug.WriteLine(h);
+            
 
 
         }
+
+
+        #region Media element
+        private async void CameraBtn_AnimationCompletedAsync(object sender, EventArgs e)
+        {
+
+            #region creation de la vue
+            Grid g = new Grid()
+            {
+                HeightRequest = 130,
+                Margin = new Thickness(5, 5),
+                Padding = new Thickness(0),
+            };
+
+          
+            flexMedia.Children.Add(g);
+            Image img = new Image() {  };
+            Image icone = new Image() {
+                Margin = new Thickness(-5),
+                HorizontalOptions = LayoutOptions.End,
+                VerticalOptions = LayoutOptions.Start,
+                Source ="remove.png",
+                HeightRequest=14,
+                WidthRequest=14
+            };
+           
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += (s,a) => {
+                var ico = (Image)s;
+                Grid grid = (Grid)ico.Parent;
+                flexMedia.Children.Remove(grid);
+            };
+            icone.GestureRecognizers.Add(tapGestureRecognizer);
+            #endregion
+
+            await CrossMedia.Current.Initialize();
+
+            
+            var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+            {
+                
+            });
+
+            if (file == null)
+                return;
+
+         
+            img.Source = ImageSource.FromStream(() =>
+            {
+                var stream = file.GetStream();
+                return stream;
+            });
+            g.Children.Add(img);
+            g.Children.Add(icone);
+        }
+
+        private async void VideoBtn_AnimationCompleted(object sender, EventArgs e)
+        {
+            MediaElement mediaElement = new MediaElement()
+            {
+                HeightRequest = 200,
+                BackgroundColor=Color.Blue
+            };
+
+            await CrossMedia.Current.Initialize();  
+            var file = await CrossMedia.Current.TakeVideoAsync(new Plugin.Media.Abstractions.StoreVideoOptions
+            {
+               
+            });
+
+            if (file == null)
+                return;
+
+            flexMedia.Children.Clear();
+            mediaElement.Source = new FileMediaSource
+            {
+                File = file.Path,
+            };
+           flexMedia.Children.Add(mediaElement);
+        }
+        #endregion
+
+
+
     }
+
 }
