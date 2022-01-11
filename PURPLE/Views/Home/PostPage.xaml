@@ -3,7 +3,16 @@
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:rg="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-            
+              NavigationPage.HasNavigationBar="False"
              x:Class="PURPLE.Views.Home.PostPage">
- 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Label Grid.Row="1" Text="Lelouche"/>
+        </Grid>
+    </Grid>
 </rg:PopupPage>

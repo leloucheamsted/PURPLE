@@ -1,20 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<controls:AnimationPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              NavigationPage.HasNavigationBar="False"
-             xmlns:controls="clr-namespace:FormsControls.Base;assembly=FormsControls.Base"
                         xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
                         xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
                         xmlns:entry="clr-namespace:PURPLE.Controls"
                         BackgroundColor="{StaticResource whiteColor}"
                         xmlns:vm="clr-namespace:PURPLE.ViewModels"
                         xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" 
+                        xmlns:videoplayer="clr-namespace:Octane.Xamarin.Forms.VideoPlayer;assembly=Octane.Xamarin.Forms.VideoPlayer"
                         xmlns:vm1="clr-namespace:PURPLE"
                         x:Class="PURPLE.Views.PostElement.FormulairePostPage">
-    <controls:AnimationPage.PageAnimation>
-        <controls:FlipPageAnimation Duration="Medium" Subtype="FromBottom" />
-    </controls:AnimationPage.PageAnimation>
+
     <Grid x:Name="gd">
         <!--#region  FormulaireReussiteView-->
         <Grid Padding="10" BackgroundColor="{StaticResource whiteColor}" x:Name="ReactView">
@@ -46,7 +44,7 @@
        
         <!--#endregion-->
 
-        <ScrollView   Grid.Row="1" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" Margin="-10" >
+        <ScrollView   Grid.Row="1" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never"  >
             <StackLayout x:Name="stackView"  Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Label Text="Intitulé de la réussite"
                        FontSize="Large"
@@ -147,7 +145,45 @@
                     <FlexLayout x:Name="flexMedia" Direction="Row" Wrap="Wrap" AlignItems="Start"  JustifyContent="Start">
                         
                     </FlexLayout>
-                <!--#endregion-->
+                <!--#region  videoMediaVIEW-->
+                  
+                    <Grid x:Name="viewVideo" Padding="0" HeightRequest="300"  HorizontalOptions="FillAndExpand" VerticalOptions="Center"  BackgroundColor="{StaticResource backgroundColorPrimary}">
+                           <xct:MediaElement    Aspect="AspectFill" Margin="0"   
+                                             
+                                        VerticalOptions="FillAndExpand"
+                                                HorizontalOptions="CenterAndExpand"
+                                             AutoPlay="False"
+                                          ShowsPlaybackControls="False"
+                                           
+                                          Background="red"  
+                                          x:Name="mediaElement">
+
+                    </xct:MediaElement>
+                        
+                        <Label Text="&#xf00d;"
+                               x:Name="closevideo"
+                               FontFamily="fal" Padding="10" FontSize="30" 
+                               HorizontalOptions="End"
+                               VerticalOptions="Start"
+                               TextColor="{StaticResource iconeColor}">                         
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
+                            </Label.GestureRecognizers>
+                            
+                        </Label>
+                        <Label Text="&#xf144;" FontFamily="fas" HorizontalOptions="Center" BindingContext="{x:Reference mediaElement}" VerticalOptions="Center" TextColor="{StaticResource backgroundColorPrimary}" FontSize="50">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding CurrentState}" Value="{x:Static xct:MediaElementState.Playing}">
+                                    <Setter Property="Text" Value="&#xf28b;" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+                       <!--#endregion-->
+                    <!--#endregion-->
                 
                 
                 
@@ -177,7 +213,7 @@
                 </syncEffectsView:SfEffectsView>
 
                 <!--Select Photo Bouton-->
-                <syncEffectsView:SfEffectsView x:Name="SelectPhotoBtn" Grid.Column="2"  RippleColor="{StaticResource SecondColor}"  BackgroundColor="{StaticResource transparentColor}" CornerRadius="25">
+                <syncEffectsView:SfEffectsView x:Name="SelectPhotoBtn" AnimationCompleted="SelectPhotoBtn_AnimationCompleted" Grid.Column="2"  RippleColor="{StaticResource SecondColor}"  BackgroundColor="{StaticResource transparentColor}" CornerRadius="25">
                     <Label Text="&#xf302;"
                            FontFamily="fal" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" TextColor="Black" ></Label>
                 </syncEffectsView:SfEffectsView>
@@ -272,4 +308,4 @@
         <!--#endregion-->
             
     </Grid>
-</controls:AnimationPage>
+</ContentPage>
