@@ -1,5 +1,6 @@
 ﻿using Plugin.Media;
 using Plugin.Media.Abstractions;
+using PURPLE.Views.Home;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,10 @@ using Xamarin.Forms.Xaml;
 namespace PURPLE.Views.PostElement
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FormulairePostPage : ContentPage
+    public partial class FomulairePostAuestionPage : ContentPage
     {
-        uint animationLength = 300;
-        public FormulairePostPage()
+        private uint animationLength = 300;
+        public FomulairePostAuestionPage()
         {
             InitializeComponent();
             closeVideo(false);
@@ -34,7 +35,7 @@ namespace PURPLE.Views.PostElement
             };
 
 
-            flexMedia.Children.Add(g);
+              flexMedia.Children.Add(g);
             Image img = new Image() { };
             Image icone = new Image()
             {
@@ -50,7 +51,7 @@ namespace PURPLE.Views.PostElement
             tapGestureRecognizer.Tapped += (s, a) => {
                 var ico = (Image)s;
                 Grid grid = (Grid)ico.Parent;
-                flexMedia.Children.Remove(grid);
+                   flexMedia.Children.Remove(grid);
             };
             icone.GestureRecognizers.Add(tapGestureRecognizer);
             #endregion
@@ -96,7 +97,7 @@ namespace PURPLE.Views.PostElement
             mediaElement.AutoPlay = false;
             mediaElement.Pause();
 
-            // flexMedia.Children.Add(mediaElement);
+           // flexMedia.Children.Add(mediaElement);
         }
 
 
@@ -190,7 +191,7 @@ namespace PURPLE.Views.PostElement
 
             }
 
-
+          
         }
 
         #endregion
@@ -225,6 +226,8 @@ namespace PURPLE.Views.PostElement
                 mediaElement.Pause();
             }
         }
+
+
         #region Hashtags Events
 
 
@@ -244,7 +247,7 @@ namespace PURPLE.Views.PostElement
             {
 
                 await Task.WhenAll(
-                   stacklist.TranslateTo(0, 800, animationLength),
+                   stacklist.TranslateTo(0,800, animationLength),
                    stacklist.FadeTo(0, animationLength)
                    );
 
@@ -299,7 +302,7 @@ namespace PURPLE.Views.PostElement
             }
         }
 
-
+      
         #endregion
 
     }

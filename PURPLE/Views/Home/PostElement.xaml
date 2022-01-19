@@ -1,10 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<controls:AnimationPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              NavigationPage.HasNavigationBar="False"
+             xmlns:controls="clr-namespace:FormsControls.Base;assembly=FormsControls.Base" 
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" 
              xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
              x:Class="PURPLE.Views.Home.PostElement">
+    <controls:AnimationPage.PageAnimation>
+        <controls:FadePageAnimation Duration="Short" Subtype="FromBottom" />
+    </controls:AnimationPage.PageAnimation>
     <!--#region  Vue de choix du type de poste-->
     <ScrollView x:Name="ChoixPostView" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
         <Grid  Padding="15" >
@@ -43,7 +47,9 @@
                                HorizontalOptions="Center"
                                VerticalOptions="Center"
                                FontSize="Body"/>
+                                  
                         </StackLayout>
+                        
                     </syncEffectsView:SfEffectsView>
                 </Frame>
 
@@ -51,7 +57,7 @@
                 
                 <!--#region  Idée-->
                 <Frame Padding="0" Grid.Column="1" HasShadow="True" CornerRadius="10" HeightRequest="150"  >
-                    <syncEffectsView:SfEffectsView  x:Name="idee_postBtn" Margin="0" HeightRequest="50" RippleColor="{StaticResource SecondColor}">
+                    <syncEffectsView:SfEffectsView  AnimationCompleted="idee_postBtn_AnimationCompleted" x:Name="idee_postBtn" Margin="0" HeightRequest="50" RippleColor="{StaticResource SecondColor}">
                         <StackLayout>
                             <Image HeightRequest="100" Source="idea.png"/>
                             <Label Text="Idée ?"
@@ -69,7 +75,7 @@
                    
                 <!--#region Qestion-->
                 <Frame Padding="0" Grid.Column="0" Grid.Row="1" HasShadow="True" CornerRadius="10" HeightRequest="150"  >
-                    <syncEffectsView:SfEffectsView  x:Name="question_postBtn" Margin="0" HeightRequest="50" RippleColor="{StaticResource SecondColor}">
+                    <syncEffectsView:SfEffectsView  AnimationCompleted="question_postBtn_AnimationCompleted" x:Name="question_postBtn" Margin="0" HeightRequest="50" RippleColor="{StaticResource SecondColor}">
                         <StackLayout>
                             <Image HeightRequest="100" Source="question.png"/>
                             <Label Text="Question ?"
@@ -86,7 +92,7 @@
                 
                 <!--#region Post-->
                 <Frame Padding="0"  HasShadow="True" Grid.Row="1" Grid.Column="1" CornerRadius="10" HeightRequest="150"  >
-                    <syncEffectsView:SfEffectsView  x:Name="post_postBtn" Margin="0" HeightRequest="50" RippleColor="{StaticResource SecondColor}">
+                    <syncEffectsView:SfEffectsView AnimationCompleted="post_postBtn_AnimationCompleted"  x:Name="post_postBtn" Margin="0" HeightRequest="50" RippleColor="{StaticResource SecondColor}">
                         <StackLayout>
                             <Image HeightRequest="100" Source="post.png"/>
                             <Label Text="Un poste ?"
@@ -110,4 +116,4 @@
     <!--#endregion-->
     
  
-</ContentPage>
+</controls:AnimationPage>

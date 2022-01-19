@@ -170,7 +170,16 @@
     <EmbeddedResource Update="Views\NotificationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\PostElement\FomulairePostAuestionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PostElement\FormulairePostIdeaPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\PostElement\FormulairePostPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PostElement\FormulairePostReussitePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProfilPage.xaml">
@@ -200,8 +209,8 @@
     <Compile Update="Views\Home\TabbedNavPage.xaml.cs">
       <DependentUpon>TabbedNavPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\PostElement\FormulairePostPage.xaml.cs">
-      <DependentUpon>FormulairePostPage.xaml</DependentUpon>
+    <Compile Update="Views\PostElement\FormulairePostReussitePage.xaml.cs">
+      <DependentUpon>FormulairePostReussitePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

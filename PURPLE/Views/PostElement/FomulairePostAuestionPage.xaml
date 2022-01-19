@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" 
-             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
              xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
-              xmlns:vm1="clr-namespace:PURPLE" 
-             xmlns:controls="clr-namespace:PURPLE.Controls"
- xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             xmlns:controls="clr-namespace:PURPLE.Controls" 
+             xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:vm1="clr-namespace:PURPLE"
              NavigationPage.HasNavigationBar="False"
-             x:Class="PURPLE.Views.PostElement.FormulairePostPage">
+            
+             x:Class="PURPLE.Views.PostElement.FomulairePostAuestionPage">
     <ContentPage.BindingContext>
         <vm1:FormulaPostVewModel/>
     </ContentPage.BindingContext>
@@ -44,10 +44,10 @@
 
                 <ScrollView Grid.Row="1" Margin="0" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" >
                     <StackLayout>
-                        <controls:ExtendedEditorControl IsExpandable="True"   
-                                                TextColor="{StaticResource iconeColor}" 
-                                                Placeholder="Que voulez-vous poster ?"
+                        <controls:ExtendedEditorControl IsExpandable="True"  
                                                         x:Name="description_entry"
+                                                TextColor="{StaticResource iconeColor}" 
+                                                Placeholder="Que voulez-vous demander ?"
                                                 FontFamily="MetroLight" 
                                                 FontAttributes="Bold"
                                                 FontSize="Title"/>
@@ -58,8 +58,8 @@
                         <!--#region  videoMediaVIEW-->
 
                         <Grid x:Name="viewVideo" Padding="0" HeightRequest="300"  HorizontalOptions="FillAndExpand" VerticalOptions="Center"  BackgroundColor="{StaticResource backgroundColorPrimary}">
-
-                            <xct:MediaElement    Aspect="AspectFit" Margin="0"   
+ 
+                        <xct:MediaElement    Aspect="AspectFit" Margin="0"   
                                              HeightRequest="300"
                                           Volume="1"   
                                              KeepScreenOn="False"
@@ -142,9 +142,9 @@
                     <!--#endregion-->
                 </Grid>
 
-
-
-            </Grid>
+              
+       
+         </Grid>
             <StackLayout Padding="0" Spacing="0" x:Name="stacklist" TranslationY="800">
                 <Label Padding="10" BackgroundColor="{StaticResource whiteColor}"
                    
@@ -186,5 +186,5 @@
             </StackLayout>
 
         </Grid>
-    </ContentPage.Content> 
+    </ContentPage.Content>
 </ContentPage>

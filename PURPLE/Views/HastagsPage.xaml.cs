@@ -18,7 +18,7 @@ namespace PURPLE.Views
         {
             InitializeComponent();
         }
-        protected async override void OnAppearing()
+        protected  override void OnAppearing()
         {
             base.OnAppearing();
             var currentNavPage = (Application.Current.MainPage as NavigationPage);

@@ -170,13 +170,13 @@ The next generation of the web's favorite icon library + toolkit is now availabl
           <!--#endregion-->
         
         <!--#region  PosteView-->
-            <xct:TabView      BackgroundColor="Red"
+            <xct:TabView    
                 TabStripHeight="40"
                 TabIndicatorColor="{StaticResource ThirdColor}"
                 Margin="0,10,0,0"
                 TabContentBackgroundColor="{StaticResource whiteColor}">
                  
-                <xct:TabViewItem    BackgroundColor="Red"
+                <xct:TabViewItem    
                     Text="Inbox"
                 FontFamily="MetroRegular"
                     TextColor="{StaticResource iconeColor}"

@@ -94,7 +94,7 @@
                                 <!--#region  Zone de Hashtags-->
                                 <Grid HeightRequest="50" Padding="10,0,10,0" >
                                     <Label  Text="Mes #hashtags" FontSize="Large" FontFamily="MetroRegular" TextColor="{StaticResource iconeColor}" VerticalOptions="Center"/>
-                                    <syncEffectsView:SfEffectsView HeightRequest="50" x:Name="Btn_hashtag" WidthRequest="40" CornerRadius="20" TouchDownEffects="Highlight" HighlightColor="{StaticResource SecondColor}" HorizontalOptions="End" VerticalOptions="Center" >
+                                    <syncEffectsView:SfEffectsView AnimationCompleted="Btn_hashtag_AnimationCompleted" HeightRequest="50" x:Name="Btn_hashtag" WidthRequest="40" CornerRadius="20" TouchDownEffects="Highlight" HighlightColor="{StaticResource SecondColor}" HorizontalOptions="End" VerticalOptions="Center" >
                                         
                                         <Label  Text="&#xf640;" TextColor="{StaticResource btnColor}" FontFamily="fal" HorizontalOptions="Center" VerticalOptions="Center"  FontSize="Title"  />
                                     </syncEffectsView:SfEffectsView>
@@ -141,9 +141,9 @@
                                                         <RowDefinition Height="auto"/>
                                                         <RowDefinition Height="auto"/>
                                                         <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="30"/>
-                                                        <RowDefinition Height="30"/>
                                                         <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="40"/>
                                                     </Grid.RowDefinitions>
                                                     <!--#region TopBar-->
                                                     <Grid    Margin="4"  VerticalOptions="Center" >
@@ -205,12 +205,21 @@
                                                         <!--#endregion-->
                                                     </Grid>
                                                     <!--#endregion-->
+                                                    
                                                     <!--#region  Contenu du Post https://aka.ms/campus  -->
                                                     <customAcceuil:PostViewTemplate Grid.Row="1"/>
                                                     <!--#endregion-->
 
+                                                
+
+                                                    <customAcceuil:CustomLabel Grid.Row="2" Text="{Binding VoirPlus}"/>
+                                                    <Label Margin="5,0,0,0"  Grid.Row="3"  Text="...voirplus" FontSize="15" FontFamily="AvenirNextDemiBold" TextColor="{StaticResource iconeColor}" >
+                                                        <Label.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.VoirPlusCommand, Source={x:Reference listview}}" CommandParameter="{Binding .}"    />
+                                                        </Label.GestureRecognizers>
+                                                    </Label>
                                                     <!--#region   zone de reaction-->
-                                                    <StackLayout  Grid.Row="2" >
+                                                    <StackLayout  Grid.Row="4" >
                                                         <StackLayout Margin="5,0,0,0" Orientation="Horizontal">
                                                             <syncEffectsView:SfEffectsView WidthRequest="33"  
                                                                                            TouchUpCommand="{Binding Path=BindingContext.LikeCommand, Source={x:Reference listview}}" 
@@ -240,16 +249,10 @@
                                                                 <Label x:Name="share_icone" Text="&#xf079;" HorizontalOptions="Center" VerticalOptions="Center" TextColor="{StaticResource ThirdColor}" FontFamily="fal" FontSize="Title" />
                                                             </syncEffectsView:SfEffectsView>
                                                         </StackLayout>
-                                                      
+
                                                     </StackLayout>
                                                     <!--#endregion-->
-
-                                                    <customAcceuil:CustomLabel Grid.Row="3" Text="{Binding VoirPlus}"/>
-                                                    <Label Margin="5,0,0,0"  Grid.Row="4"  Text="...voirplus" FontSize="15" FontFamily="AvenirNextDemiBold" TextColor="{StaticResource iconeColor}" >
-                                                        <Label.GestureRecognizers>
-                                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.VoirPlusCommand, Source={x:Reference listview}}" CommandParameter="{Binding .}"    />
-                                                        </Label.GestureRecognizers>
-                                                    </Label>
+                                                    
                                                     <StackLayout Margin="5,0,0,0" Grid.Row="5" Spacing="1.5"  Orientation="Horizontal">
                                                         <Label FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" Text="{Binding NbreComment}"/>
                                                         <Label FontFamily="MetroBold" TextColor="{StaticResource iconeColor}" Text="Commentaire"/>

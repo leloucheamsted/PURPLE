@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             NavigationPage.HasNavigationBar="False" 
+              xmlns:controls="clr-namespace:FormsControls.Base;assembly=FormsControls.Base"
+              
+                        xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+                        xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+                        xmlns:entry="clr-namespace:PURPLE.Controls"
+                        BackgroundColor="{StaticResource whiteColor}"
+                        xmlns:vm="clr-namespace:PURPLE.ViewModels"
+                        xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" 
+                        xmlns:videoplayer="clr-namespace:Octane.Xamarin.Forms.VideoPlayer;assembly=Octane.Xamarin.Forms.VideoPlayer"
+                        xmlns:vm1="clr-namespace:PURPLE"
+                         
+                        x:Class="PURPLE.Views.PostElement.FormulairePostReussitePage">
+
+    <ContentPage.BindingContext>
+        <vm1:FormulaPostVewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+      <Grid x:Name="gd">
+        <!--#region  FormulaireReussiteView-->
+        <Grid Padding="10"  BackgroundColor="{StaticResource whiteColor}" x:Name="ReactView">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+            <!--#region TabBar-->
+            <Grid  >
+                <Label 
+                    x:Name="closeBtn"
+                    Text="&#xf00d;"
+                       FontFamily="fal"
+                       Padding="10"
+                       TextColor="{StaticResource ThirdColor}"
+                       FontSize="Title"
+                       
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="CenterAndExpand">
+
+                </Label>
+                <buttons:SfButton x:Name="ValidButtton" HorizontalOptions="EndAndExpand"  CornerRadius="15" WidthRequest="100" HeightRequest="30"  BackgroundColor="{StaticResource ThirdColor}" VerticalOptions="CenterAndExpand">
+                    <Label Text="Terminer" FontFamily="MetroMedium" FontSize="Body" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="{StaticResource whiteColor}"  />
+                </buttons:SfButton>
+            </Grid>
+
+
+            <!--#endregion-->
+
+            <!--#region  ScrollForm-->
+            <ScrollView   Grid.Row="1" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never"  >
+                <StackLayout x:Name="stackView"  Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Label Text="Intitulé de la réussite"
+                       FontSize="Large"
+                       FontFamily="MetroBold"
+                       TextColor="{StaticResource iconeColor}"
+                       />
+                    <!--#region Zone de saisir de l'intitule-->
+                    <Frame Margin="0,0,0,15" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" HasShadow="False">
+                        <entry:CustomEntry  TextColor="{StaticResource iconeColor}"
+                                        
+                                        FontSize="Subtitle"
+                                        FontFamily="MetroLight"/>
+                    </Frame>
+                           
+                    <!--#endregion-->
+
+                    <Label Text="Description de la réussite"
+                       FontSize="Large"
+                       FontFamily="MetroBold"
+                       TextColor="{StaticResource iconeColor}"
+                       />
+
+                    <!--#region  Zone de saisir de dscription   -->
+                    <Frame  Margin="0" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" HasShadow="False">
+                        <entry:ExtendedEditorControl IsExpandable="True" IsTextPredictionEnabled="True" x:Name="desciprion_entry" TextColor="{StaticResource iconeColor}" FontSize="Subtitle" FontFamily="MetroLight">
+
+                        </entry:ExtendedEditorControl>
+                    </Frame>
+                    
+                    <!--#endregion-->
+
+                    <!--#region  Hashtags-->
+                    <buttons:SfButton Text="+hashtags" TextColor="{StaticResource iconeColor}"
+                                  BackgroundColor="{StaticResource transparentColor}" 
+                                  BorderWidth="1" BorderColor="{StaticResource ThirdColor}"
+                                   Clicked="SfButton_Clicked"
+                                  CornerRadius="20"
+                                  Margin="0,0,200,0">
+                    </buttons:SfButton>
+
+
+                    <!--#endregion-->
+
+                    <Label Text="Lieu"
+                       FontSize="Large"
+                       FontFamily="MetroBold"
+                       TextColor="{StaticResource iconeColor}"
+                       />
+
+                    <!--#region Zone de Lieu-->
+                    <Frame Margin="0,0,0,15" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" HasShadow="False">
+                        <entry:CustomEntry  TextColor="{StaticResource iconeColor}"
+                                        
+                                        FontSize="Subtitle"
+                                        FontFamily="MetroLight"/>
+                    </Frame>
+                      
+                    <!--#endregion-->
+
+                    <Label Text="Date"
+                       FontSize="Large"
+                       FontFamily="MetroBold"
+                       TextColor="{StaticResource iconeColor}"
+                       />
+
+                    <!--#region Zone de Date-->
+                    <Grid>
+                        <buttons:SfButton x:Name="DateBtn" Text="" HorizontalTextAlignment="Start" FontFamily="MetroLight" TextColor="{StaticResource iconeColor}" HeightRequest="36" Margin="0,0,0,15" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" >
+
+                        </buttons:SfButton>
+
+
+                        <DatePicker x:Name="date" DateSelected="date_DateSelected" 
+                                    Format="D"
+         BackgroundColor="Transparent" Opacity="0"/>
+
+                    </Grid>
+                    <!--#endregion-->
+
+                    <Label Text="Compétences"
+                       FontSize="Large"
+                       FontFamily="MetroBold"
+                       TextColor="{StaticResource iconeColor}"
+                       />
+
+                    <!--#region Zone de Competences-->
+                    <buttons:SfButton Text="+competences" HorizontalTextAlignment="Start" TextColor="{StaticResource iconeColor}"  x:Name="CompetenceBtn" Clicked="CompetenceBtn_Clicked" HeightRequest="36" Margin="0,0,0,15" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" >
+
+                    </buttons:SfButton>
+                    <FlexLayout x:Name="flexLayoutCompetences" Direction="Row" Wrap="Wrap" AlignItems="Start"  JustifyContent="Start">
+
+                    </FlexLayout>
+                    <!--#endregion-->
+
+                    <!--#region  Photos video-->
+                    <Label Text="Photo(s) ou video"
+                       FontSize="Large"
+                       FontFamily="MetroBold"
+                       TextColor="{StaticResource iconeColor}"
+                       />
+                    <FlexLayout x:Name="flexMedia"   Direction="Row" Wrap="Wrap" AlignItems="Start"  JustifyContent="Start">
+
+                    </FlexLayout>
+
+                    <!--#region  videoMediaVIEW-->
+
+                    <Grid x:Name="viewVideo" Padding="0" HeightRequest="300"  HorizontalOptions="FillAndExpand" VerticalOptions="Center"  BackgroundColor="{StaticResource backgroundColorPrimary}">
+                       
+                        <xct:MediaElement    Aspect="AspectFit" Margin="0"   
+                                             HeightRequest="300"
+                                          Volume="1"   
+                                             KeepScreenOn="False"
+                                             IsTabStop="True"
+                                        VerticalOptions="Center"
+                                                HorizontalOptions="FillAndExpand"
+                                             AutoPlay="False"
+                                          ShowsPlaybackControls="False"
+                                           
+                                          Background="red"  
+                                          x:Name="mediaElement">
+
+                        </xct:MediaElement>
+                            
+                        <Label Text="&#xf00d;"
+                               x:Name="closevideo"
+                               FontFamily="fal" Padding="10" FontSize="30" 
+                               HorizontalOptions="End"
+                               VerticalOptions="Start"
+                               TextColor="{StaticResource iconeColor}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
+                            </Label.GestureRecognizers>
+
+                        </Label>
+                        <Label Text="&#xf144;" FontFamily="fas" HorizontalOptions="Center" BindingContext="{x:Reference mediaElement}" VerticalOptions="Center" TextColor="{StaticResource backgroundColorPrimary}" FontSize="50">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding CurrentState}" Value="{x:Static xct:MediaElementState.Playing}">
+                                    <Setter Property="Text" Value="&#xf28b;" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        
+                    </Grid>
+                    <!--#endregion-->
+                    <!--#endregion-->
+
+
+
+                </StackLayout>
+            </ScrollView>
+            <!--#endregion-->
+
+            <!--#region BottomBar-->
+            <Grid   Grid.Row="2" Margin="0,5,0,-5" BackgroundColor="{StaticResource whiteColor}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Camera Bouton-->
+                <syncEffectsView:SfEffectsView x:Name="CameraBtn" Grid.Column="0" AnimationCompleted="CameraBtn_AnimationCompletedAsync" RippleColor="{StaticResource SecondColor}"  BackgroundColor="{StaticResource transparentColor}" CornerRadius="25">
+                    <Label Text="&#xf030;"
+                           FontFamily="fal" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" TextColor="Black" >
+
+                    </Label>
+                </syncEffectsView:SfEffectsView>
+
+                <!--Video Bouton-->
+                <syncEffectsView:SfEffectsView x:Name="VideoBtn" AnimationCompleted="VideoBtn_AnimationCompleted" Grid.Column="1"  RippleColor="{StaticResource SecondColor}"  BackgroundColor="{StaticResource transparentColor}" CornerRadius="25">
+                    <Label Text="&#xf03d;"
+                           FontFamily="fal" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" TextColor="Black" ></Label>
+                </syncEffectsView:SfEffectsView>
+
+                <!--Select Photo Bouton-->
+                <syncEffectsView:SfEffectsView x:Name="SelectPhotoBtn" AnimationCompleted="SelectPhotoBtn_AnimationCompleted" Grid.Column="2"  RippleColor="{StaticResource SecondColor}"  BackgroundColor="{StaticResource transparentColor}" CornerRadius="25">
+                    <Label Text="&#xf302;"
+                           FontFamily="fal" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" TextColor="Black" ></Label>
+                </syncEffectsView:SfEffectsView>
+            </Grid>
+            <!--#endregion-->
+        </Grid>
+
+        <!--#endregion-->
+
+
+
+        
+        <StackLayout Padding="0" Spacing="0" x:Name="stacklist" TranslationX="400">
+                <Label Padding="10" BackgroundColor="{StaticResource whiteColor}"
+                   
+                    Text="&#xf00d;"
+                       FontFamily="fal"
+                       TextColor="{StaticResource ThirdColor}"
+                       FontSize="Title"
+                       
+                       HorizontalOptions="Fill"
+                       VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer  Tapped="TapGestureRecognizer_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <StackLayout HeightRequest="1" BackgroundColor="{StaticResource grayDateColor}"></StackLayout>
+            <syncfusion:SfListView  x:Name="listView"
+                   ItemsSource="{Binding Listhastag}"
+                                SelectionMode="None"
+                                IsScrollBarVisible="False"
+                                HeightRequest="300"
+                                BackgroundColor="{StaticResource whiteColor}"
+                   ItemSize="30">
+            
+        <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate>
+                        <StackLayout Padding="5">
+                           
+                                <Label Text="{Binding .}" x:Name="hastgasitem" FontFamily="MetroRegular"  TextColor="{StaticResource iconeColor}" FontSize="Body">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer  Tapped="Ajout_Hashtag"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <StackLayout HeightRequest="1" Opacity=".6" BackgroundColor="{StaticResource grayDateColor}"></StackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+        </syncfusion:SfListView.ItemTemplate>
+    </syncfusion:SfListView>
+            <StackLayout HeightRequest="1" BackgroundColor="{StaticResource grayDateColor}"></StackLayout>
+        </StackLayout>
+
+      
+            
+           
+        <StackLayout Padding="0" x:Name="Listcompetences" TranslationY="800" Spacing="0">
+
+            <Label Padding="10" BackgroundColor="{StaticResource whiteColor}"
+                    x:Name="closeCompetencesView"
+                    Text="&#xf00d;"
+                       FontFamily="fal"
+                       TextColor="{StaticResource ThirdColor}"
+                       FontSize="Title"
+                       
+                       HorizontalOptions="Fill"
+                       VerticalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <StackLayout HeightRequest="1" BackgroundColor="{StaticResource grayDateColor}"></StackLayout>
+            <syncfusion:SfListView 
+                   ItemsSource="{Binding ListCompetences}"
+                                SelectionMode="None"
+                                IsScrollBarVisible="False"
+                               
+                                BackgroundColor="{StaticResource whiteColor}"
+                   ItemSize="30">
+             
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="5">
+
+                                <Label Text="{Binding .}" x:Name="hastgasitem" FontFamily="MetroRegular"  TextColor="{StaticResource iconeColor}" FontSize="Body">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer  Tapped="TapGestureRecognizer_Tapped_4"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <StackLayout HeightRequest="1" Opacity=".6" BackgroundColor="{StaticResource grayDateColor}"></StackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+            <StackLayout HeightRequest="1" BackgroundColor="{StaticResource grayDateColor}"></StackLayout>
+        </StackLayout>
+           
+    
+    </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,4 +1,6 @@
-﻿using PURPLE.Views.PostElement;
+﻿using FormsControls.Base;
+using PURPLE.Views.PostElement;
+using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +13,9 @@ using Xamarin.Forms.Xaml;
 namespace PURPLE.Views.Home
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PostElement : ContentPage
+    public partial class PostElement : AnimationPage
     {
-        private uint durerAnimation = 600;
+      //  private uint durerAnimation = 600;
         public PostElement()
         {
             InitializeComponent();
@@ -21,8 +23,37 @@ namespace PURPLE.Views.Home
 
         private async void reussite_postBtn_TouchUp(object sender, EventArgs e)
         {
-            var formulaire = new FormulairePostPage();
+            var formulaire = new FormulairePostReussitePage();
             await App.Current.MainPage.Navigation.PushAsync(formulaire);
         }
+
+        private async void idee_postBtn_AnimationCompleted(object sender, EventArgs e)
+        {
+            var formulaire= new FormulairePostIdeaPage();
+            await App.Current.MainPage.Navigation.PushAsync(formulaire);
+        }
+
+        private async void question_postBtn_AnimationCompleted(object sender, EventArgs e)
+        {
+            var formulaire = new FomulairePostAuestionPage();
+            await App.Current.MainPage.Navigation.PushAsync(formulaire);
+        }
+
+        private async void post_postBtn_AnimationCompleted(object sender, EventArgs e)
+        {
+         
+          //  var formulaire = new FormulairePostPage();
+           await App.Current.MainPage.Navigation.PushAsync(new FormulairePostPage());
+        }
+
+        private async Task Animation()
+        {
+            var formulaire = new PostPage();
+            await Task.Run(()=> App.Current.MainPage.Navigation.PushPopupAsync(formulaire));
+            await Task.Delay(2000);
+            await Navigation.PopPopupAsync();
+        }
+    
     }
+
 }
