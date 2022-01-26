@@ -11,7 +11,7 @@ namespace PURPLE.Droid.Services
 {
     public class StatusBarStyleManager : IStatusBarStyleManager
     {
-        
+        [System.Obsolete]
         public void SetDarkTheme(string textcolor)
         {
             if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
@@ -55,6 +55,8 @@ namespace PURPLE.Droid.Services
 
             return window;
         }
+
+        [System.Obsolete]
         public void SetNavigationBarColor(string hexColor)
         {
             if (Build.VERSION.SdkInt < BuildVersionCodes.M)
