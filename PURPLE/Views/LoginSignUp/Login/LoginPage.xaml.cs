@@ -1,4 +1,5 @@
-﻿using PURPLE.Interface;
+﻿using FormsControls.Base;
+using PURPLE.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ using Xamarin.Forms.Xaml;
 namespace PURPLE.LoginSignUp.Login
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class LoginPage : AnimationPage
     {
         public LoginPage()
         {

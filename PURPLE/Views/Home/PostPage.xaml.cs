@@ -1,4 +1,6 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿using FormsControls.Base;
+using PURPLE.Interface;
+using Rg.Plugins.Popup.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,20 @@ namespace PURPLE.Views.Home
         public PostPage()
         {
             InitializeComponent();
+            
+           
+
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            var currentNavPage = (Application.Current.MainPage as NavigationPage);
+            var statusBarStyleManager = DependencyService.Get<IStatusBarStyleManager>();
+            currentNavPage.BarBackgroundColor = Color.DarkCyan;
+            statusBarStyleManager.SetLightTheme("#ffffff");
+            statusBarStyleManager.SetNavigationBarColor("#ffffff");
+
+
         }
     }
 }

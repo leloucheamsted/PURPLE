@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Foundation;
 using Syncfusion.ListView.XForms.iOS;
+using Syncfusion.SfBusyIndicator.XForms.iOS;
 using Syncfusion.SfPullToRefresh.XForms.iOS;
 using Syncfusion.XForms.iOS.EffectsView;
 using UIKit;
@@ -33,6 +34,7 @@ namespace PURPLE.iOS
             FormsControls.Touch.Main.Init();
             Syncfusion.XForms.iOS.Expander.SfExpanderRenderer.Init();
             SfEffectsViewRenderer.Init();
+            new SfBusyIndicatorRenderer();
             Syncfusion.XForms.iOS.Cards.SfCardViewRenderer.Init();
             Syncfusion.XForms.iOS.Core.SfAvatarViewRenderer.Init();
             SfPullToRefreshRenderer.Init();

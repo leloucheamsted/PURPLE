@@ -78,6 +78,7 @@
     <PackageReference Include="Syncfusion.Xamarin.Cards" Version="19.4.0.38" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="19.4.0.38" />
     <PackageReference Include="Syncfusion.Xamarin.Expander" Version="19.3.0.43" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="19.3.0.43" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="19.4.0.38" />
     <PackageReference Include="Syncfusion.Xamarin.SfPullToRefresh" Version="19.4.0.38" />
     <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
@@ -162,6 +163,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LoginSignUp\Login\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LoginSignUp\SignUp\FormSignUpPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LoginSignUp\SignUp\SignupPage.xaml">

@@ -1,12 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<controls:AnimationPage  xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasNavigationBar="False"
              xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+              xmlns:controls="clr-namespace:FormsControls.Base;assembly=FormsControls.Base" 
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:local="clr-namespace:PURPLE.LoginSignUp.Login"
              x:Class="PURPLE.LoginSignUp.Login.LoginPage">
+    <controls:AnimationPage.PageAnimation>
+        <controls:SlidePageAnimation Duration="Medium" Subtype="FromLeft" />
+    </controls:AnimationPage.PageAnimation>
     <Grid Padding="30,20" BackgroundColor="{StaticResource backgroundColorPrimary}">
         <Grid.RowDefinitions>
             <RowDefinition Height="120" />
@@ -188,4 +192,4 @@
         </StackLayout>
         <!--#endregion-->
     </Grid>
-</ContentPage>
+</controls:AnimationPage>

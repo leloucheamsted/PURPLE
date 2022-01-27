@@ -1,12 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<controls:AnimationPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasNavigationBar="False"
              xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:controls="clr-namespace:FormsControls.Base;assembly=FormsControls.Base"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              x:Class="PURPLE.LoginSignUp.SignUp.SignupPage">
-    
+    <controls:AnimationPage.PageAnimation>
+        <controls:FadePageAnimation Duration="Medium" Subtype="FromBottom" />
+    </controls:AnimationPage.PageAnimation>
+    <Grid>
     <Grid Padding="30,20" BackgroundColor="{StaticResource backgroundColorPrimary}">
         <Grid.RowDefinitions>
             <RowDefinition Height="120" />
@@ -64,11 +68,36 @@
                    ></Label>
             
             <!--#region Formulaire d'inscription-->
+            <!--#region Prenom d'utilisateur-->
+            <inputLayout:SfTextInputLayout Hint="Prenom" 
+                                           ContainerType="Outlined"
+                                           UnfocusedColor="White"
+                                           HelperText="Entrer votre prenom"
+                                           ContainerBackgroundColor="White"
+                                            TrailingViewPosition="Inside"
+                                           OutlineCornerRadius="8" >
+                <Entry x:Name="prename_entry"/>
+                <inputLayout:SfTextInputLayout.TrailingView>
+                    <Label Text="&#xf007;" FontFamily="fas"
+                          FontSize="15"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                          ></Label>
+                </inputLayout:SfTextInputLayout.TrailingView>
+                <inputLayout:SfTextInputLayout.HintLabelStyle>
+                    <inputLayout:LabelStyle FontSize="10" FontFamily="MetroBold">
+                    </inputLayout:LabelStyle>
+                </inputLayout:SfTextInputLayout.HintLabelStyle>
+                <inputLayout:SfTextInputLayout.HelperLabelStyle>
+                    <inputLayout:LabelStyle FontSize="12" FontFamily="MetroRegular">
+                    </inputLayout:LabelStyle>
+                </inputLayout:SfTextInputLayout.HelperLabelStyle>
+            </inputLayout:SfTextInputLayout>
+            <!--#endregion-->
             <!--#region Nom d'utilisateur-->
             <inputLayout:SfTextInputLayout Hint="Name" 
                                            ContainerType="Outlined"
                                            UnfocusedColor="White"
-                                           HelperText="Entrer votre nom d'utilisateur"
+                                           HelperText="Entrer votre Nom"
                                            ContainerBackgroundColor="White"
                                             TrailingViewPosition="Inside"
                                            OutlineCornerRadius="8" >
@@ -166,6 +195,7 @@
                 <buttons:SfButton x:Name="Btn_Register" Text="S'enregistrer"
                                   FontFamily="MetroBold"
                                   FontSize="16"
+                                  Clicked="Btn_Register_Clicked"
                                   HeightRequest="70"
                                   CornerRadius="12"
                                   ></buttons:SfButton>
@@ -202,8 +232,13 @@
                    FontFamily="MetroBold"
                    FontSize="Default"
                    TextColor="#2673D1"
-                   ></Label>
+                   >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
         </StackLayout>
         <!--#endregion-->
     </Grid>
-</ContentPage>              
+    </Grid>
+</controls:AnimationPage>              

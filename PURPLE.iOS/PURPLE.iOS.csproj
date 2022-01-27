@@ -167,6 +167,9 @@
     <PackageReference Include="Syncfusion.Xamarin.Expander">
       <Version>19.3.0.43</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator">
+      <Version>19.3.0.43</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfListView">
       <Version>19.4.0.38</Version>
     </PackageReference>

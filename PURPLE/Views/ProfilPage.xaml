@@ -84,13 +84,13 @@
                 <!-- Abonnes -->
                 <StackLayout Spacing="0">
                     <Label Text="Abonné(s)" Padding="5"
-                           TextColor="{StaticResource iconeColor}"
+                           TextColor="{StaticResource ThirdColor}"
                            FontSize="Medium"
                            FontFamily="AvenirNextDemiBold"
                            HorizontalOptions="Center" 
                            VerticalOptions="Center" />
                     <Label Text="100" Padding="5"
-                           TextColor="{StaticResource grayDateColor}"
+                           TextColor="{StaticResource ThirdColor}"
                            FontSize="Medium"
                            FontFamily="AvenirNextDemiBold"
                            HorizontalOptions="Center" 
@@ -100,20 +100,20 @@
                 <!-- Abonnements -->
                 <StackLayout Grid.Column="1" Spacing="0">
                     <Label Text="Abonnement(s)" Padding="5"
-                           TextColor="{StaticResource iconeColor}"
+                           TextColor="{StaticResource ThirdColor}"
                            FontSize="Medium"
                            FontFamily="AvenirNextDemiBold"
                            HorizontalOptions="Center" 
                            VerticalOptions="Center" />
                     <Label Text="100" Padding="5"
-                           TextColor="{StaticResource grayDateColor}"
+                           TextColor="{StaticResource ThirdColor}"
                            FontSize="Medium"
                            FontFamily="AvenirNextDemiBold"
                            HorizontalOptions="Center" 
                            VerticalOptions="Center" />
                 </StackLayout>
             </Grid>
-        <StackLayout Spacing="20" Margin="5,20,0,0" Orientation="Horizontal">
+        <StackLayout Spacing="20" Orientation="Horizontal">
             <Label Text="À propos de moi" FontSize="Title" VerticalOptions="Center" FontFamily="MetroBold" CharacterSpacing="1" TextColor="{StaticResource iconeColor}" />
 
                 <syncEffectsView:SfEffectsView HeightRequest="40" HorizontalOptions="EndAndExpand" WidthRequest="40" BackgroundColor="Transparent" CornerRadius="25" RippleColor="{StaticResource SecondColor}">
@@ -127,30 +127,96 @@ The next generation of the web's favorite icon library + toolkit is now availabl
             <StackLayout Spacing="2" Orientation="Horizontal" >
                 <Label Text="&#xf3c5;" Margin="0,0,2,0"  FontFamily="fas"  TextColor="{StaticResource ThirdColor}" FontSize="Title"/>
                 <Label  Text="Cameroun" VerticalOptions="Center" FontSize="Medium" FontFamily="MetroBold" TextColor="{StaticResource ThirdColor}"/>
-            </StackLayout>
+            </StackLayout>    
+            
+            
         <!--#region cirruculum vitae-->
-            <SyncExpnader:SfExpander   IsExpanded="True" x:Name="cv_expander" Margin="-10,0"  IconColor="{StaticResource whiteColor}" 
-                                 HeaderBackgroundColor="{StaticResource ThirdColor}" 
-                                 AnimationDuration="250"
-                                 AnimationEasing="SinOut">
-                <SyncExpnader:SfExpander.Header>
-                    <Grid HeightRequest="55" Padding="5" BackgroundColor="{StaticResource ThirdColor}">
-                        <Label Text="Cirriculum vitae" Margin="5,0,0,0" HorizontalOptions="StartAndExpand" 
-                           VerticalOptions="Center"
-                           TextColor="{StaticResource whiteColor}"
-                           FontSize="Title"
-                           FontFamily="AvenirNextDemiBold"/>
+            <StackLayout Margin="0,15">
+                <Label Text="Cirriculum vitae"  FontSize="Title" VerticalOptions="Center" FontFamily="MetroBold" CharacterSpacing="1" TextColor="{StaticResource iconeColor}" />
+                <StackLayout HorizontalOptions="FillAndExpand" Margin="-10,5,-10,0"  HeightRequest="1" BackgroundColor="{StaticResource ThirdColor}"/>
+                 
+                <!--#region  Experience Prof-->
+                <StackLayout >
+                    <Grid>
+                        <Label Text="Experiences" FontSize="Subtitle" VerticalOptions="Center" FontFamily="AvenirNextDemiBold" CharacterSpacing="1" TextColor="{StaticResource iconeColor}" />
+
+                        <syncEffectsView:SfEffectsView Margin="50,0" HeightRequest="40" HorizontalOptions="EndAndExpand" WidthRequest="40" BackgroundColor="Transparent" CornerRadius="25" RippleColor="{StaticResource SecondColor}">
+                            <Label  Text="&#xf067;" FontFamily="fal" HorizontalOptions="Center" TextColor="{StaticResource iconeColor}" VerticalOptions="Center" FontSize="Title"/>
+                        </syncEffectsView:SfEffectsView>
+                        <syncEffectsView:SfEffectsView HeightRequest="40" HorizontalOptions="EndAndExpand" WidthRequest="40" BackgroundColor="Transparent" CornerRadius="25" RippleColor="{StaticResource SecondColor}">
+                            <Label  Text="&#xf303;" FontFamily="fal" HorizontalOptions="Center" TextColor="{StaticResource iconeColor}" VerticalOptions="Center" FontSize="Title"/>
+                        </syncEffectsView:SfEffectsView>
                     </Grid>
-                </SyncExpnader:SfExpander.Header>
-                <SyncExpnader:SfExpander.Content>
-                    <StackLayout Padding="5" BackgroundColor="{StaticResource whiteColor}">
-                        
-                    </StackLayout>
-                </SyncExpnader:SfExpander.Content>
-            </SyncExpnader:SfExpander>
-          <!--#endregion-->
+                </StackLayout>
+                <!--#endregion-->
+
+                <StackLayout HorizontalOptions="FillAndExpand" Margin="-10,5,-10,0"  HeightRequest="1" BackgroundColor="{StaticResource ThirdColor}"/>
+
+                <!--#region  Certifications-->
+                <StackLayout >
+                    <Grid>
+                        <Label Text="Certifications" FontSize="Subtitle" VerticalOptions="Center" FontFamily="AvenirNextDemiBold" CharacterSpacing="1" TextColor="{StaticResource iconeColor}" />
+
+                        <syncEffectsView:SfEffectsView Margin="50,0" HeightRequest="40" HorizontalOptions="EndAndExpand" WidthRequest="40" BackgroundColor="Transparent" CornerRadius="25" RippleColor="{StaticResource SecondColor}">
+                            <Label  Text="&#xf067;" FontFamily="fal" HorizontalOptions="Center" TextColor="{StaticResource iconeColor}" VerticalOptions="Center" FontSize="Title"/>
+                        </syncEffectsView:SfEffectsView>
+                        <syncEffectsView:SfEffectsView HeightRequest="40" HorizontalOptions="EndAndExpand" WidthRequest="40" BackgroundColor="Transparent" CornerRadius="25" RippleColor="{StaticResource SecondColor}">
+                            <Label  Text="&#xf303;" FontFamily="fal" HorizontalOptions="Center" TextColor="{StaticResource iconeColor}" VerticalOptions="Center" FontSize="Title"/>
+                        </syncEffectsView:SfEffectsView>
+                    </Grid>
+                </StackLayout>
+                <!--#endregion-->
+
+                <StackLayout HorizontalOptions="FillAndExpand" Margin="-10,5,-10,0"  HeightRequest="1" BackgroundColor="{StaticResource ThirdColor}"/>
+
+                <!--#region  Formations-->
+                <StackLayout >
+                    <Grid>
+                        <Label Text="Formations" FontSize="Subtitle" VerticalOptions="Center" FontFamily="AvenirNextDemiBold" CharacterSpacing="1" TextColor="{StaticResource iconeColor}" />
+
+                        <syncEffectsView:SfEffectsView Margin="50,0" HeightRequest="40" HorizontalOptions="EndAndExpand" WidthRequest="40" BackgroundColor="Transparent" CornerRadius="25" RippleColor="{StaticResource SecondColor}">
+                            <Label  Text="&#xf067;" FontFamily="fal" HorizontalOptions="Center" TextColor="{StaticResource iconeColor}" VerticalOptions="Center" FontSize="Title"/>
+                        </syncEffectsView:SfEffectsView>
+                        <syncEffectsView:SfEffectsView HeightRequest="40" HorizontalOptions="EndAndExpand" WidthRequest="40" BackgroundColor="Transparent" CornerRadius="25" RippleColor="{StaticResource SecondColor}">
+                            <Label  Text="&#xf303;" FontFamily="fal" HorizontalOptions="Center" TextColor="{StaticResource iconeColor}" VerticalOptions="Center" FontSize="Title"/>
+                        </syncEffectsView:SfEffectsView>
+                    </Grid>
+                </StackLayout>
+                <!--#endregion-->
+                <StackLayout HorizontalOptions="FillAndExpand" Margin="-10,5,-10,0"  HeightRequest="1" BackgroundColor="{StaticResource ThirdColor}"/>
+
+                <!--#region  Competences-->
+                <StackLayout >
+                    <Grid>
+                        <Label Text="Compétences" FontSize="Subtitle" VerticalOptions="Center" FontFamily="AvenirNextDemiBold" CharacterSpacing="1" TextColor="{StaticResource iconeColor}" />
+
+                        <syncEffectsView:SfEffectsView Margin="50,0" HeightRequest="40" HorizontalOptions="EndAndExpand" WidthRequest="40" BackgroundColor="Transparent" CornerRadius="25" RippleColor="{StaticResource SecondColor}">
+                            <Label  Text="&#xf067;" FontFamily="fal" HorizontalOptions="Center" TextColor="{StaticResource iconeColor}" VerticalOptions="Center" FontSize="Title"/>
+                        </syncEffectsView:SfEffectsView>
+                        <syncEffectsView:SfEffectsView HeightRequest="40" HorizontalOptions="EndAndExpand" WidthRequest="40" BackgroundColor="Transparent" CornerRadius="25" RippleColor="{StaticResource SecondColor}">
+                            <Label  Text="&#xf303;" FontFamily="fal" HorizontalOptions="Center" TextColor="{StaticResource iconeColor}" VerticalOptions="Center" FontSize="Title"/>
+                        </syncEffectsView:SfEffectsView>
+                    </Grid>
+                </StackLayout>
+                <!--#endregion-->
+            </StackLayout>
+
+            <!--#endregion-->
         
-       
+        <!--#region  Activités-->
+            <cards:SfCardView HasShadow="True" CornerRadius="0" ShadowColor="{StaticResource ThirdColor}" Margin="-10,3"  Padding="0"   Opacity="1">
+                <StackLayout Margin="10,0">
+                    <Label Text="Activités" Padding="0,5"  FontSize="Title" VerticalOptions="Center" FontFamily="MetroBold" CharacterSpacing="1" TextColor="{StaticResource iconeColor}" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                    <buttons:SfButton Margin="-10,10,-10,0" Text="Voir tout les activites" BackgroundColor="{StaticResource ThirdColor}" FontFamily="MetroLight"></buttons:SfButton>
+                </StackLayout>
+            </cards:SfCardView>
+        <!--#endregion-->
         </StackLayout>
 
     </ScrollView>

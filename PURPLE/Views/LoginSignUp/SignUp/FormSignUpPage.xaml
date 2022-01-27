@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:AnimationPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:FormsControls.Base;assembly=FormsControls.Base"
+                        xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
+                        xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms" 
+                        xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms" 
+                        xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" 
+                        xmlns:entry="clr-namespace:PURPLE.Controls"
+                        NavigationPage.HasNavigationBar="False"
+             x:Class="PURPLE.Views.LoginSignUp.SignUp.FormSignUpPage">
+    <controls:AnimationPage.PageAnimation>
+        <controls:SlidePageAnimation Duration="Medium" Subtype="FromRight" />
+    </controls:AnimationPage.PageAnimation>
+    <Grid x:Name="gd">
+        <Grid Padding="10" RowSpacing="0"  BackgroundColor="{StaticResource whiteColor}" x:Name="ReactView">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--#region TabBar-->
+            
+            <Frame   Margin="-10,-10,-10,0" >
+                <Grid Padding="-10" BackgroundColor="Transparent" >
+                    <syncEffectsView:SfEffectsView x:Name="BackButton" 
+                                            HorizontalOptions="StartAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                                           TouchUpEffects="Ripple"
+                                           RippleColor="{StaticResource ThirdColor}" 
+                                           CornerRadius="20"  
+                                           HeightRequest="45" 
+                                           WidthRequest="45" 
+                                           AnimationCompleted="BackButton_AnimationCompleted" 
+                                             
+                                           >
+                        <Label Text="&#xf060;" FontFamily="fal" FontSize="Title" TextColor="{StaticResource ThirdColor}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                    </syncEffectsView:SfEffectsView>
+
+
+                    <buttons:SfButton x:Name="PassBtn" BorderColor="{StaticResource ThirdColor}" BorderWidth="1" BackgroundColor="{StaticResource transparentColor}" HorizontalOptions="EndAndExpand"  CornerRadius="15" WidthRequest="100" HeightRequest="30"  VerticalOptions="CenterAndExpand">
+                        <Label Text="Passer" FontFamily="MetroMedium" FontSize="Body" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="{StaticResource ThirdColor}"  />
+                    </buttons:SfButton>
+                </Grid>
+            </Frame>
+
+            <!--#endregion-->
+
+            <ScrollView Grid.Row="1"  Margin="0" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" >
+                <StackLayout>
+                    <Label Padding="20" HorizontalOptions="Center" Text="INFOS PROFILE"  TextColor="{StaticResource iconeColor}" FontSize="Title" FontFamily="MetroRegular"/>
+
+                    <!--Avatar-->
+                    <syncEffectsView:SfEffectsView x:Name="profil_btn1" 
+                                                   HorizontalOptions="Center"
+                                               RippleColor="{StaticResource SecondColor}"
+                                              HeightRequest="100"
+                                               WidthRequest="100"
+                                                   AnimationCompleted="profil_btn1_AnimationCompleted"
+                                               BackgroundColor="{StaticResource ThirdColor}" CornerRadius="50">
+                        <sfavatar:SfAvatarView 
+                            x:Name="avatarImg"
+                              ContentType="Custom"
+                               HorizontalOptions="Center"
+                               VerticalOptions="FillAndExpand"
+                               InitialsType="SingleCharacter"
+                               AvatarName="Alex"
+                               Margin="-2"
+                               InitialsColor="White" 
+                               ImageSource="avatar.jpg"
+                               WidthRequest="100"
+                               FontAttributes="Bold"
+                               HeightRequest="100"
+                               CornerRadius="20"   
+                        BorderColor="White"
+                               BackgroundColor="{StaticResource ThirdColor}">
+                        </sfavatar:SfAvatarView>
+                    </syncEffectsView:SfEffectsView>
+
+                    <Label Text="Tapez pour charger votre profile" HorizontalOptions="Center" Padding="5" FontFamily="MetroLight" FontSize="Medium"/>
+                    
+                    <!--#region  Formualire-->
+                    <!--#region Prenom-->
+                    <Label Text="Prénom"
+                       FontSize="Large"
+                       FontFamily="MetroBold"
+                       TextColor="{StaticResource iconeColor}"
+                       />
+                    <Frame Margin="0,0,0,15" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" HasShadow="False">
+                        <entry:CustomEntry  TextColor="{StaticResource iconeColor}"
+                                        
+                                        FontSize="Subtitle"
+                                        FontFamily="MetroLight"/>
+                    </Frame>
+
+                    <!--#endregion-->
+                    
+                    <!--#region Nom-->
+                    <Label Text="Nom de famille"
+                       FontSize="Large"
+                       FontFamily="MetroBold"
+                       TextColor="{StaticResource iconeColor}"
+                       />
+                    <Frame Margin="0,0,0,15" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" HasShadow="False">
+                        <entry:CustomEntry  TextColor="{StaticResource iconeColor}"
+                                        
+                                        FontSize="Subtitle"
+                                        FontFamily="MetroLight"/>
+                    </Frame>
+
+                    <!--#endregion-->
+
+                    <!--#region emplacement-->
+                    <Label Text="Emplacement"
+                       FontSize="Large"
+                       FontFamily="MetroBold"
+                       TextColor="{StaticResource iconeColor}"
+                       />
+                    <Frame Margin="0,0,0,15" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" HasShadow="False">
+                        <entry:CustomEntry  TextColor="{StaticResource iconeColor}"
+                                        
+                                        FontSize="Subtitle"
+                                        FontFamily="MetroLight"/>
+                    </Frame>
+
+                    <!--#endregion-->
+
+                    <!--#region  Zone de saisir de dscription   -->
+                    <Label Text="Descrivez vous en une phrase"
+                       FontSize="Large"
+                       FontFamily="MetroBold"
+                       TextColor="{StaticResource iconeColor}"
+                       />
+                    <Frame  Margin="0" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" HasShadow="False">
+                        <entry:ExtendedEditorControl IsExpandable="True" HeightRequest="200" IsTextPredictionEnabled="True" x:Name="desciprion_entry" TextColor="{StaticResource iconeColor}" FontSize="Subtitle" FontFamily="MetroLight">
+
+                        </entry:ExtendedEditorControl>
+                    </Frame>
+                   <!--#endregion-->
+
+                    <!--#region Date de Naissance-->
+                    <Label Margin="0,15,0,0" Text="Anniversaire"
+                       FontSize="Large"
+                       FontFamily="MetroBold"
+                       TextColor="{StaticResource iconeColor}"
+                       />
+                    <Grid>
+                        <buttons:SfButton x:Name="DateBtn" Text="" HorizontalTextAlignment="Start" FontFamily="MetroLight" TextColor="{StaticResource iconeColor}" HeightRequest="36" Margin="0,0,0,15" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" >
+
+                        </buttons:SfButton>
+
+
+                        <DatePicker x:Name="date"    
+                                    DateSelected="date_DateSelected"
+                                    Format="D"
+         BackgroundColor="Transparent" Opacity="0"/>
+
+                    </Grid>
+                    <!--#endregion-->
+                    <!--#region Sexe-->
+                    <Label  Text="Sexe"
+                       FontSize="Large"
+                       FontFamily="MetroBold"
+                       TextColor="{StaticResource iconeColor}"
+                       />
+                   
+                        <buttons:SfButton x:Name="SexeBtn" Clicked="SexeBtn_Clicked" Text="Masculin" HorizontalTextAlignment="Start" FontFamily="MetroLight" TextColor="{StaticResource iconeColor}" HeightRequest="36" Margin="0,0,0,15" BackgroundColor="{StaticResource backgroundColorPrimary}" Padding="0" CornerRadius="10" >
+
+                        </buttons:SfButton>
+                
+                    <!--#endregion-->
+
+                    <buttons:SfButton x:Name="ValidButtton" BorderColor="{StaticResource ThirdColor}" BorderWidth="1" BackgroundColor="{StaticResource ThirdColor}" HorizontalOptions="EndAndExpand"  CornerRadius="15" WidthRequest="100" HeightRequest="30"  VerticalOptions="CenterAndExpand">
+                        <Label Text="Valider" FontFamily="MetroMedium" FontSize="Body" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="{StaticResource whiteColor}"  />
+                    </buttons:SfButton>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </Grid>
+</controls:AnimationPage>

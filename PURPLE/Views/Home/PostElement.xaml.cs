@@ -46,14 +46,7 @@ namespace PURPLE.Views.Home
            await App.Current.MainPage.Navigation.PushAsync(new FormulairePostPage());
         }
 
-        private async Task Animation()
-        {
-            var formulaire = new PostPage();
-            await Task.Run(()=> App.Current.MainPage.Navigation.PushPopupAsync(formulaire));
-            await Task.Delay(2000);
-            await Navigation.PopPopupAsync();
-        }
-    
+      
     }
 
 }

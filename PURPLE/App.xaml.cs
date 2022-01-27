@@ -21,7 +21,7 @@ namespace PURPLE
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTU0OTI3QDMxMzkyZTM0MmUzMGNDSGpDV2VYZ0owcmVGWk9salcxb0FncFhhV1RaYythWHBnU045UE5rRFE9");
             InitializeComponent();
            
-            MainPage = new NavigationPage(new TabbedNavPage());
+            MainPage = new AnimationNavigationPage(new SignupPage());
         }
 
         protected override void OnStart()
